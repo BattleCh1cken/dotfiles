@@ -29,6 +29,11 @@
 
   ];
   programs = {
+  git = {
+      enable = true;
+      userName = "Battle Ch1cken";
+      userEmail = "trazyn@larkov.de";
+    };
   exa = {
       enable = true;
       enableAliases = false;
@@ -40,6 +45,7 @@
       package = pkgs.firefox;
   };
   };
+
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
