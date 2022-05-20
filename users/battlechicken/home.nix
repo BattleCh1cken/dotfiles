@@ -39,13 +39,29 @@
     enable = true;
     shellAliases = {
         c = "clear";
+        e = "exit";
+        n = "nvim";
+        sl= "exa --icons --sort type";
+        ls= "exa --icons --sort type";
+        ll= "exa --icons --long --sort type";
+        l = "exa --icons --long --sort type";
+        tree="exa --icons --git -a --tree -s type -I '.git|node_modules|bower_components'";
+        gp = "gitpush";
+
+
       };
     enableAutosuggestions = true;
     enableCompletion = true;
     enableSyntaxHighlighting = true;
     initExtra = ''
     eval "$(${pkgs.starship}/bin/starship init zsh)"
-
+    gitpush() {  
+          git add .
+          git commit -m "$*"
+          git pull
+          git push
+    }
+          
     '';
 
     };
