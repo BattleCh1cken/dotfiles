@@ -13,13 +13,13 @@
     neofetch
     unzip
     wget
+    tmux
     #Language Utils
     gcc
     nodejs
 
     #IDE
     neovim
-
 
     #Apps
     mailspring
@@ -28,16 +28,54 @@
 
 
   ];
+  
   programs = {
-  git = {
+    git = {
       enable = true;
       userName = "Battle Ch1cken";
       userEmail = "trazyn@larkov.de";
     };
-  exa = {
+    zsh = {
+    enable = true;
+    shellAliases = {
+        c = "clear";
+      };
+    enableAutosuggestions = true;
+    enableCompletion = true;
+    enableSyntaxHighlighting = true;
+    initExtra = ''
+    eval "$(${pkgs.starship}/bin/starship init zsh)"
+
+    '';
+
+    };
+    exa = {
       enable = true;
       enableAliases = false;
     };
+    kitty = {
+      enable = true;
+      theme = "Catppuccin";
+      settings = {
+          enable_audio_bell = false;
+          shell = "zsh";
+          font_family = "JetBrainsMono Nerd Font";
+        };
+    };
+    starship = {
+      enable = true;
+      settings = {
+      # add_newline = false;
+
+      # character = {
+      #   success_symbol = "[➜](bold green)";
+      #   error_symbol = "[➜](bold red)";
+      # };
+
+      # package.disabled = true;
+    };
+      };
+
 
 
   firefox = {
