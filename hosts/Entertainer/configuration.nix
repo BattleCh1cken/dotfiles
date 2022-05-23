@@ -34,12 +34,17 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.utf8";
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver = {
+    # Enable the X11 windowing system.
+    enable = true;
+    #Enable KDE Plasma
+    displayManager.sddm.enable = true;
+    desktopManager.plasma5.enable = true;
+    #Bspwm
+    windowManager.bspwm.enable = true;
+  };
 
   # Configure keymap in X11
   services.xserver = {
@@ -87,6 +92,8 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     libsecret
+    picom
+    rofi
   ];
   #Enable steam
    programs.steam = {

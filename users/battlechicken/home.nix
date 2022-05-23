@@ -41,6 +41,7 @@
         c = "clear";
         e = "exit";
         n = "nvim";
+        cd = "z";
         sl= "exa --icons --sort type";
         ls= "exa --icons --sort type";
         ll= "exa --icons --long --sort type";
@@ -54,6 +55,8 @@
     enableCompletion = true;
     enableSyntaxHighlighting = true;
     initExtra = ''
+    bindkey '^ ' autosuggest-accept
+    export EDITOR=nvim
     eval "$(${pkgs.starship}/bin/starship init zsh)"
     gitpush() {  
           git add .
@@ -64,6 +67,10 @@
           
     '';
 
+    };
+    zoxide = {
+    enable = true;
+    enableZshIntegration = true;
     };
     exa = {
       enable = true;
@@ -99,6 +106,12 @@
       package = pkgs.firefox;
   };
   };
+  home.file= {
+#    ".config/nvim".source = ./config/nvim;
+#   ".config/nvim".recursive = true;
+    ".config/bspwm".source = ./config/bspwm/bspwmrc;
+    ".config/sxhkd".source = ./config/sxhkd/sxhkdrc;
+    };
 
 
   # This value determines the Home Manager release that your
