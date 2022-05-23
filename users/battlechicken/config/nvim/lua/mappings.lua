@@ -15,6 +15,9 @@ local opts = {
 wk.register({
 
     ["<c-n>"] = { "<cmd>NvimTreeToggle<cr> <cmd>NvimTreeRefresh<cr>", "[NVIMTREE] Toggle" },
+    ["<leader>/"] = {
+      "<ESC><cmd>lua require('Comment.api').toggle_currentlinewise()<CR>", "[COMMENT] Toggle"
+       },
 
     ["<leader>f"] = {
         name = "[TELESCOPE]",

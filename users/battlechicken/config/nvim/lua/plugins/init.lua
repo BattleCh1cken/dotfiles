@@ -35,7 +35,7 @@ return packer.startup(function(use)
     use { "wbthomason/packer.nvim" }
 
     -- UI
-    use({"catppuccin/nvim",as = "catppuccin",})
+    use({"BattleCh1cken/catppuccin.nvim"})
     use { "kyazdani42/nvim-web-devicons",
     --config = require "plugins.configs.icons" 
   }
@@ -58,7 +58,7 @@ return packer.startup(function(use)
     use {
         "nvim-treesitter/nvim-treesitter",
         run = ":TSUpdate",
-        --config = require "plugins.configs.treesitter",
+        config = require "plugins.configs.treesitter",
     }
 
     -- Utilities
@@ -83,7 +83,6 @@ return packer.startup(function(use)
     use { "windwp/nvim-autopairs", 
   --  config = require "plugins.configs.autopairs"
   }
-    use { "tpope/vim-surround" }
     use { "norcalli/nvim-colorizer.lua",
     --config = require "plugins.configs.colorizer" 
     }
@@ -91,9 +90,6 @@ return packer.startup(function(use)
     -- LSP
     use {
         "neovim/nvim-lspconfig",
-        requires = {
-            "jose-elias-alvarez/typescript.nvim",
-        },
     }
     use {
         "jose-elias-alvarez/null-ls.nvim",
@@ -105,7 +101,7 @@ return packer.startup(function(use)
 
     -- Comment
     use { "numToStr/Comment.nvim", 
-    --config = require "plugins.configs.comment" 
+    config = 'require "plugins.configs.comment"' 
     }
 
     -- -- Completion
@@ -125,8 +121,6 @@ return packer.startup(function(use)
     }
 
     -- -- Snippets
-    use { "kitagry/vs-snippets" }
-    use { "dsznajder/vscode-es7-javascript-react-snippets", run = "yarn install --frozen-lockfile && yarn compile" }
 
     -- Tmux
     use { "aserowy/tmux.nvim", 
