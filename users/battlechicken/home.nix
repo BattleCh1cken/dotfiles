@@ -110,7 +110,9 @@
 #    ".config/nvim".source = ./config/nvim;
 #   ".config/nvim".recursive = true;
     ".config/bspwm".source = ./config/bspwm/bspwmrc;
+    ".config/bspwm".recursive = true;
     ".config/sxhkd".source = ./config/sxhkd/sxhkdrc;
+    ".config/sxhkd".recursive = true;
     };
 
 

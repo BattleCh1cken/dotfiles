@@ -1,2 +1,2 @@
-set number
-print("hello")
+require "plugins"
+require "options"
