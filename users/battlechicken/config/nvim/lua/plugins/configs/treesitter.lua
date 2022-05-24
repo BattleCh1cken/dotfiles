@@ -13,7 +13,7 @@ treesitter.setup {
     indent = {
         enable = true,
     },
-    ensure_installed = "",
+    ensure_installed = {"lua"},
     highlight = {
         enable = true,
     },

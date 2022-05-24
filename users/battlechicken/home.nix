@@ -24,6 +24,7 @@
     #Apps
     mailspring
     discord
+    vscode
 
 
 

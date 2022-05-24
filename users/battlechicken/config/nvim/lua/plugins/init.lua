@@ -37,7 +37,7 @@ return packer.startup(function(use)
     -- UI
     use({"BattleCh1cken/catppuccin.nvim"})
     use { "kyazdani42/nvim-web-devicons",
-    --config = require "plugins.configs.icons" 
+    config = 'require "plugins.configs.icons"'
   }
     use {
         "nvim-lualine/lualine.nvim",
@@ -51,14 +51,14 @@ return packer.startup(function(use)
     }
     use { "folke/which-key.nvim" }
     use { "karb94/neoscroll.nvim", 
-    --config = require "plugins.configs.neoscroll"
+    config = 'require "plugins.configs.neoscroll"'
   }
 
     -- Syntax
     use {
         "nvim-treesitter/nvim-treesitter",
         run = ":TSUpdate",
-        config = require "plugins.configs.treesitter",
+        config = 'require "plugins.configs.treesitter"',
     }
 
     -- Utilities
@@ -67,7 +67,7 @@ return packer.startup(function(use)
         requires = {
             "kyazdani42/nvim-web-devicons",
         },
-        --config = require "plugins.configs.nvimtree",
+        config = 'require "plugins.configs.nvimtree"',
     }
     use {
         "nvim-telescope/telescope.nvim",
@@ -78,10 +78,10 @@ return packer.startup(function(use)
     }
     use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
     use { "lukas-reineke/indent-blankline.nvim", 
-    --config = require "plugins.configs.indent"
+    config = 'require "plugins.configs.indent"',
     }
     use { "windwp/nvim-autopairs", 
-  --  config = require "plugins.configs.autopairs"
+   config = 'require "plugins.configs.autopairs"'
   }
     use { "norcalli/nvim-colorizer.lua",
     --config = require "plugins.configs.colorizer" 
@@ -120,12 +120,9 @@ return packer.startup(function(use)
         --config = require "plugins.configs.cmp",
     }
 
-    -- -- Snippets
+    -- Snippets
 
-    -- Tmux
-    use { "aserowy/tmux.nvim", 
-  --  config = require "plugins.configs.tmux"
-  }
+
 
     -- Git
     use {
@@ -133,7 +130,7 @@ return packer.startup(function(use)
         requires = {
             "nvim-lua/plenary.nvim",
         },
-        --config = require "plugins.configs.gitsigns",
+        config = 'require "plugins.configs.gitsigns"',
     }
 
     -- Markdown
