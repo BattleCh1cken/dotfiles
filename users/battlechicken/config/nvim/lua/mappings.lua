@@ -4,7 +4,7 @@ if not ok then
     return
 end
 
-local opts = {
+local optsNormal = {
     mode = "n",
     prefix = "",
     silent = true,
@@ -13,11 +13,9 @@ local opts = {
 }
 
 wk.register({
-
     ["<c-n>"] = { "<cmd>NvimTreeToggle<cr> <cmd>NvimTreeRefresh<cr>", "[NVIMTREE] Toggle" },
-    ["<leader>/"] = {
-      "<ESC><cmd>lua require('Comment.api').toggle_currentlinewise()<CR>", "[COMMENT] Toggle"
-       },
+    ["<leader>/"] = {"<Plug>(comment_toggle_current_linewise)' : '<Plug>(comment_toggle_linewise_count)'", "[COMMENT] Toggle"},
+
 
     ["<leader>f"] = {
         name = "[TELESCOPE]",
@@ -37,6 +35,21 @@ wk.register({
         n = { "<cmd>Gitsigns next_hunk<cr>", "[GIT] Next hunk" },
         p = { "<cmd>Gitsigns prev_hunk<cr>", "[GIT] Prev hunk" },
     },
-}, opts)
+}, optsNormal)
 
+
+
+local optsVisual = {
+    mode = "v",
+    prefix = "",
+    silent = true,
+    noremap = true,
+    nowait = true,
+}
+wk.register({
+    ["<leader>/"] = {"<Plug>(comment_toggle_blockwise_visual)", "[COMMENT] Toggle block"},
+
+
+
+}, optsVisual)
 wk.setup {}

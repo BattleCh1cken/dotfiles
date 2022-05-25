@@ -101,7 +101,7 @@ return packer.startup(function(use)
 
     -- Comment
     use { "numToStr/Comment.nvim", 
-    config = 'require "plugins.configs.comment"' 
+    config = 'require "plugins.configs.comment"'
     }
 
     -- -- Completion
@@ -112,16 +112,13 @@ return packer.startup(function(use)
             "hrsh7th/cmp-nvim-lua",
             "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-path",
-            "hrsh7th/cmp-cmdline",
-            "hrsh7th/cmp-nvim-lsp-document-symbol",
-            "hrsh7th/cmp-vsnip",
-            "hrsh7th/vim-vsnip",
+            "saadparwaiz1/cmp_luasnip"
         },
-        --config = require "plugins.configs.cmp",
+        config = 'require "plugins.configs.cmp"',
     }
 
     -- Snippets
-
+    use {"L3MON4D3/LuaSnip"}
 
 
     -- Git
@@ -146,3 +143,4 @@ return packer.startup(function(use)
         require("packer").sync()
     end
 end)
+
