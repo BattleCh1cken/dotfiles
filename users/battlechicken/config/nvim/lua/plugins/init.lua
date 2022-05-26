@@ -39,11 +39,12 @@ return packer.startup(function(use)
     use { "kyazdani42/nvim-web-devicons",
     config = 'require "plugins.configs.icons"'
   }
-    use {
-        "nvim-lualine/lualine.nvim",
-        --config = require "plugins.configs.lualine",
-        requires = { "kyazdani42/nvim-web-devicons", opt = true },
-    }
+
+
+  use {"feline-nvim/feline.nvim",
+  config = function()
+    require "plugins.configs.feline"
+end,}
     use {
         "akinsho/bufferline.nvim",
         requires = { "kyazdani42/nvim-web-devicons" },

@@ -23,10 +23,10 @@ M.colors = {
   white2 = "#F5E0DC"
 }
 
+
 M.init = function()
   local isExistCatppuccin, catppuccin = pcall(require, "catppuccin")
   if isExistCatppuccin then
-  print("Catppuccin activated")
   catppuccin.setup({
   theme = nil, -- "dark" or "light". Alternatively, remove the option and set vim.o.background instead
   borders = true, -- Split window borders
@@ -58,7 +58,7 @@ M.init = function()
     TelescopeResultsBorder = { bg = M.colors.black1, fg = M.colors.black0 },
     TelescopePreviewBorder = { bg = M.colors.black0, fg = M.colors.black0 },
     TelescopePromptTitle = { fg = M.colors.black0 },
-    TelescopeResultsTitle = { fg = M.colors.black0 },
+    TelescopeResultsTitle = { fg = M.colors.white },
     TelescopePreviewTitle = { fg = M.colors.black0 },
 
   }, -- Overwrite default highlight groups

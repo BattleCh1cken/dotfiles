@@ -34,32 +34,22 @@ local icons = {
 }
 
 
-local function border(hl_name)
-   return {
-      { "╭", hl_name },
-      { "─", hl_name },
-      { "╮", hl_name },
-      { "│", hl_name },
-      { "╯", hl_name },
-      { "─", hl_name },
-      { "╰", hl_name },
-      { "│", hl_name },
-   }
-end
-
-
-local cmp_window = require "cmp.utils.window"
-
-
 cmp.setup({
-     window = {
-      completion = {
-         border = border "CmpBorder",
-      },
-      documentation = {
-         border = border "CmpDocBorder",
-      },
-   },
+  experimental = {
+    native_menu = false,
+    ghost_text = false,
+  },
+  confirmation = {
+        get_commit_characters = function()
+            return {}
+    end,
+    },
+  completion = {
+        completeopt = "menu,menuone,noinsert",
+        keyword_pattern = [[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%(-\w*\)*\)]],
+        keyword_length = 1,
+    },
+
    snippet = {
       expand = function(args)
          require("luasnip").lsp_expand(args.body)
@@ -116,3 +106,5 @@ cmp.setup({
       { name = "path" },
    },
 })
+
+
