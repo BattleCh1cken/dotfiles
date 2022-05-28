@@ -35,7 +35,7 @@ return packer.startup(function(use)
     use { "wbthomason/packer.nvim" }
 
     -- UI
-    use({"BattleCh1cken/catppuccin.nvim"})
+    use {"BattleCh1cken/catppuccin.nvim"}
     use { "kyazdani42/nvim-web-devicons",
     config = 'require "plugins.configs.icons"'
   }
@@ -43,7 +43,7 @@ return packer.startup(function(use)
 
   use {"feline-nvim/feline.nvim",
   config = function()
-    require "plugins.configs.feline"
+      require("plugins.configs.feline")
 end,}
     use {
         "akinsho/bufferline.nvim",

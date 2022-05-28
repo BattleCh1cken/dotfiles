@@ -3,6 +3,7 @@ local ok, feline = pcall(require, "feline")
 if not ok then
   return
 end
+local colors = require("theme").colors
 
 local options = {
    lsp = require "feline.providers.lsp",
@@ -51,16 +52,16 @@ options.icon_styles = {
    },
 }
 
-options.separator_style = options.icon_styles.default 
+options.separator_style = options.icon_styles.round 
 
 options.main_icon = {
    provider = options.separator_style.main_icon,
 
-   -- hl = "FelineIcon",
+   hl = "FelineIcon",
 
    right_sep = {
       str = options.separator_style.right,
-      -- hl = "FelineIconSeparator",
+      hl = "FelineIconSeparator",
    },
 }
 
@@ -76,11 +77,11 @@ options.file_name = {
       return " " .. icon .. " " .. filename .. " "
    end,
 
-   -- hl = "FelineFileName",
+   hl = "FelineFileName",
 
    right_sep = {
       str = options.separator_style.right,
-      -- hl = "FelineFileName_Separator",
+      hl = "FelineFileName_Separator",
    },
 }
 
@@ -90,11 +91,11 @@ options.dir_name = {
       return "  " .. dir_name .. " "
    end,
 
-   -- hl = "FelineDirName",
+   hl = "FelineDirName",
 
    right_sep = {
       str = options.separator_style.right,
-      -- hl = "FelineDirName_Separator",
+      hl = "FelineDirName_Separator",
    },
 }
 
@@ -103,27 +104,27 @@ options.dir_name = {
 options.diff = {
    add = {
       provider = "git_diff_added",
-      -- hl = "Feline_diffIcons",
+      hl = "Feline_diffIcons",
       icon = " ",
    },
 
    change = {
       provider = "git_diff_changed",
-      -- hl = "Feline_diffIcons",
+      hl = "Feline_diffIcons",
 
       icon = "  ",
    },
 
    remove = {
       provider = "git_diff_removed",
-      -- hl = "Feline_diffIcons",
+      hl = "Feline_diffIcons",
       icon = "  ",
    },
 }
 
 options.git_branch = {
    provider = "git_branch",
-   -- hl = "Feline_diffIcons",
+   hl = "Feline_diffIcons",
    icon = "  ",
 }
 
@@ -136,7 +137,7 @@ options.diagnostic = {
          return options.lsp.diagnostics_exist(options.lsp_severity.ERROR)
       end,
 
-      -- hl = "Feline_lspError",
+      hl = "Feline_lspError",
       icon = "  ",
    },
 
@@ -146,7 +147,7 @@ options.diagnostic = {
          return options.lsp.diagnostics_exist(options.lsp_severity.WARN)
       end,
 
-      -- hl = "Feline_lspWarning",
+      hl = "Feline_lspWarning",
       icon = "  ",
    },
 
@@ -155,7 +156,7 @@ options.diagnostic = {
       enabled = function()
          return options.lsp.diagnostics_exist(options.lsp_severity.HINT)
       end,
-      -- hl = "Feline_LspHints",
+      hl = "Feline_LspHints",
       icon = "  ",
    },
 
@@ -164,7 +165,7 @@ options.diagnostic = {
       enabled = function()
          return options.lsp.diagnostics_exist(options.lsp_severity.INFO)
       end,
-      -- hl = "Feline_LspInfo",
+      hl = "Feline_LspInfo",
       icon = "  ",
    },
 }
@@ -180,7 +181,7 @@ options.lsp_icon = {
       end
    end,
 
-   -- hl = "Feline_LspIcon",
+   hl = "Feline_LspIcon",
 }
 
 options.lsp_progress = {
@@ -211,7 +212,7 @@ options.lsp_progress = {
 
       return ""
    end,
-   -- hl = "Feline_LspProgress",
+   hl = "Feline_LspProgress",
 }
 
 -- MODES
@@ -247,18 +248,18 @@ end
 
 options.empty_space = {
    provider = " " .. options.separator_style.left,
-   -- hl = "Feline_EmptySpace",
+   hl = "Feline_EmptySpace",
 }
 
 -- this matches the vi mode color
 options.empty_spaceColored = {
    provider = options.separator_style.left,
-   -- hl = function()
-      -- return {
-         -- fg = get_color(options.mode_hlgroups[vim.fn.mode()][2], "fg#"),
-         -- bg = get_color("Feline_EmptySpace", "fg#"),
-      -- }
-   -- end,
+   hl = function()
+      return {
+         fg = get_color(options.mode_hlgroups[vim.fn.mode()][2], "fg#"),
+         bg = get_color("Feline_EmptySpace", "fg#"),
+      }
+   end,
 }
 
 options.mode_icon = {
@@ -283,17 +284,17 @@ options.mode_name = {
 
 options.separator_right = {
    provider = options.separator_style.left,
-   -- hl = "Feline_EmptySpace",
+   hl = "Feline_EmptySpace",
 }
 
 options.separator_right2 = {
    provider = options.separator_style.left,
-   -- hl = "Feline_PositionSeparator",
+   hl = "Feline_PositionSeparator",
 }
 
 options.position_icon = {
    provider = options.separator_style.position_icon,
-   -- hl = "Feline_PositionIcon",
+   hl = "Feline_PositionIcon",
 }
 
 options.current_line = {
@@ -310,7 +311,7 @@ options.current_line = {
       return " " .. result .. "%% "
    end,
 
-   -- hl = "Feline_CurrentLine",
+   hl = "Feline_CurrentLine",
 }
 
 

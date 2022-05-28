@@ -1,70 +1,178 @@
 local M = {}
 
 M.colors = {
-  bg = "#1E1E2E",
-  fg = "#D9E0EE",
-  red = "#F28FAD",
-  orange = "#E8A2AF",
-  yellow = "#FAE3B0",
-  blue = "#96CDFB",
-  green = "#ABE9B3",
-  cyan = "#89DCEB",
-  magenta = "#DDB6F2",
-  black0 = "#161320",
-  black1 = "#1A1826",
-  black2 = "#1E1E2E",
-  black3 = "#302D41",
-  black4 = "#575268",
-  grey0 = "#6E6C7E",
-  grey1 = "#988BA2",
-  grey2 = "#C3BAC6",
-  white = "#D9E0EE",
-  white1 = "#C9CBFF",
-  white2 = "#F5E0DC"
+  rosewater = "#f5e0dc",
+  flamingo = "#f2cdcd",
+  pink = "#f5c2e7",
+  mauve = "#cba6f7",
+  red = "#f38ba8",
+  maroon = "#eba0ac",
+  peach = "#fab387",
+  yelow = "#f9e2af",
+  green = "#a6e3a1",
+  teal = "#94e2d5",
+  sky = "#89dceb",
+  saphire = "#74c7ec",
+  blue = "#87b0f9",
+  lavender = "#b4befe",
+  text = "#c6d0f5",
+  subtext1 = "#b3bcdf",
+  subtext0 = "#a1a8c9",
+  overlay1 = "#8e95b3",
+  overlay0 = "#696d86",
+  surface2 = "#565970",
+  surface1 = "#43465a",
+  surface0 = "#363a4f",	
+  base = "#24273a",
+  mantle = "#1e2030",
+  crust = "#181926",
 }
 
 
 M.init = function()
-  local isExistCatppuccin, catppuccin = pcall(require, "catppuccin")
-  if isExistCatppuccin then
+local isExistCatppuccin, catppuccin = pcall(require, "catppuccin")
+if isExistCatppuccin then
   catppuccin.setup({
-  theme = nil, -- "dark" or "light". Alternatively, remove the option and set vim.o.background instead
-  borders = true, -- Split window borders
-  fade_nc = false, -- Fade non-current windows, making them more distinguishable
-  -- Style that is applied to various groups: see `highlight-args` for options
-  styles = {
-    comments = "italic",
-    strings = "NONE",
-    keywords = "italic",
-    functions = "italic",
-    variables = "italic",
-    diagnostics = "underline",
-  },
-  disable = {
-    background = false, -- Disable setting the background color
-    cursorline = false, -- Disable the cursorline
-    eob_lines = true, -- Hide the end-of-buffer lines
-  },
-  -- Inverse highlight for different groups
-  inverse = {
-    match_paren = false,
-  },
-  custom_highlights = {
-    TelescopePromptPrefix = { bg = M.colors.black0 },
-    TelescopePromptNormal = { bg = M.colors.black0},
-    TelescopeResultsNormal = { bg = M.colors.black1},
-    TelescopePreviewNormal = { bg = M.colors.black0 },
-    TelescopePromptBorder = { bg = M.colors.black0, fg = M.colors.black0 },
-    TelescopeResultsBorder = { bg = M.colors.black1, fg = M.colors.black0 },
-    TelescopePreviewBorder = { bg = M.colors.black0, fg = M.colors.black0 },
-    TelescopePromptTitle = { fg = M.colors.black0 },
-    TelescopeResultsTitle = { fg = M.colors.white },
-    TelescopePreviewTitle = { fg = M.colors.black0 },
+      custom_highlights = {
+    Feline = {
+      fg = M.colors.text,
+      bg = M.colors.mantle,
+   },
 
-  }, -- Overwrite default highlight groups
-  custom_colors = {}, -- Overwrite default colors})
-  })
+   FelineIcon = {
+      fg = M.colors.mantle,
+      bg = M.colors.blue,
+   },
+
+   FelineIconSeparator = {
+      fg = M.colors.blue,
+      bg = M.colors.surface1,
+   },
+
+   FelineFileName = {
+      fg = M.colors.text,
+      bg = M.colors.surface1,
+   },
+
+   FelineFileName_Separator = {
+      fg = M.colors.surface1,
+      bg = M.colors.surface0,
+   },
+
+   FelineDirName = {
+      fg = M.colors.text,
+      bg = M.colors.surface0,
+   },
+
+   FelineDirName_Separator = {
+      fg = M.colors.surface0,
+      bg = M.colors.mantle,
+   },
+
+   Feline_diffIcons = {
+      fg = M.colors.text,
+      bg = M.colors.base,
+   },
+
+   -- LSP
+
+   Feline_lspError = {
+      fg = M.colors.text,
+      bg = M.colors.base,
+   },
+
+   Feline_lspWarning = {
+      fg = M.colors.text,
+      bg = M.colors.base,
+   },
+
+   Feline_LspHints = {
+      fg = M.colors.text,
+      bg = M.colors.base,
+   },
+
+   Feline_LspInfo = {
+      fg = M.colors.text,
+      bg = M.colors.base,
+   },
+
+   Feline_LspIcon = {
+      fg = M.colors.text,
+      bg = M.colors.base,
+   },
+
+   Feline_LspProgress = {
+      fg = M.colors.text,
+      bg = M.colors.base,
+   },
+
+   -- MODES
+
+   Feline_NormalMode = {
+      fg = M.colors.mantle,
+      bg = M.colors.green,
+   },
+
+   Feline_InsertMode = {
+      fg = M.colors.mantle,
+      bg = M.colors.mauve,
+   },
+
+   Feline_TerminalMode = {
+      fg = M.colors.mantle,
+      bg = M.colors.red,
+   },
+
+   Feline_VisualMode = {
+      fg = M.colors.mantle,
+      bg = M.colors.blue,
+   },
+
+   Feline_ReplaceMode = {
+      fg = M.colors.red,
+      bg = M.colors.base,
+   },
+
+   Feline_ConfirmMode = {
+      fg = M.colors.red,
+      bg = M.colors.red,
+   },
+
+   Feline_CommandMode = {
+      fg = M.colors.red,
+      bg = M.colors.base,
+   },
+
+   Feline_SelectMode = {
+      fg = M.colors.red,
+      bg = M.colors.base,
+   },
+
+   Feline_EmptySpace = {
+      fg = M.colors.red,
+      bg = M.colors.base,
+   },
+
+   Feline_CurrentLine = {
+      fg = M.colors.text,
+      bg = M.colors.surface1,
+   },
+
+   Feline_PositionIcon = {
+      fg = M.colors.surface1,
+      bg = M.colors.green,
+   },
+
+   Feline_PositionSeparator = {
+      fg = M.colors.green,
+      bg = M.colors.surface1,
+   },
+
+}
+    })
+  -- Lua
+  vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
+  vim.cmd[[colorscheme catppuccin]]
 end
 end
-
 return M

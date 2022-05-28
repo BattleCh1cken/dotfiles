@@ -4,7 +4,7 @@ if not ok then
     return
 end
 
-local colors = require("theme").colors
+-- local colors = require("theme").colors
 
 treesitter.setup {
     autotag = {
@@ -19,13 +19,13 @@ treesitter.setup {
     },
     rainbow = {
         colors = {
-            colors.magenta,
-            colors.cyan,
-            colors.yellow,
-            colors.orange,
-            colors.red,
-            colors.blue,
-            colors.green,
+            -- colors.magenta,
+            -- colors.cyan,
+            -- colors.yellow,
+            -- colors.orange,
+            -- colors.red,
+            -- colors.blue,
+            -- colors.green,
         },
         enable = true,
         extended_mode = true,
