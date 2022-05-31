@@ -66,12 +66,12 @@ if isExistCatppuccin then
 
    FelineDirName_Separator = {
       fg = M.colors.surface0,
-      bg = M.colors.mantle,
+      bg = M.colors.base,
    },
 
    Feline_diffIcons = {
       fg = M.colors.text,
-      bg = M.colors.base,
+      bg = M.colors.surface1,
    },
 
    -- LSP
@@ -109,52 +109,52 @@ if isExistCatppuccin then
    -- MODES
 
    Feline_NormalMode = {
-      fg = M.colors.mantle,
-      bg = M.colors.green,
+      fg = M.colors.green,
+      bg = M.colors.surface1,
    },
 
    Feline_InsertMode = {
-      fg = M.colors.mantle,
-      bg = M.colors.mauve,
+      fg = M.colors.mauve,
+      bg = M.colors.surface1,
    },
 
    Feline_TerminalMode = {
-      fg = M.colors.mantle,
-      bg = M.colors.red,
+      fg = M.colors.red,
+      bg = M.colors.surface1,
    },
 
    Feline_VisualMode = {
-      fg = M.colors.mantle,
-      bg = M.colors.blue,
+      fg = M.colors.blue,
+      bg = M.colors.surface1,
    },
 
    Feline_ReplaceMode = {
       fg = M.colors.red,
-      bg = M.colors.base,
+      bg = M.colors.surface1,
    },
 
    Feline_ConfirmMode = {
       fg = M.colors.red,
-      bg = M.colors.red,
+      bg = M.colors.surface1,
    },
 
    Feline_CommandMode = {
       fg = M.colors.red,
-      bg = M.colors.base,
+      bg = M.colors.surface1,
    },
 
    Feline_SelectMode = {
       fg = M.colors.red,
-      bg = M.colors.base,
+      bg = M.colors.surface1,
    },
 
    Feline_EmptySpace = {
-      fg = M.colors.red,
-      bg = M.colors.base,
+      fg = M.colors.surface1,
+      bg = M.colors.surface1,
    },
 
    Feline_CurrentLine = {
-      fg = M.colors.text,
+      fg = M.colors.green,
       bg = M.colors.surface1,
    },
 
