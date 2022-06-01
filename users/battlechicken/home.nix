@@ -14,9 +14,12 @@
     unzip
     wget
     tmux
+    ripgrep
     #Language Utils
     gcc
-    nodejs
+    sumneko-lua-language-server
+    stylua
+    rnix-lsp
 
     #IDE
     neovim
@@ -29,7 +32,6 @@
 
 
   ];
-  
   programs = {
     git = {
       enable = true;
