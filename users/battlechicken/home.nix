@@ -28,6 +28,7 @@
     mailspring
     discord
     vscode
+    obsidian
 
 
 

@@ -78,14 +78,14 @@ end,}
          config = 'require "plugins.configs.telescope"',
     }
     use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
-    use { "lukas-reineke/indent-blankline.nvim", 
+    use { "lukas-reineke/indent-blankline.nvim",
     config = 'require "plugins.configs.indent"',
     }
-    use { "windwp/nvim-autopairs", 
+    use { "windwp/nvim-autopairs",
    config = 'require "plugins.configs.autopairs"'
   }
     use { "norcalli/nvim-colorizer.lua",
-    --config = require "plugins.configs.colorizer" 
+    --config = require "plugins.configs.colorizer"
     }
 
     -- LSP
@@ -101,7 +101,7 @@ end,}
     }
 
     -- Comment
-    use { "numToStr/Comment.nvim", 
+    use { "numToStr/Comment.nvim",
     config = 'require "plugins.configs.comment"'
     }
 
