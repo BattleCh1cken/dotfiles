@@ -29,6 +29,7 @@
     discord
     vscode
     obsidian
+    kitty
 
 
 
@@ -40,41 +41,41 @@
       userEmail = "trazyn@larkov.de";
     };
     zsh = {
-    enable = true;
-    shellAliases = {
+      enable = true;
+      shellAliases = {
         c = "clear";
         e = "exit";
         n = "nvim";
         cd = "z";
-        sl= "exa --icons --sort type";
-        ls= "exa --icons --sort type";
-        ll= "exa --icons --long --sort type";
+        sl = "exa --icons --sort type";
+        ls = "exa --icons --sort type";
+        ll = "exa --icons --long --sort type";
         l = "exa --icons --long --sort type";
-        tree="exa --icons --git -a --tree -s type -I '.git|node_modules|bower_components'";
+        tree = "exa --icons --git -a --tree -s type -I '.git|node_modules|bower_components'";
         gp = "gitpush";
 
 
       };
-    enableAutosuggestions = true;
-    enableCompletion = true;
-    enableSyntaxHighlighting = true;
-    initExtra = ''
-    bindkey '^ ' autosuggest-accept
-    export EDITOR=nvim
-    eval "$(${pkgs.starship}/bin/starship init zsh)"
-    gitpush() {  
-          git add .
-          git commit -m "$*"
-          git pull
-          git push
-    }
+      enableAutosuggestions = true;
+      enableCompletion = true;
+      enableSyntaxHighlighting = true;
+      initExtra = ''
+        bindkey '^ ' autosuggest-accept
+        export EDITOR=nvim
+        eval "$(${pkgs.starship}/bin/starship init zsh)"
+        gitpush() {  
+              git add .
+              git commit -m "$*"
+              git pull
+              git push
+        }
           
-    '';
+      '';
 
     };
     zoxide = {
-    enable = true;
-    enableZshIntegration = true;
+      enable = true;
+      enableZshIntegration = true;
     };
     exa = {
       enable = true;
@@ -84,40 +85,43 @@
       enable = true;
       theme = "Catppuccin";
       settings = {
-          enable_audio_bell = false;
-          shell = "zsh";
-          font_family = "JetBrainsMono Nerd Font";
-        };
+        enable_audio_bell = false;
+        shell = "zsh";
+        font_family = "JetBrainsMono Nerd Font";
+        hide_windows_decorations = "yes";
+        wayland_titlebar_color = "system";
+      };
     };
     starship = {
       enable = true;
       settings = {
-      # add_newline = false;
+        add_newline = false;
 
-      # character = {
-      #   success_symbol = "[➜](bold green)";
-      #   error_symbol = "[➜](bold red)";
-      # };
+        character = {
+          success_symbol = "[➜](bold green)";
+          error_symbol = "[➜](bold red)";
+        };
 
-      # package.disabled = true;
-    };
+        package.disabled = true;
       };
+    };
 
 
 
-  firefox = {
+    firefox = {
       enable = true;
       package = pkgs.firefox;
+    };
   };
-  };
-  home.file= {
-#    ".config/nvim".source = ./config/nvim;
-#   ".config/nvim".recursive = true;
+  home.file = {
+    #    ".config/nvim".source = ./config/nvim;
+    #   ".config/nvim".recursive = true;
     ".config/bspwm".source = ./config/bspwm/bspwmrc;
     ".config/bspwm".recursive = true;
     ".config/sxhkd".source = ./config/sxhkd/sxhkdrc;
     ".config/sxhkd".recursive = true;
-    };
+    # ".config/kitty/kitty.conf".source = ./config/kitty/kitty.conf;
+  };
 
 
   # This value determines the Home Manager release that your
