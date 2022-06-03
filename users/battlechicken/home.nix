@@ -15,11 +15,13 @@
     wget
     tmux
     ripgrep
+    direnv
     #Language Utils
     gcc
     sumneko-lua-language-server
     stylua
     rnix-lsp
+    rust-analyzer
 
     #IDE
     neovim
@@ -29,7 +31,6 @@
     discord
     vscode
     obsidian
-    kitty
 
 
 
@@ -40,6 +41,8 @@
       userName = "Battle Ch1cken";
       userEmail = "trazyn@larkov.de";
     };
+    direnv.enable = true;
+    direnv.nix-direnv.enable = true;
     zsh = {
       enable = true;
       shellAliases = {
@@ -60,18 +63,17 @@
       enableCompletion = true;
       enableSyntaxHighlighting = true;
       initExtra = ''
-        bindkey '^ ' autosuggest-accept
-        export EDITOR=nvim
-        eval "$(${pkgs.starship}/bin/starship init zsh)"
-        gitpush() {  
-              git add .
-              git commit -m "$*"
-              git pull
-              git push
-        }
-          
+          bindkey '^ ' autosuggest-accept
+          export EDITOR=nvim
+          eval "$(${pkgs.starship}/bin/starship init zsh)"
+          gitpush() {  
+                git add .
+                git commit -m "$*"
+                git pull
+                git push
+          }
+        eval "$(direnv hook zsh)"    
       '';
-
     };
     zoxide = {
       enable = true;

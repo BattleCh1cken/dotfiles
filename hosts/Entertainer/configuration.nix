@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ../shared/configuration.nix
     ];
@@ -78,6 +79,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.battlechicken = {
     isNormalUser = true;
+    shell = pkgs.zsh;
     description = "battlechicken";
     extraGroups = [ "networkmanager" "wheel" ];
   };
@@ -92,11 +94,10 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     libsecret
-    picom
-    rofi
+    zsh
   ];
   #Enable steam
-   programs.steam = {
+  programs.steam = {
     enable = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
@@ -111,7 +112,7 @@
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
-   };
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
