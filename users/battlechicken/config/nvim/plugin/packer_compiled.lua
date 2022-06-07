@@ -134,6 +134,11 @@ _G.packer_plugins = {
     path = "/home/battlechicken/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
   },
+  ["lightspeed.nvim"] = {
+    loaded = true,
+    path = "/home/battlechicken/.local/share/nvim/site/pack/packer/start/lightspeed.nvim",
+    url = "https://github.com/ggandor/lightspeed.nvim"
+  },
   ["lsp_signature.nvim"] = {
     loaded = true,
     path = "/home/battlechicken/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim",
@@ -163,6 +168,7 @@ _G.packer_plugins = {
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
   ["nvim-colorizer.lua"] = {
+    config = { "\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14colorizer\frequire\0" },
     loaded = true,
     path = "/home/battlechicken/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua",
     url = "https://github.com/norcalli/nvim-colorizer.lua"
@@ -171,12 +177,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/battlechicken/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
-  },
-  ["nvim-markdown-preview"] = {
-    config = { "\27LJ\2\nu\0\0\2\0\6\0\t6\0\0\0009\0\1\0'\1\3\0=\1\2\0006\0\0\0009\0\1\0'\1\5\0=\1\4\0K\0\1\0\vgithub nvim_markdown_preview_theme\bgfm!nvim_markdown_preview_format\6g\bvim\0" },
-    loaded = true,
-    path = "/home/battlechicken/.local/share/nvim/site/pack/packer/start/nvim-markdown-preview",
-    url = "https://github.com/davidgranstrom/nvim-markdown-preview"
   },
   ["nvim-tree.lua"] = {
     config = { 'require "plugins.configs.nvimtree"' },
@@ -217,6 +217,12 @@ _G.packer_plugins = {
     path = "/home/battlechicken/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
+  ["tmux.nvim"] = {
+    config = { "\27LJ\2\n4\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\25plugins.configs.tmux\frequire\0" },
+    loaded = true,
+    path = "/home/battlechicken/.local/share/nvim/site/pack/packer/start/tmux.nvim",
+    url = "https://github.com/aserowy/tmux.nvim"
+  },
   ["which-key.nvim"] = {
     loaded = true,
     path = "/home/battlechicken/.local/share/nvim/site/pack/packer/start/which-key.nvim",
@@ -225,6 +231,30 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: nvim-colorizer.lua
+time([[Config for nvim-colorizer.lua]], true)
+try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14colorizer\frequire\0", "config", "nvim-colorizer.lua")
+time([[Config for nvim-colorizer.lua]], false)
+-- Config for: bufferline.nvim
+time([[Config for bufferline.nvim]], true)
+require "plugins.configs.bufferline"
+time([[Config for bufferline.nvim]], false)
+-- Config for: tmux.nvim
+time([[Config for tmux.nvim]], true)
+try_loadstring("\27LJ\2\n4\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\25plugins.configs.tmux\frequire\0", "config", "tmux.nvim")
+time([[Config for tmux.nvim]], false)
+-- Config for: gitsigns.nvim
+time([[Config for gitsigns.nvim]], true)
+require "plugins.configs.gitsigns"
+time([[Config for gitsigns.nvim]], false)
+-- Config for: nvim-autopairs
+time([[Config for nvim-autopairs]], true)
+require "plugins.configs.autopairs"
+time([[Config for nvim-autopairs]], false)
+-- Config for: neoscroll.nvim
+time([[Config for neoscroll.nvim]], true)
+require "plugins.configs.neoscroll"
+time([[Config for neoscroll.nvim]], false)
 -- Config for: feline.nvim
 time([[Config for feline.nvim]], true)
 try_loadstring("\27LJ\2\n6\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\27plugins.configs.feline\frequire\0", "config", "feline.nvim")
@@ -237,6 +267,10 @@ time([[Config for nvim-tree.lua]], false)
 time([[Config for telescope.nvim]], true)
 require "plugins.configs.telescope"
 time([[Config for telescope.nvim]], false)
+-- Config for: nvim-cmp
+time([[Config for nvim-cmp]], true)
+require "plugins.configs.cmp"
+time([[Config for nvim-cmp]], false)
 -- Config for: nvim-treesitter
 time([[Config for nvim-treesitter]], true)
 require "plugins.configs.treesitter"
@@ -253,30 +287,6 @@ time([[Config for indent-blankline.nvim]], false)
 time([[Config for nvim-web-devicons]], true)
 require "plugins.configs.icons"
 time([[Config for nvim-web-devicons]], false)
--- Config for: nvim-autopairs
-time([[Config for nvim-autopairs]], true)
-require "plugins.configs.autopairs"
-time([[Config for nvim-autopairs]], false)
--- Config for: nvim-cmp
-time([[Config for nvim-cmp]], true)
-require "plugins.configs.cmp"
-time([[Config for nvim-cmp]], false)
--- Config for: bufferline.nvim
-time([[Config for bufferline.nvim]], true)
-require "plugins.configs.bufferline"
-time([[Config for bufferline.nvim]], false)
--- Config for: neoscroll.nvim
-time([[Config for neoscroll.nvim]], true)
-require "plugins.configs.neoscroll"
-time([[Config for neoscroll.nvim]], false)
--- Config for: nvim-markdown-preview
-time([[Config for nvim-markdown-preview]], true)
-try_loadstring("\27LJ\2\nu\0\0\2\0\6\0\t6\0\0\0009\0\1\0'\1\3\0=\1\2\0006\0\0\0009\0\1\0'\1\5\0=\1\4\0K\0\1\0\vgithub nvim_markdown_preview_theme\bgfm!nvim_markdown_preview_format\6g\bvim\0", "config", "nvim-markdown-preview")
-time([[Config for nvim-markdown-preview]], false)
--- Config for: gitsigns.nvim
-time([[Config for gitsigns.nvim]], true)
-require "plugins.configs.gitsigns"
-time([[Config for gitsigns.nvim]], false)
 if should_profile then save_profiles() end
 
 end)

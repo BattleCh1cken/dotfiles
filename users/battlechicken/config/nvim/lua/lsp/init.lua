@@ -6,6 +6,7 @@ local servers = {
 	"sumneko_lua",
 	"rnix",
 	"clangd",
+  "rust_analyzer"
 }
 
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
