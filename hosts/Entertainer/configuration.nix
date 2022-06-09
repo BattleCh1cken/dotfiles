@@ -10,8 +10,10 @@
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ../shared/configuration.nix
+      ../../modules/desktop/bspwm.nix
     ];
 
+  modules.bspwm.enable = true;
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -43,8 +45,6 @@
     #Enable KDE Plasma
     displayManager.sddm.enable = true;
     desktopManager.plasma5.enable = true;
-    #Bspwm
-    windowManager.bspwm.enable = true;
   };
 
   # Configure keymap in X11

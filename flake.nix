@@ -28,6 +28,7 @@
         system = "x86_64-linux";
         modules = [
           ./hosts/boxie/configuration.nix
+          ./modules/hello.nix
           home.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
