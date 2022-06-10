@@ -16,7 +16,11 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  boot.kernelParams = [ "nvme.noacpi=1" ];
+  boot.kernelParams = [
+    "nvme.noacpi=1"
+    "console=ttyUSB0,115200"
+    "console=tty1"
+  ];
 
   # Setup keyfile
   boot.initrd.secrets = {
@@ -95,6 +99,11 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     gnome.gnome-tweaks
+    gnome.gnome-keyring
+    libsecret
+    protonvpn-gui
+    protonvpn-cli
+    dbus
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
