@@ -12,7 +12,15 @@ in
     environment.systemPackages = with pkgs; [
       picom
       polybar
+      rofi
+      nitrogen
     ];
+    services.xserver.windowManager.bspwm = {
+      enable = true;
+      configFile = "/etc/nixos/users/battlechicken/config/bspwm/bspwmrc";
+      sxhkd.configFile = "/etc/nixos/users/battlechicken/config/sxhkd/sxhkdrc";
+    };
+
 
 
   };

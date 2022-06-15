@@ -31,6 +31,7 @@
     discord
     vscode
     obsidian
+    vlc
 
 
 

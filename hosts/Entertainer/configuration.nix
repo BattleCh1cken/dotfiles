@@ -9,8 +9,8 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ../shared/configuration.nix
       ../../modules/desktop/bspwm.nix
+      ../../modules/fonts.nix
     ];
 
   modules.bspwm.enable = true;
@@ -126,7 +126,34 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
-
+  services.syncthing.enable = true;
+  /* services = {
+    syncthing = {
+    enable = true;
+    # username = "battlechicken";
+    dataDir = "/home/battlechicken/Synthing";
+    configDir = "/home/battlechicken/Syncthing/.config/syncthing";
+    overrideDevices = true; # overrides any devices added or deleted through the WebUI
+    overrideFolders = true; # overrides any folders added or deleted through the WebUI
+    devices = {
+    "boxie" = { id = "4OBT5K3-WO445N4-NUEV6U4-POTIGLG-WW5DVE5-4IVWOYK-KMVRD4W-LI4CXAM"; };
+    # "device2" = { id = "DEVICE-ID-GOES-HERE"; };
+    };
+    folders = {
+    "Documents" = {
+    # Name of folder in Syncthing, also the folder ID
+    path = "/home/battlechicken/Documents/Notes"; # Which folder to add to Syncthing
+    devices = [ "boxie" ]; # Which devices to share the folder with
+    };
+    # "Example" = {
+    # path = "/home/battlechicken/Example";
+    # devices = [ "device1" ];
+    # ignorePerms = false; # By default, Syncthing doesn't sync file permissions. This line enables it for this folder.
+    # };
+    };
+    };
+    };
+  */
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
