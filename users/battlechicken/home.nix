@@ -9,6 +9,7 @@
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
     #Terminal Utils  
+    xclip
     htop
     neofetch
     unzip
@@ -22,6 +23,7 @@
     stylua
     rnix-lsp
     rust-analyzer
+    shellcheck
 
     #IDE
     neovim
