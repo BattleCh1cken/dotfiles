@@ -37,6 +37,7 @@ with lib;
     noto-fonts-emoji
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
+  environment.systemPackages = with pkgs; [ neovim rnix-lsp ];
 
 
 

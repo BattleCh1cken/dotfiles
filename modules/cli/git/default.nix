@@ -6,7 +6,11 @@ in
   options.modules.cli.git = { enable = mkEnableOption "git"; };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [ git ];
+    programs.git = {
+      enable = true;
+      userName = "BattleCh1cken";
+      userEmail = "BattleCh1cken@Larkov.de";
+    };
 
   };
 }

@@ -10,6 +10,15 @@ in
 
     programs.kitty = {
       enable = true;
+      theme = "Catppuccin";
+      settings = {
+        enable_audio_bell = false;
+        shell = "zsh";
+        font_family = "JetBrainsMono Nerd Font";
+        hide_windows_decorations = "yes";
+        wayland_titlebar_color = "system";
+      };
+
     };
   };
 }
