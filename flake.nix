@@ -19,14 +19,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-
-    discord-overlay = {
-      url = "github:InternetUnexplorer/discord-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    discocss.url = "github:mlvzk/discocss/flake";
-
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
   };
@@ -35,8 +27,6 @@
     , nixpkgs
     , home-manager
     , nur
-    , discord-overlay
-    , discocss
     , ...
     }:
     let
@@ -59,11 +49,9 @@
                 useGlobalPkgs = true;
                 extraSpecialArgs = { inherit inputs; };
                 users.battlechicken = (./. + "/hosts/${hostname}/user.nix");
-                sharedModules = [ discocss.hmModule ];
               };
               nixpkgs.overlays = [
                 nur.overlay
-                discord-overlay.overlay
                 inputs.neovim-nightly-overlay.overlay
               ];
             }

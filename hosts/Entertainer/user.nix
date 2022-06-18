@@ -1,9 +1,9 @@
-{ config, lib, inputs, ... }: {
+{ pkgs, config, lib, inputs, ... }: {
   imports = [
-    ../../modules/default.nix
+    ../../modules/modules.nix
   ];
 
-  options.modules = {
+  modules = {
     # programs = {
     # firefox.enable = true;
     # kitty.enable = true;
