@@ -3,7 +3,7 @@
     ../../modules/modules.nix
   ];
 
-  modules = {
+  options.modules = {
     # programs = {
     # firefox.enable = true;
     # kitty.enable = true;
