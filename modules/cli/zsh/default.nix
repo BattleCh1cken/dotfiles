@@ -48,11 +48,10 @@ in
         ll = "exa --icons --long --sort type";
         l = "exa --icons --long --sort type";
         tree = "exa --icons --git -a --tree -s type -I '.git|node_modules|bower_components'";
-
-
       };
-
-
+      initExtra = "
+          bindkey '^ ' autosuggest-accept
+      ";
     };
   };
 }
