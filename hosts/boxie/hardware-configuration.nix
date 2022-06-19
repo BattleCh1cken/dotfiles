@@ -5,7 +5,8 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "uas" "usb_storage" "sd_mod" ];
@@ -14,19 +15,22 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/5b851b64-cab8-412c-8d66-83f13724c21b";
+    {
+      device = "/dev/disk/by-uuid/5b851b64-cab8-412c-8d66-83f13724c21b";
       fsType = "ext4";
     };
 
   boot.initrd.luks.devices."luks-2d8e5c95-bbaa-412c-8d33-50fcdc1ac38b".device = "/dev/disk/by-uuid/2d8e5c95-bbaa-412c-8d33-50fcdc1ac38b";
 
   fileSystems."/boot/efi" =
-    { device = "/dev/disk/by-uuid/3829-89AA";
+    {
+      device = "/dev/disk/by-uuid/3829-89AA";
       fsType = "vfat";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/d175f093-b9c9-4712-9da7-261b580ef62b"; }
+    [
+      # { device = "/dev/disk/by-uuid/d175f093-b9c9-4712-9da7-261b580ef62b"; }
     ];
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.

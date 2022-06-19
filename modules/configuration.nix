@@ -54,9 +54,9 @@
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
+  #It does what it says, just read it.
+  nixpkgs.config.allowUnfree = true;
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.battlechicken = {
@@ -75,6 +75,7 @@
   ];
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    htop
     neovim
     rnix-lsp
     ripgrep
@@ -82,12 +83,6 @@
     mailspring
     lazygit
   ];
-  #Enable steam
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-  };
 
 
   services.gnome.gnome-keyring.enable = true;

@@ -15,8 +15,7 @@ in
         enable_audio_bell = false;
         shell = "zsh";
         font_family = "JetBrainsMono Nerd Font";
-        hide_windows_decorations = "yes";
-        wayland_titlebar_color = "system";
+        hide_window_decorations = "yes";
       };
 
     };

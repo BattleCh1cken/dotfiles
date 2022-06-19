@@ -53,5 +53,9 @@ in
           bindkey '^ ' autosuggest-accept
       ";
     };
+    programs.direnv = {
+      enable = true;
+      enableZshIntegration = true;
+    };
   };
 }
