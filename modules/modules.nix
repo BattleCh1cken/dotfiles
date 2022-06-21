@@ -1,13 +1,18 @@
 { inputs, pkgs, config, ... }: {
   imports = [
-    ./desktop/gnome/default.nix
+    ./desktop/bspwm
+    ./desktop/eww
+    # ./desktop/gnome/default.nix
+    # ./desktop/kde/default.nix
 
     ./cli/git
     ./cli/nvim
     ./cli/zsh
 
-    ./programs/kitty/default.nix
-    ./programs/firefox/default.nix
-    ./programs/steam/default.nix
+    ./programs/kitty
+    ./programs/firefox
+    ./programs/steam
+
+    ./services/dunst
   ];
 }

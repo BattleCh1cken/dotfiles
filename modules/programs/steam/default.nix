@@ -5,8 +5,5 @@ in
 {
   options.modules.programs.steam = { enable = mkEnableOption "steam"; };
 
-  config = mkIf cfg.enable {
-    home.packages = with pkgs; [ steam ];
-  };
-
+  config = mkIf cfg.enable { };
 }

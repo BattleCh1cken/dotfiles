@@ -5,6 +5,12 @@
 { config, pkgs, ... }:
 
 {
+  nix = {
+    package = pkgs.nixFlakes; # or versioned attributes like nixVersions.nix_2_8
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -30,16 +36,12 @@
 
 
   # Configure keymap in X11
-  services.xserver = {
-    layout = "us";
-    xkbVariant = "";
-  };
-
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
   # Enable sound with pipewire.
   sound.enable = true;
+  sound.mediaKeys.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -76,32 +78,45 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     htop
+    xorg.xkill
     neovim
     rnix-lsp
     ripgrep
     libsecret
     mailspring
     lazygit
+    vlc
+    pavucontrol
+    protonup
+
   ];
 
 
+  services = {
+
+    xserver = {
+      libinput = {
+        enable = true;
+        mouse = {
+          accelProfile = "flat";
+          accelSpeed = "0";
+          middleEmulation = false;
+        };
+
+        touchpad = {
+          disableWhileTyping = true;
+          accelProfile = "flat";
+          accelSpeed = "0.6";
+          naturalScrolling = true;
+          tapping = true;
+        };
+      };
+      layout = "us";
+      xkbVariant = "";
+    };
+  };
   services.gnome.gnome-keyring.enable = true;
 
-
-  nix = {
-    package = pkgs.nixFlakes; # or versioned attributes like nixVersions.nix_2_8
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-  };
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
 
   # List services that you want to enable:
   # This value determines the NixOS release from which the default

@@ -17,7 +17,13 @@ in
         font_family = "JetBrainsMono Nerd Font";
         hide_window_decorations = "yes";
       };
-
     };
+
+
+    services.sxhkd.keybindings = {
+      "super + Return" = "kitty --single-instance";
+    };
+
   };
+
 }
