@@ -85,6 +85,7 @@ return packer.startup(function(use)
 	})
 
 	use({ "ggandor/lightspeed.nvim" })
+  use({"elkowar/yuck.vim", ft = "yuck"})
 
 	-- LSP
 	use({

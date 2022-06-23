@@ -9,14 +9,15 @@ in
   };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [ nitrogen picom rofi pamixer brightnessctl ];
+    home.packages = with pkgs; [ nitrogen picom rofi pamixer brightnessctl flameshot ];
     xsession = {
-      enable = true;
+      enable = false;
       windowManager.bspwm = {
         enable = true;
         startupPrograms = [
           "xsetroot -cursor_name left_ptr"
           "nitrogen --restore"
+          "eww daemon && eww open bar"
         ];
         monitors = { "focused" = [ "1" "2" "3" "4" "5" ]; };
         settings = {
@@ -63,6 +64,10 @@ in
         "super + alt + shift + {h,j,k,l}" =
           "bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}";
         "super + {Left,Down,Up,Right}" = "bspc node -v {-20 0,0 20,0 -20,20 0}";
+        "super + shift + s" = "flameshot gui";
+
+
+
 
         "XF86AudioRaiseVolume" =
           ''pamixer --increase 5 --unmute && volume &'';

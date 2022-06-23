@@ -43,7 +43,7 @@ local options = {
 }
 
 vim.opt.shortmess:append("c")
-
+vim.cmd [[set iskeyword+=-]]
 for key, value in pairs(options) do
 	vim.opt[key] = value
 end

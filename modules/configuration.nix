@@ -79,16 +79,13 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     htop
     xorg.xkill
-    neovim
-    rnix-lsp
-    ripgrep
     libsecret
     mailspring
     lazygit
     vlc
     pavucontrol
     protonup
-
+    libnotify
   ];
 
 

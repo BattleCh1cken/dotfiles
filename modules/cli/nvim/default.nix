@@ -7,8 +7,21 @@ in
   options.modules.cli.nvim = { enable = mkEnableOption "nvim"; };
 
   config = mkIf cfg.enable {
+    home.packages = with pkgs; [
+      neovim
+      ripgrep
+      #nix
+      rnix-lsp
+      #lua
+      sumneko-lua-language-server
+      stylua
+      #bash
+      shellcheck
+      nodePackages.bash-language-server
+      shfmt
+    ];
     programs.neovim = {
-      enable = true;
+      enable = false;
       package = pkgs.neovim-nightly;
 
     };

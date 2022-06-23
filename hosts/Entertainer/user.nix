@@ -15,9 +15,12 @@
       steam.enable = true;
     };
     cli = {
-      nvim.enable = false;
+      nvim.enable = true;
       git.enable = true;
       zsh.enable = true;
+    };
+    services = {
+      dunst.enable = true;
     };
   };
 }
