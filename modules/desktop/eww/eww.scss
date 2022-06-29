@@ -87,8 +87,8 @@ $crust: #181926;
   margin: 7px;
   padding-top: 5px;
   padding-bottom: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 7px;
+  padding-right: 15px;
   border-radius: 10px;
 }
 .battery {
@@ -181,7 +181,7 @@ $crust: #181926;
     background: $base;
     color: $red;
     font-size: 14px;
-    padding: 0 14px 0 10px;
+    padding: 0 10px 0 10px;
     &:hover { background-color: $surface0; }
     &:active { background-color: $surface1; }
   }

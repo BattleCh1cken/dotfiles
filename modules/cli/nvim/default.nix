@@ -19,10 +19,12 @@ in
       shellcheck
       nodePackages.bash-language-server
       shfmt
+      #Markdown
+      nodePackages.markdownlint-cli
     ];
     programs.neovim = {
-      enable = false;
-      package = pkgs.neovim-nightly;
+      # enable = true;
+      # package = pkgs.neovim-nightly;
 
     };
   };

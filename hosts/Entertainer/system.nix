@@ -16,7 +16,11 @@
   nixpkgs.config.allowUnfree = true;
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.opengl.enable = true;
-  environment.systemPackages = with pkgs; [ qbittorrent ];
+  environment.systemPackages = with pkgs; [
+    qbittorrent
+    gnome.nautilus
+    qt5ct
+  ];
 
 
   programs.steam = {

@@ -18,9 +18,11 @@
       nvim.enable = true;
       git.enable = true;
       zsh.enable = true;
+      music.enable = true;
     };
     services = {
       dunst.enable = true;
     };
   };
+
 }

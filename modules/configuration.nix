@@ -31,8 +31,8 @@
   time.timeZone = "America/New_York";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.utf8";
 
+  # i18n.defaultLocale = "en_US.UTF-8";
 
 
   # Configure keymap in X11
@@ -86,6 +86,7 @@
     pavucontrol
     protonup
     libnotify
+    gcc
   ];
 
 
