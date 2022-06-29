@@ -5,6 +5,12 @@
 { config, pkgs, ... }:
 
 {
+
+  environment.variables = {
+    EDITOR = "nvim";
+    TERMINAL = "kitty";
+    BROWSER = "firefox";
+  };
   nix = {
     package = pkgs.nixFlakes; # or versioned attributes like nixVersions.nix_2_8
     extraOptions = ''
