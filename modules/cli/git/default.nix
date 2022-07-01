@@ -6,7 +6,10 @@ in
   options.modules.cli.git = { enable = mkEnableOption "git"; };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [ pre-commit ];
+    home.packages = with pkgs; [
+      pre-commit
+      lazygit
+    ];
     programs.git = {
       enable = true;
       userName = "BattleCh1cken";

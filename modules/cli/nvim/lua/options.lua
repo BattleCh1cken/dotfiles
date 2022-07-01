@@ -7,7 +7,7 @@ local options = {
 	termguicolors = true,
 	fileencoding = "utf-8",
 	autoread = true,
-	wrap = true,
+	wrap = false,
 	backup = false,
 	swapfile = false,
 	hlsearch = false,
@@ -43,7 +43,7 @@ local options = {
 }
 
 vim.opt.shortmess:append("c")
-vim.cmd [[set iskeyword+=-]]
+vim.cmd([[set iskeyword+=-]])
 for key, value in pairs(options) do
 	vim.opt[key] = value
 end

@@ -6,8 +6,18 @@ in
   options.modules.cli.zsh = { enable = mkEnableOption "zsh"; };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [ exa ];
+    home.packages = with pkgs; [ exa ]; # for swallowing
+
     programs.zoxide = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+
+    programs.dircolors = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+    programs.direnv = {
       enable = true;
       enableZshIntegration = true;
     };
@@ -33,29 +43,86 @@ in
         };
       };
     };
+
     programs.zsh = {
       enable = true;
-      enableAutosuggestions = true;
       enableCompletion = true;
+      enableAutosuggestions = true;
       enableSyntaxHighlighting = true;
+      sessionVariables = {
+        LC_ALL = "en_US.UTF-8";
+
+        LF_ICONS = import ./LF_ICONS.nix;
+      };
+      completionInit = ''
+        autoload -U compinit
+        zstyle ':completion:*' menu select
+        zmodload zsh/complist
+        compinit
+        _comp_options+=(globdots)
+        bindkey -M menuselect 'h' vi-backward-char
+        bindkey -M menuselect 'k' vi-up-line-or-history
+        bindkey -M menuselect 'l' vi-forward-char
+        bindkey -M menuselect 'j' vi-down-line-or-history
+        bindkey -v '^?' backward-delete-char
+      '';
+      initExtra = ''
+        autoload -U url-quote-magic
+        zle -N self-insert url-quote-magic
+      '';
+      history = {
+        save = 1000;
+        size = 1000;
+        expireDuplicatesFirst = true;
+        ignoreDups = true;
+        ignoreSpace = true;
+      };
+
       shellAliases = {
+        rebuild = "sudo nix-store --verify; sudo nixos-rebuild switch --flake .#";
+        cleanup = "sudo nix-collect-garbage --delete-older-than 7d";
+        need = "nix-shell -p";
+
         c = "clear";
         e = "exit";
         n = "nvim";
-        cd = "z";
-        sl = "exa --icons --sort type";
-        ls = "exa --icons --sort type";
-        ll = "exa --icons --long --sort type";
-        l = "exa --icons --long --sort type";
-        tree = "exa --icons --git -a --tree -s type -I '.git|node_modules|bower_components'";
+
+        cat = "bat --style=plain";
+        grep = "rg";
+        m = "mkdir -p";
+        ls = "exa --icons --group-directories-first";
+        sl = "ls";
+        tree = "exa --tree --icons";
+        rm = "rm -i";
+        cp = "cp -i";
+        mv = "mv -i";
+
+        # Git aliases
+        g = "git";
+        gs = "git status";
+        gc = "git commit -m";
+        gp = "git push";
+        ga = "git add";
+
       };
-      initExtra = "
-          bindkey '^ ' autosuggest-accept
-      ";
-    };
-    programs.direnv = {
-      enable = true;
-      enableZshIntegration = true;
+
+      plugins = with pkgs; [
+        {
+          name = "zsh-nix-shell";
+          file = "nix-shell.plugin.zsh";
+          src = pkgs.fetchFromGitHub {
+            owner = "chisui";
+            repo = "zsh-nix-shell";
+            rev = "v0.5.0";
+            sha256 = "0za4aiwwrlawnia4f29msk822rj9bgcygw6a8a6iikiwzjjz0g91";
+          };
+        }
+        {
+          name = "zsh-vi-mode";
+          src = pkgs.zsh-vi-mode;
+          file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
+        }
+      ];
     };
   };
 }

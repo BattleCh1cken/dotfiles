@@ -68,6 +68,7 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.battlechicken = {
+    shell = pkgs.zsh;
     isNormalUser = true;
     description = "battlechicken";
     extraGroups = [ "networkmanager" "wheel" ];
@@ -82,19 +83,22 @@
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #cli utils
+    vim
     htop
+    neofetch
     zip
     unzip
     xorg.xkill
-    libsecret
+    zsh
+    protonup
+    #apps
     mailspring
-    lazygit
     vlc
     pavucontrol
-    protonup
-    libnotify
+    #random dependencies
     gcc
+    libnotify
   ];
 
 

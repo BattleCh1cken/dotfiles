@@ -10,6 +10,7 @@
     ./cli/nvim
     ./cli/zsh
     ./cli/music
+    ./cli/tmux
 
     ./programs/kitty
     ./programs/firefox
