@@ -1,6 +1,6 @@
 { pkgs, system, config, ... }: {
   environment.variables = {
-    GDK_SCALE = "2";
+    # GDK_SCALE = "2";
   };
 
   services.xserver.enable = true;
