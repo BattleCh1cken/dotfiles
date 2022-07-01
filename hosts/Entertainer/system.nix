@@ -20,6 +20,7 @@
     qbittorrent
     gnome.nautilus
     qt5ct
+    vscode
   ];
 
 
