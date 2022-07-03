@@ -11,4 +11,3 @@ tmux rename-window Terminal
 tmux split-window -v -p 50
 tmux select-pane -U
 tmux select-window -t:1
-nvim

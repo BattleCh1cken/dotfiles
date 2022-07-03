@@ -19,6 +19,7 @@
       zsh.enable = true;
       music.enable = true;
       tmux.enable = true;
+      scripts.enable = true;
     };
     services = {
       dunst.enable = true;

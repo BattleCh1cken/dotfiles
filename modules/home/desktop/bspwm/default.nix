@@ -31,7 +31,7 @@ in
     services.sxhkd = {
       enable = true;
       keybindings = {
-        "super + @space" = "rofi -show drun";
+        "super + d" = "rofi -show drun";
         "super + {_,shift + }q" = "bspc node -{c,k}";
         "super + shift + Escape" = "pkill -USR1 -x sxhkd; notify-send 'sxhkd' 'Reloaded config'";
         "super + alt + {q,r}" = "bspc {quit,wm -r}";
