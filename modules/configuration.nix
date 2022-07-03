@@ -125,7 +125,11 @@
       xkbVariant = "";
     };
   };
-  services.gnome.gnome-keyring.enable = true;
+  security = {
+
+    pam.services.login.enableGnomeKeyring = true;
+
+  };
 
 
   # List services that you want to enable:

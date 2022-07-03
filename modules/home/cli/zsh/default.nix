@@ -6,7 +6,7 @@ in
   options.modules.cli.zsh = { enable = mkEnableOption "zsh"; };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [ exa ]; # for swallowing
+    home.packages = with pkgs; [ exa bat ]; # for swallowing
 
     programs.zoxide = {
       enable = true;

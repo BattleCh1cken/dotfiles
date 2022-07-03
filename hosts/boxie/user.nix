@@ -1,6 +1,6 @@
 { pkgs, config, lib, inputs, ... }: {
   imports = [
-    ../../modules/hom/modules.nix
+    ../../modules/home/modules.nix
   ];
 
   config.modules = {
@@ -14,6 +14,7 @@
       git.enable = true;
       zsh.enable = true;
       tmux.enable = true;
+      scripts.enable = true;
     };
   };
 }

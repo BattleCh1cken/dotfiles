@@ -11,6 +11,7 @@
     ./cli/zsh
     ./cli/music
     ./cli/tmux
+    ./cli/scripts
 
     ./programs/kitty
     ./programs/firefox

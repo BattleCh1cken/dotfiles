@@ -2,7 +2,10 @@
 with lib;
 let
   cfg = config.modules.cli.scripts;
-  # ide = pkgs.writeShellScriptBin "ide" ''${builtins.readFile ./scripts/ide.sh''  ;
+  ide = pkgs.writeShellScriptBin "ide" ''${builtins.readFile ./scripts/ide.sh}'';
+  # ide = pkgs.writeShellScriptBin "ide" ''
+  # echo bonk 
+  # '';
 in
 {
 
