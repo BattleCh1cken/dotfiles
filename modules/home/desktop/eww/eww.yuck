@@ -7,6 +7,7 @@
       (mem)
       (cpu)
       (disk)
+      (volume)
         )
       (wifi)
       )
@@ -15,7 +16,6 @@
 
     (box :valign "end" :hexpand false :vexpand true :orientation "v" :space-evenly false :spacing 10
       (battery)
-      (powerbutton)
       (time)
       ))
   )
@@ -36,7 +36,7 @@
 (defvar cal false)
 
 ;; Widgets
-
+;;the three widgets on the together on the top of the bar
 (defwidget mem []
   (box :vexpand "false" :hexpand "false"
     (circular-progress  :value {EWW_RAM.used_mem_perc}
@@ -68,6 +68,21 @@
         "")
       ))
   )
+(defwidget disk []
+  (box :vexpand "false" :hexpand "false"
+    (circular-progress  :value {EWW_DISK["/"].used_perc}
+                        :class "diskbar"
+                        :start-angle 0
+                        :thickness 4
+      (button
+        :class "iconmem"
+        :limit-width 2
+        :tooltip " ${round(EWW_DISK["/"].used_perc,1)}%"
+        :show_truncated false
+        :wrap false
+        "")
+      ))
+  )
 
 (defwidget wifi []
  (box :vexpand false :hexpand false :orientation "v"
@@ -89,56 +104,18 @@
    )
 )
 
-(defwidget disk []
+
+(defpoll current-volume :interval "1s" "pamixer --get-volume")
+(defwidget volume []
   (box :vexpand "false" :hexpand "false"
-    (circular-progress  :value {EWW_DISK["/"].used_perc}
-                        :class "diskbar"
-                        :start-angle 0
-                        :thickness 4
-      (button
-        :class "iconmem"
-        :limit-width 2
-        :tooltip " ${round(EWW_DISK["/"].used_perc,1)}%"
-        :show_truncated false
-        :wrap false
-        "")
-      ))
-  )
+    (circular-progress
+      :value current-volume
+      :class "volumebar"
+      :start-angle 0
+      :thickness 4
+      )))
 
-(defvar volume-hidden false)
-(defvar volume-level 50)
-(defvar volume-muted false)
-(defwindow volume
-  :monitor 0
-  :geometry (geometry :y "100px" :x "0px" :width "250px" :height "200px" :anchor "center bottom")
-  :windowtype "dock"
-  :wm-ignore true
-  :stacking "fg"
 
-  (box :class "volume-window"
-       :orientation "v"
-       :space-evenly "false"
-    (box :class "volume-spacer" :style {volume-hidden ? "padding-top: 100px;" : "padding-top: 30px;"})
-    (box :class "volume-widget"
-         :orientation "h"
-         :space-evenly false
-         :spacing 10
-      (label :text {volume-muted ? "" :
-                    volume-level == 0 ? "" :
-                    volume-level < 32 ? "" :
-                    volume-level < 65 ? "" :
-                    ""}
-
-             :class 'volume-icon ${volume-muted ? "volume-icon-muted" : ""}'
-      )
-      (scale :class 'volume-slider ${volume-muted ? "volume-slider-muted" : ""}'
-             :hexpand "true"
-             :min 0
-             :max 100
-             :height 8
-             :marks true
-             :value volume-level
-             :onchange "pamixer --set-volume {}"))))
 
 (defwidget time []
   (eventbox :cursor "hand"  :hexpand false :vexpand false
@@ -156,82 +133,12 @@
   )
 
 
-(defvar bright-hidden false)
-(defvar bright-level 50)
-(defvar bright-muted false)
-(defwindow brightness
-  :monitor 0
-  :geometry (geometry :y "100px" :x "0px" :width "250px" :height "200px" :anchor "center bottom")
-  :windowtype "dock"
-  :wm-ignore true
-  :stacking "fg"
 
-  (box :class "volume-window"
-       :orientation "v"
-       :space-evenly "false"
-    (box :class "volume-spacer" :style {bright-hidden ? "padding-top: 100px;" : "padding-top: 30px;"})
-    (box :class "volume-widget"
-         :orientation "h"
-         :space-evenly false
-         :spacing 10
-      (label :text ""
-             :class 'volume-icon'
-      )
-      (scale :class 'volume-slider'
-             :hexpand "true"
-             :min 0
-             :max 100
-             :height 8
-             :marks true
-             :value bright-level
-             :onchange "brightnessctl set {}%"))))
 (defwidget launch []
   (button		:class "icon nixos"
                 :hexpand true
                 :onclick "rofi -show drun &"	"")
 )
-
-(defwidget powerbutton []
-  (eventbox :cursor "hand"
-  (button		:class "icon button-off"
-                :onclick "eww open powermenu --toggle &"	"")
-  )
-)
-                                                  (defwidget powermenucontent []
-                                                  (box :orientation "h"
-  :class "powermenu-container"
-  (box :class "shutdown-btn-box"
-       :orientation "h"
-    (button :class "btn"
-            :tooltip "Shutdown"
-            :onclick "eww close powermenu && shutdown now"
-      "⏻")
-    )
-  (box :class "reboot-btn-box"
-       :orientation "h"
-    (button :class "btn"
-            :tooltip "Reboot"
-            :onclick "eww close powermenu && reboot"
-      "")
-    )
-  (box :class "exit-btn-box"
-       :orientation "h"
-    (button :class "btn"
-            :tooltip "Suspend"
-            :onclick "systemctl suspend"
-      "")
-    )
-  )
-)
-
-(defwindow powermenu
-  :geometry (geometry :x "0%"
-  :y "0%"
-  :width "30%"
-  :height "15%"
-  :anchor "center center")
-  :wm-ignore true
-  (powermenucontent))
 
 (defwidget workspaces []
   (literal :content workspaces_listen))

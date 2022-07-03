@@ -21,6 +21,7 @@
     gnome.nautilus
     qt5ct
     vscode
+    partition-manager
   ];
 
 

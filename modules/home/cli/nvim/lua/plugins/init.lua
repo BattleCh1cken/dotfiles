@@ -85,7 +85,7 @@ return packer.startup(function(use)
 	})
 
 	use({ "ggandor/lightspeed.nvim" })
-  use({"elkowar/yuck.vim", ft = "yuck"})
+	use({ "elkowar/yuck.vim", ft = "yuck" })
 
 	-- LSP
 	use({
@@ -97,6 +97,7 @@ return packer.startup(function(use)
 	})
 	use({
 		"ray-x/lsp_signature.nvim",
+		config = 'require "plugins.configs.lsp_signature"',
 	})
 
 	-- Tmux
@@ -124,7 +125,8 @@ return packer.startup(function(use)
 	})
 
 	-- Snippets
-	use({ "L3MON4D3/LuaSnip" })
+	use({ "L3MON4D3/LuaSnip", config = 'require "plugins.configs.luasnip"' })
+	use("rafamadriz/friendly-snippets")
 
 	-- Git
 	use({

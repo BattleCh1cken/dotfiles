@@ -1,7 +1,9 @@
 # Todo
 
 [ ] - finish eww bar (center things and add volume widget)
-[x] - make tmux config
+[ ] - make tmux sessions persistent
 [ ] - add rofi config
-[ ] - make shell more usable
+[x] - make shell more usable
 [ ] - get ncmpcpp working
+[ ] - make sure luasnip is actually working
+[ ] - stop cmp from overlapping lsp signature

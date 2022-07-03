@@ -1,13 +1,12 @@
 { pkgs, config, lib, inputs, ... }: {
   imports = [
-    ../../modules/modules.nix
+    ../../modules/home/modules.nix
   ];
 
   config.modules = {
     desktop = {
       bspwm.enable = true;
       eww.enable = true;
-      # kde.enable = true;
     };
     programs = {
       firefox.enable = true;
@@ -19,6 +18,7 @@
       git.enable = true;
       zsh.enable = true;
       music.enable = true;
+      tmux.enable = true;
     };
     services = {
       dunst.enable = true;

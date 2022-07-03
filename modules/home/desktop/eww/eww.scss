@@ -59,8 +59,9 @@ $crust: #181926;
 }
 .system-status {
   background-color: $base;
-  padding: 0.5rem;
+  padding: 0.9rem;
   border-radius: 10px;
+  margin: 0.5rem 0.5rem 0.5rem 0.5rem;
 
 }
 .iconmem {
@@ -79,7 +80,11 @@ $crust: #181926;
 .date {
   font-size: 1.5rem;
 }
-.button-off { color: $red; font-size: 2rem;}
+.button-off { 
+  color: $red;
+  font-size: 2rem;
+  padding-left: 1px;
+}
 .nixos {
   font-size: 1.5rem;
   color: $base;
