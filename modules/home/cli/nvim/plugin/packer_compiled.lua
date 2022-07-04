@@ -145,12 +145,6 @@ _G.packer_plugins = {
     path = "/home/battlechicken/.local/share/nvim/site/pack/packer/start/lightspeed.nvim",
     url = "https://github.com/ggandor/lightspeed.nvim"
   },
-  ["lsp_signature.nvim"] = {
-    config = { 'require "plugins.configs.lsp_signature"' },
-    loaded = true,
-    path = "/home/battlechicken/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim",
-    url = "https://github.com/ray-x/lsp_signature.nvim"
-  },
   ["neoscroll.nvim"] = {
     config = { 'require "plugins.configs.neoscroll"' },
     loaded = true,
@@ -245,38 +239,14 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: nvim-autopairs
-time([[Config for nvim-autopairs]], true)
-require "plugins.configs.autopairs"
-time([[Config for nvim-autopairs]], false)
--- Config for: nvim-colorizer.lua
-time([[Config for nvim-colorizer.lua]], true)
-try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14colorizer\frequire\0", "config", "nvim-colorizer.lua")
-time([[Config for nvim-colorizer.lua]], false)
--- Config for: nvim-web-devicons
-time([[Config for nvim-web-devicons]], true)
-require "plugins.configs.icons"
-time([[Config for nvim-web-devicons]], false)
--- Config for: lsp_signature.nvim
-time([[Config for lsp_signature.nvim]], true)
-require "plugins.configs.lsp_signature"
-time([[Config for lsp_signature.nvim]], false)
--- Config for: feline.nvim
-time([[Config for feline.nvim]], true)
-try_loadstring("\27LJ\2\n6\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\27plugins.configs.feline\frequire\0", "config", "feline.nvim")
-time([[Config for feline.nvim]], false)
--- Config for: Comment.nvim
-time([[Config for Comment.nvim]], true)
-require "plugins.configs.comment"
-time([[Config for Comment.nvim]], false)
 -- Config for: neoscroll.nvim
 time([[Config for neoscroll.nvim]], true)
 require "plugins.configs.neoscroll"
 time([[Config for neoscroll.nvim]], false)
--- Config for: LuaSnip
-time([[Config for LuaSnip]], true)
-require "plugins.configs.luasnip"
-time([[Config for LuaSnip]], false)
+-- Config for: Comment.nvim
+time([[Config for Comment.nvim]], true)
+require "plugins.configs.comment"
+time([[Config for Comment.nvim]], false)
 -- Config for: nvim-tree.lua
 time([[Config for nvim-tree.lua]], true)
 require "plugins.configs.nvimtree"
@@ -289,18 +259,22 @@ time([[Config for telescope.nvim]], false)
 time([[Config for gitsigns.nvim]], true)
 require "plugins.configs.gitsigns"
 time([[Config for gitsigns.nvim]], false)
--- Config for: nvim-treesitter
-time([[Config for nvim-treesitter]], true)
-require "plugins.configs.treesitter"
-time([[Config for nvim-treesitter]], false)
--- Config for: tmux.nvim
-time([[Config for tmux.nvim]], true)
-try_loadstring("\27LJ\2\n4\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\25plugins.configs.tmux\frequire\0", "config", "tmux.nvim")
-time([[Config for tmux.nvim]], false)
+-- Config for: LuaSnip
+time([[Config for LuaSnip]], true)
+require "plugins.configs.luasnip"
+time([[Config for LuaSnip]], false)
 -- Config for: indent-blankline.nvim
 time([[Config for indent-blankline.nvim]], true)
 require "plugins.configs.indent"
 time([[Config for indent-blankline.nvim]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+require "plugins.configs.treesitter"
+time([[Config for nvim-treesitter]], false)
+-- Config for: nvim-web-devicons
+time([[Config for nvim-web-devicons]], true)
+require "plugins.configs.icons"
+time([[Config for nvim-web-devicons]], false)
 -- Config for: nvim-cmp
 time([[Config for nvim-cmp]], true)
 require "plugins.configs.cmp"
@@ -309,6 +283,22 @@ time([[Config for nvim-cmp]], false)
 time([[Config for bufferline.nvim]], true)
 require "plugins.configs.bufferline"
 time([[Config for bufferline.nvim]], false)
+-- Config for: nvim-colorizer.lua
+time([[Config for nvim-colorizer.lua]], true)
+try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14colorizer\frequire\0", "config", "nvim-colorizer.lua")
+time([[Config for nvim-colorizer.lua]], false)
+-- Config for: tmux.nvim
+time([[Config for tmux.nvim]], true)
+try_loadstring("\27LJ\2\n4\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\25plugins.configs.tmux\frequire\0", "config", "tmux.nvim")
+time([[Config for tmux.nvim]], false)
+-- Config for: feline.nvim
+time([[Config for feline.nvim]], true)
+try_loadstring("\27LJ\2\n6\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\27plugins.configs.feline\frequire\0", "config", "feline.nvim")
+time([[Config for feline.nvim]], false)
+-- Config for: nvim-autopairs
+time([[Config for nvim-autopairs]], true)
+require "plugins.configs.autopairs"
+time([[Config for nvim-autopairs]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads

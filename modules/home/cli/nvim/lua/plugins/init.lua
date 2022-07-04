@@ -95,10 +95,10 @@ return packer.startup(function(use)
 		"jose-elias-alvarez/null-ls.nvim",
 		requires = { "nvim-lua/plenary.nvim" },
 	})
-	use({
+	--[[ use({
 		"ray-x/lsp_signature.nvim",
 		config = 'require "plugins.configs.lsp_signature"',
-	})
+	}) ]]
 
 	-- Tmux
 	use({
