@@ -34,7 +34,7 @@
   networking.networkmanager.enable = true;
 
   # Set your time zone.
-  time.timeZone = "America/New_York";
+  time.timeZone = "Europe/Berlin";
 
   # Select internationalisation properties.
 

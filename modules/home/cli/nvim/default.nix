@@ -9,7 +9,9 @@ in
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       neovim
+      neovide
       ripgrep
+      xclip
       #nix
       rnix-lsp
       #lua
@@ -19,13 +21,16 @@ in
       shellcheck
       nodePackages.bash-language-server
       shfmt
-      #Markdown
-      nodePackages.markdownlint-cli
     ];
     programs.neovim = {
       # enable = true;
       # package = pkgs.neovim-nightly;
 
     };
+    programs.zsh.shellAliases = {
+      # n = "neovide --maximized --multigrid";
+      n = "nvim";
+    };
+
   };
 }

@@ -85,7 +85,6 @@ in
 
         c = "clear";
         e = "exit";
-        n = "nvim";
 
         cat = "bat --style=plain";
         grep = "rg";

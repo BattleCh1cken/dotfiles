@@ -7,8 +7,14 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
+  environment.systemPackages = with pkgs; [
+
+    gnomeExtensions.unite
+  ];
+
 
 
   programs.steam.enable = true;
+  virtualisation.docker.enable = true;
 
 }

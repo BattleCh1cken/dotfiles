@@ -1,0 +1,2 @@
+- [ ] make things rounded (whichkey)
+- [ ] find the floating highlight groups.

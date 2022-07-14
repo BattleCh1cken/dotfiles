@@ -86,6 +86,24 @@ return packer.startup(function(use)
 
 	use({ "ggandor/lightspeed.nvim" })
 	use({ "elkowar/yuck.vim", ft = "yuck" })
+	--Language Specific Utilities
+	--Rust
+	use({
+		"simrat39/rust-tools.nvim",
+		ft = "rs",
+		config = function()
+			require("rust-tools").setup({})
+		end,
+	})
+	-- Markdown
+	--[[ use({
+		"davidgranstrom/nvim-markdown-preview",
+		config = function()
+			vim.g.nvim_markdown_preview_format = "gfm"
+			vim.g.nvim_markdown_preview_theme = "github"
+		end,
+	})
+]]
 
 	-- LSP
 	use({
@@ -137,15 +155,6 @@ return packer.startup(function(use)
 		config = 'require "plugins.configs.gitsigns"',
 	})
 
-	-- Markdown
-	--[[ use({
-		"davidgranstrom/nvim-markdown-preview",
-		config = function()
-			vim.g.nvim_markdown_preview_format = "gfm"
-			vim.g.nvim_markdown_preview_theme = "github"
-		end,
-	})
-]]
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end

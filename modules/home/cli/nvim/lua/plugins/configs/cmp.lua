@@ -4,6 +4,19 @@ if not ok then
 	return
 end
 
+local function border(hl_name)
+	return {
+		{ "╭", hl_name },
+		{ "─", hl_name },
+		{ "╮", hl_name },
+		{ "│", hl_name },
+		{ "╯", hl_name },
+		{ "─", hl_name },
+		{ "╰", hl_name },
+		{ "│", hl_name },
+	}
+end
+
 vim.opt.completeopt = "menuone,noselect"
 local icons = {
 	Text = "",
@@ -34,11 +47,13 @@ local icons = {
 }
 cmp.setup({
 	window = {
-		view = {},
 		completion = {
-			winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+			border = border("CmpBorder"),
+			winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None,FloatBorder:Pmenu",
 		},
-		documentation = {},
+		documentation = {
+			border = border("CmpDocBorder"),
+		},
 	},
 	snippet = {
 		expand = function(args)
