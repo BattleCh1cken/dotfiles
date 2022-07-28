@@ -2,59 +2,64 @@ local ok, wk = pcall(require, "which-key")
 if not ok then
 	return
 end
+-- Shorten function name
+local keymap = vim.keymap.set
 
-local normalOpts = {
-	mode = "n",
-	prefix = "",
-	silent = true,
-	noremap = true,
-	nowait = true,
-}
+--Set options
+local opts = { silent = true }
+--Remap space as leader key
+keymap("", "<Space>", "<Nop>", opts)
+vim.g.mapleader = " "
 
+-- Normal --
+
+-- Better window navigation
+keymap("n", "<C-h>", "<C-w>h", opts)
+keymap("n", "<C-j>", "<C-w>j", opts)
+keymap("n", "<C-k>", "<C-w>k", opts)
+keymap("n", "<C-l>", "<C-w>l", opts)
+
+-- Resize with arrows
+keymap("n", "<C-Up>", ":resize -2<CR>", opts)
+keymap("n", "<C-Down>", ":resize +2<CR>", opts)
+keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
+keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+
+-- Visual --
+
+-- Visual --
+-- Stay in indent mode
+keymap("v", "<", "<gv", opts)
+keymap("v", ">", ">gv", opts)
+-- Plugins --
+
+-- NvimTree
+keymap("n", "<leader>n", ":NvimTreeToggle<CR>", opts)
+
+-- Telescope
+keymap("n", "<leader>ff", ":Telescope find_files hidden=true no_ignore=true<CR>", opts)
+keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
+keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
+keymap("n", "<leader>fh", ":Telescope help_tags<CR>", opts)
+-- Comment
+keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", opts)
+keymap("x", "<leader>/", '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>')
+
+-- Git
+keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
+keymap("n", "<leader>gs", "<cmd>Gitsigns toggle_signs<cr>", opts)
+keymap("n", "<leader>gh", "<cmd>Gitsigns preview_hunk<cr>", opts)
+keymap("n", "<leader>gj", "<cmd>Gitsigns next_hunk<cr>", opts)
+keymap("n", "<leader>gk", "<cmd>Gitsigns prev_hunk<cr>", opts)
+keymap("n", "<leader>gd", "<cmd>Gitsigns diffthis<cr>", opts)
+keymap("n", "<leader>gb", "<cmd>Gitsigns blame_line<cr>", opts)
+
+keymap("n", "<TAB>", "<cmd>BufferLineCycleNext<CR>", opts)
+keymap("n", "<S-TAB>", "<cmd>BufferLineCyclePrev<CR>", opts)
 wk.register({
-	["<c-n>"] = { "<cmd>NvimTreeToggle<cr> <cmd>NvimTreeRefresh<cr>", "[NVIMTREE] Toggle" },
-	["<leader>/"] = {
-		"<Plug>(comment_toggle_current_linewise)' : '<Plug>(comment_toggle_linewise_count)'",
-		"[COMMENT] Toggle",
-	},
 	-- cycle through buffers
-	["<TAB>"] = { "<cmd> BufferLineCycleNext <CR>", "[BUFFERLINE] cycle next buffer" },
-	["<S-Tab>"] = { "<cmd> BufferLineCyclePrev <CR>", "[BUFFERLINE] cycle prev buffer" },
-
-	--Toggleterm with NvChad mappings
-	["<A-i>"] = { "<cmd>ToggleTerm direction=float<cr>", "[TOGGLE] floating term" },
-
-	["<A-h>"] = { "<cmd>ToggleTerm direction=horizontal<cr>", "[TOGGLE] horizontal term" },
-
-	["<A-v>"] = { "<cmd>ToggleTerm direction=vertical<cr>", "[TOGGLE] vertical term" },
-
-	["<leader>f"] = {
-		name = "[TELESCOPE]",
-		f = { "<cmd>Telescope find_files hidden=true no_ignore=true<cr>", "[TELESCOPE] Find File" },
-		g = { "<cmd>Telescope live_grep<cr>", "[TELESCOPE] Find File by grep" },
-		b = { "<cmd>Telescope buffers<cr>", "[TELESCOPE] Find buffers" },
-		h = { "<cmd>Telescope help_tags<cr>", "[TELESCOPE] Help tags" },
-		m = { "<cmd>Telescope marks<cr>", "[TELESCOPE] Marks" },
-	},
-
-	["<leader>g"] = {
-		name = "[GIT]",
-		s = { "<cmd>Gitsigns toggle_signs<cr>", "[GIT] Toggle signs" },
-		h = { "<cmd>Gitsigns preview_hunk<cr>", "[GIT] Preview hunk" },
-		d = { "<cmd>Gitsigns diffthis<cr>", "[GIT] Diff" },
-		n = { "<cmd>Gitsigns next_hunk<cr>", "[GIT] Next hunk" },
-		p = { "<cmd>Gitsigns prev_hunk<cr>", "[GIT] Prev hunk" },
-	},
-}, normalOpts)
-
-local visualOpts = {
-	mode = "v",
-	prefix = "",
-	silent = true,
-	noremap = true,
-	nowait = true,
-}
-wk.register({
-	["<leader>/"] = { "<Plug>(comment_toggle_blockwise_visual)", "[COMMENT] Toggle block" },
-}, visualOpts)
+	-- ["<TAB>"] = { "<cmd>BufferLineCycleNext<CR>", "[BUFFERLINE] cycle next buffer" },
+	-- ["<S-Tab>"] = { "<cmd>BufferLineCyclePrev<CR>", "[BUFFERLINE] cycle prev buffer" },
+})
+-- Visual Mappings
 wk.setup({})

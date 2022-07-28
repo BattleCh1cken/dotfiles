@@ -8,13 +8,21 @@
   services.xserver.desktopManager.gnome.enable = true;
 
   environment.systemPackages = with pkgs; [
-
+    #Install tweaks
+    gnome.gnome-tweaks
     gnomeExtensions.unite
+
+    #Drivers
+    mesa
+
+    #Apps
+    aseprite
   ];
 
 
 
+  services.flatpak.enable = true;
   programs.steam.enable = true;
-  virtualisation.docker.enable = true;
+  # virtualisation.docker.enable = true;
 
 }

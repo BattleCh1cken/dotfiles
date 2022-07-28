@@ -1,2 +1,7 @@
-- [ ] make things rounded (whichkey)
-- [ ] find the floating highlight groups.
+- [ ] round cornders
+  - git blame
+- [ ] find the floating highlight groups 
+ - toggleterm float
+ - diagnostic background
+ - git blame background
+- [ ] change file structure

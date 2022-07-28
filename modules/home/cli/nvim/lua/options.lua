@@ -1,8 +1,6 @@
 local theme = require("theme")
 local mappings = require("mappings")
 
-vim.g.mapleader = " "
-
 local options = {
 	termguicolors = true,
 	fileencoding = "utf-8",
@@ -40,10 +38,14 @@ local options = {
 	laststatus = 3,
 	updatetime = 250,
 	background = "dark",
+	foldmethod = "marker",
 }
 
 vim.opt.shortmess:append("c")
+vim.cmd("filetype on")
+vim.opt.shortmess:append("sI")
 vim.cmd([[set iskeyword+=-]])
+-- vim.cmd([[formatoptions-=cro]])
 for key, value in pairs(options) do
 	vim.opt[key] = value
 end

@@ -5,11 +5,12 @@
 { config, pkgs, ... }:
 
 {
-
   environment.variables = {
     EDITOR = "nvim";
     TERMINAL = "kitty";
     BROWSER = "firefox";
+    # LANG = "de_DE.UTF-8";
+    # LC_ALL = "de_DE.UTF-8";
   };
   nix = {
     package = pkgs.nixFlakes; # or versioned attributes like nixVersions.nix_2_8
@@ -27,8 +28,8 @@
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  # networking.proxy.default = " http://user:password@proxy:port/ ";
+  # networking.proxy.noProxy = " 127.0 .0 .1,localhost,internal.domain";
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -38,7 +39,24 @@
 
   # Select internationalisation properties.
 
-  # i18n.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = "en_US.UTF-8";
+  # i18n.extraLocaleSettings = {
+  #   LANG = "de_DE.UTF-8";
+  #   LANGUAGE = "de_DE";
+  #   LC_CTYPE = "de_DE.UTF-8";
+  #   LC_NUMERIC = "de_DE.UTF-8";
+  #   LC_TIME = "de_DE.UTF-8";
+  #   LC_COLLATE = "de_DE.UTF-8";
+  #   LC_MONETARY = "de_DE.UTF-8";
+  #   LC_MESSAGES = "de_DE.UTF-8";
+  #   LC_PAPER = "de_DE.UTF-8";
+  #   LC_NAME = "de_DE.UTF-8";
+  #   LC_ADDRESS = "de_DE.UTF-8";
+  #   LC_TELEPHONE = "de_DE.UTF-8";
+  #   LC_MEASUREMENT = "de_DE.UTF-8";
+  #   LC_IDENTIFICATION = "de_DE.UTF-8";
+  # LC_ALL = "de_DE.UTF-8";
+  # };
 
 
   # Configure keymap in X11
@@ -99,8 +117,10 @@
     #random dependencies
     gcc
     libnotify
+    glibcLocales
   ];
 
+  hardware.opengl.driSupport = true;
 
   services = {
 
@@ -142,3 +162,5 @@
   system.stateVersion = "22.05"; # Did you read the comment?
 
 }
+
+

@@ -32,7 +32,7 @@ packer.init({
 })
 
 return packer.startup(function(use)
-	use({ "wbthomason/packer.nvim" })
+	use({ "wbthomason/packer.nvim" }) --Let packer manager itself
 
 	-- UI
 	use({ "BattleCh1cken/catppuccin.nvim" })
@@ -40,15 +40,19 @@ return packer.startup(function(use)
 
 	use({
 		"feline-nvim/feline.nvim",
-		config = function()
-			require("plugins.configs.feline")
-		end,
+		config = 'require("plugins.configs.feline")',
 	})
 	use({
 		"akinsho/bufferline.nvim",
 		requires = { "kyazdani42/nvim-web-devicons" },
 		config = 'require "plugins.configs.bufferline"',
 	})
+	use({
+		"akinsho/toggleterm.nvim",
+		tag = "v2.*",
+		config = 'require "plugins.configs.toggleterm"',
+	})
+
 	use({ "folke/which-key.nvim" })
 	use({ "karb94/neoscroll.nvim", config = 'require "plugins.configs.neoscroll"' })
 
@@ -83,6 +87,7 @@ return packer.startup(function(use)
 			require("colorizer").setup()
 		end,
 	})
+	use({ "Pocco81/AutoSave.nvim", config = 'require "plugins.configs.autosave"' })
 
 	use({ "ggandor/lightspeed.nvim" })
 	use({ "elkowar/yuck.vim", ft = "yuck" })
@@ -90,7 +95,7 @@ return packer.startup(function(use)
 	--Rust
 	use({
 		"simrat39/rust-tools.nvim",
-		ft = "rs",
+		ft = "rust",
 		config = function()
 			require("rust-tools").setup({})
 		end,
