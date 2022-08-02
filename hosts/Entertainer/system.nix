@@ -3,13 +3,13 @@
   services.xserver = {
     # Enable the X11 windowing system.
     enable = true;
-    desktopManager.plasma5.enable = true;
+    # desktopManager.plasma5.enable = true;
     windowManager.bspwm.enable = true;
 
     # displayManager.defaultSession = "none+bspwm";
-    displayManager.sddm.enable = true;
+    # displayManager.sddm.enable = true;
     displayManager.lightdm.greeters.mini = {
-      enable = false;
+      enable = true;
       user = "battlechicken";
     };
   };
@@ -22,6 +22,7 @@
     qt5ct
     vscode
     partition-manager
+    qmk-udev-rules
   ];
 
 

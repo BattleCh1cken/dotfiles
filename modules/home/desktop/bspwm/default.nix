@@ -66,9 +66,6 @@ in
         "super + {Left,Down,Up,Right}" = "bspc node -v {-20 0,0 20,0 -20,20 0}";
         "super + shift + s" = "flameshot gui";
 
-
-
-
         "XF86AudioRaiseVolume" =
           ''pamixer --increase 5 --unmute && volume &'';
         "XF86AudioLowerVolume" =
@@ -87,33 +84,23 @@ in
       shadow = true;
       experimentalBackends = true;
       vSync = true;
-      extraOptions = ''
+      settings = {
         daemon = true;
-        use-damage = false;                         # Fixes flickering and visual bugs with borders
-        resize-damage = 1
-        refresh-rate = 0;
-        corner-radius = 10;                          # Corners
+        use-damage = false; # Fixes flickering and visual bugs with borders
+        resize-damage = 1;
+        corner-radius = 10; # Corners
         round-borders = 10;
-        fade-out-step = 1;                          # Will fix random border dots from not disappearing
-        detect-rounded-corners = true;              # Below should fix multiple issues
+        fade-out-step = 1; # Will fix random border dots from not disappearing
+        detect-rounded-corners = true; # Below should fix multiple issues
         detect-client-opacity = false;
-        detect-transient = true
-        detect-client-leader = false
+        detect-transient = true;
+        detect-client-leader = false;
         mark-wmwim-focused = true;
         mark-ovredir-focues = true;
         unredir-if-possible = true;
         glx-no-stencil = true;
         glx-no-rebind-pixmap = true;
-        wintypes:
-        {
-          popup_menu = { shadow = false; };
-          dropdown_menu = { shadow = false; };
-          dnd = { shadow = false; };
-          dock = { shadow = false; };
-          tooltip = { fade = true; shadow = true; opacity = 1.0; focus = true; };
-          notification = { fade = false; };
-        };
-      '';
+      };
     };
 
 

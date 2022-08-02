@@ -35,7 +35,7 @@
   networking.networkmanager.enable = true;
 
   # Set your time zone.
-  time.timeZone = "Europe/Berlin";
+  time.timeZone = "America/New_York";
 
   # Select internationalisation properties.
 
@@ -114,10 +114,13 @@
     mailspring
     vlc
     pavucontrol
+    cmus
     #random dependencies
     gcc
     libnotify
     glibcLocales
+
+    papirus-icon-theme
   ];
 
   hardware.opengl.driSupport = true;

@@ -24,6 +24,7 @@ M.setup = function(on_attach)
 			diagnostics.shellcheck,
 
 			formatting.prettierd,
+      formatting.clang_format,
 			formatting.stylua,
 			formatting.shfmt.with({
 				filetypes = { "sh", "bash", "zsh" },

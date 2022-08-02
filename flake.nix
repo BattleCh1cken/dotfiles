@@ -61,6 +61,7 @@
       nixosConfigurations = {
         Entertainer = mkSystem inputs.nixpkgs "x86_64-linux" "Entertainer";
         boxie = mkSystem inputs.nixpkgs "x86_64-linux" "boxie";
+        bogus = mkSystem inputs.nixpkgs "x86_64-linux" "bogus";
       };
 
       devShell.${system} = pkgs.mkShell {
