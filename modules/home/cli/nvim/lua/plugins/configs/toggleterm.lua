@@ -3,6 +3,7 @@ if not status_ok then
 	return
 end
 
+local colors = require("theme").colors
 toggleterm.setup({
 	size = 20,
 	open_mapping = [[<c-/>]],
@@ -17,6 +18,9 @@ toggleterm.setup({
 	shell = vim.o.shell,
 	float_opts = {
 		border = "curved",
+	},
+	highlights = {
+		FloatBorder = { guifg = colors.surface0 },
 	},
 })
 

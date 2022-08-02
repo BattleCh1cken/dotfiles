@@ -17,8 +17,14 @@
 
     #Apps
     aseprite
-  ];
+    qbittorrent
 
+    #Steam deps
+    gamemode
+    libstrangle
+  ];
+  #Android stuff
+  programs.adb.enable = true;
 
 
   services.flatpak.enable = true;

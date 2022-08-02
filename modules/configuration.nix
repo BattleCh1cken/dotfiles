@@ -89,7 +89,7 @@
     shell = pkgs.zsh;
     isNormalUser = true;
     description = "battlechicken";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "abdusers" ];
   };
 
 
