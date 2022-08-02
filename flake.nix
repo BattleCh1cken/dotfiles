@@ -74,7 +74,7 @@
           src = self;
           hooks.nixpkgs-fmt.enable = true;
           hooks.shellcheck.enable = true;
-          hooks.stylua.enable = true;
+          # hooks.stylua.enable = true;
         };
     };
 }
