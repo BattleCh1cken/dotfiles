@@ -9,8 +9,6 @@
     EDITOR = "nvim";
     TERMINAL = "kitty";
     BROWSER = "firefox";
-    # LANG = "de_DE.UTF-8";
-    # LC_ALL = "de_DE.UTF-8";
   };
   nix = {
     package = pkgs.nixFlakes; # or versioned attributes like nixVersions.nix_2_8
@@ -21,9 +19,9 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  boot.loader.grub.useOSProber = true;
-  time.hardwareClockInLocalTime = true;
+  #boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  #boot.loader.grub.useOSProber = true;
+  #time.hardwareClockInLocalTime = true;
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -111,8 +109,6 @@
     zsh
     protonup
     #apps
-    mailspring
-    vlc
     pavucontrol
     cmus
     #random dependencies

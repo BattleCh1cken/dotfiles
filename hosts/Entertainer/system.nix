@@ -23,6 +23,10 @@
     vscode
     partition-manager
     qmk-udev-rules
+    #Apps
+    mailspring
+    vlc
+
   ];
 
 

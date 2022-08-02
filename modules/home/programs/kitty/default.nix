@@ -23,6 +23,7 @@ in
     services.sxhkd.keybindings = {
       "super + Return" = "kitty --single-instance";
     };
+    programs.zsh.shellAliases = { ssh = "kitty +kitten ssh"; };
 
   };
 

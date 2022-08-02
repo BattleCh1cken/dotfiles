@@ -31,6 +31,10 @@ in
       # n = "neovide --maximized --multigrid";
       n = "nvim";
     };
+    home.file.".config/nvim/" = {
+      recursive = true;
+      source = ./.;
+    };
 
   };
 }
