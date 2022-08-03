@@ -9,7 +9,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [ nitrogen picom rofi pamixer brightnessctl flameshot ];
+    home.packages = with pkgs; [ nitrogen picom pamixer brightnessctl flameshot ];
     xsession = {
       enable = false;
       windowManager.bspwm = {
@@ -31,7 +31,6 @@ in
     services.sxhkd = {
       enable = true;
       keybindings = {
-        "super + d" = "rofi -show drun";
         "super + {_,shift + }q" = "bspc node -{c,k}";
         "super + shift + Escape" = "pkill -USR1 -x sxhkd; notify-send 'sxhkd' 'Reloaded config'";
         "super + alt + {q,r}" = "bspc {quit,wm -r}";

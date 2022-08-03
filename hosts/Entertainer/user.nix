@@ -12,6 +12,7 @@
       firefox.enable = true;
       kitty.enable = true;
       steam.enable = true;
+      rofi.enable = true;
     };
     cli = {
       nvim.enable = true;

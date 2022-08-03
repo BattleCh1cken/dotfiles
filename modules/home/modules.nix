@@ -16,6 +16,7 @@
     ./programs/kitty
     ./programs/firefox
     ./programs/steam
+    ./programs/rofi
 
     ./services/dunst
   ];

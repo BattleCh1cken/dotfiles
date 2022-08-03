@@ -26,6 +26,7 @@
     #Apps
     mailspring
     vlc
+    gimp
 
   ];
 
