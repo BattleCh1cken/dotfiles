@@ -12,10 +12,20 @@
 
   #Services
 
-  services = {
-    openssh = {
-      enable = true;
-      passwordAuthentication = false;
+  services.openssh = {
+    enable = true;
+    passwordAuthentication = false;
+  };
+  systemd.services.mcStart = {
+    wantedBy = [ "multi-user.target" ];
+    after = [ "network.target" ];
+    description = "start a docker container running a mc server";
+    serviceConfig = {
+      Type = "forking";
+      User = "battlechicken";
+      ExecStart = ''${pkgs.docker} start mc'';
+      ExecStop = ''${pkgs.docker} stop mc'';
+      Restart = "always";
     };
   };
 
