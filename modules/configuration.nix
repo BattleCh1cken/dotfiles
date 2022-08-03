@@ -87,7 +87,7 @@
     shell = pkgs.zsh;
     isNormalUser = true;
     description = "battlechicken";
-    extraGroups = [ "networkmanager" "wheel" "abdusers" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
   };
 
 
@@ -113,6 +113,7 @@
     cmus
     #random dependencies
     gcc
+    cmake
     libnotify
     glibcLocales
 

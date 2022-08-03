@@ -4,7 +4,8 @@
 
 
   environment.systemPackages = with pkgs; [
-
+    packwiz
+    docker-compose
   ];
 
 
