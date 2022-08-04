@@ -1,4 +1,5 @@
 { pkgs, system, config, ... }: {
+
   environment.variables = {
     # GDK_SCALE = "2";
   };
