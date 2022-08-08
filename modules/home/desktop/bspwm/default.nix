@@ -19,7 +19,7 @@ in
           "nitrogen --restore"
           "eww daemon && eww open bar"
         ];
-        monitors = { "focused" = [ "1" "2" "3" "4" "5" ]; };
+        monitors = { "focused" = [ "1" "2" "3" "4" "5" "6" ]; };
         settings = {
           window_gap = 10;
           border_width = 0;
@@ -179,6 +179,7 @@ in
           "window_type = 'popup_menu'"
           "window_type = 'utility'"
           "class_g = 'eww-bar'"
+          "class_g = 'dunst'"
         ];
       };
     };

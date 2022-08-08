@@ -3,16 +3,21 @@
   (centerbox :orientation "v" :hexpand false
     (box :space-evenly false :valign "start" :halign "center" :vexpand true :hexpand false :orientation "v" :spacing 10
       (launch)
-      (box :class "system-status" :orientation "v" :spacing 10 :hexpand false :active false :vexpand false
+      (box :class "sysinfo-box" :orientation "v" :spacing 10 :hexpand false :active false :vexpand false
       (mem)
       (cpu)
       (disk)
       (volume)
         )
-      (wifi)
+      ; (wifi)
       )
 
-    (workspaces :halign "center" :vexpand true :hexpand false :orientation "v")
+      ; worksapce widget
+      (box :class "workspace-box" :orientation "v" :spacing 10 :hexpand false :active false :vexpand false
+        (transform :translate-x "-2px"
+        (workspaces :halign "center" :vexpand true :hexpand false :orientation "v")
+        )
+      )
 
     (box :valign "end" :hexpand false :vexpand true :orientation "v" :space-evenly false :spacing 10
       (battery)
@@ -142,6 +147,7 @@
 
 (defwidget workspaces []
   (literal :content workspaces_listen))
+
 
 
 (defwindow calendar

@@ -27,6 +27,21 @@ $crust: #181926;
   padding: 0.6rem 0;
   border-radius: 10px;
 }
+.sysinfo-box {
+  background-color: $base;
+  padding: 0.9rem;
+  border-radius: 10px;
+  margin: 0.5rem 0.5rem 0.5rem 0.5rem;
+
+}
+
+.workspace-box {
+  background-color: $base;
+  padding: 0.9rem;
+  border-radius: 10px;
+  margin: 0.5rem 0.5rem 0.5rem 0.5rem;
+
+}
 
 .wifi {
   font-size: 1.5rem;
@@ -57,13 +72,7 @@ $crust: #181926;
   background-color: $surface1;
   border-radius: 10px;
 }
-.system-status {
-  background-color: $base;
-  padding: 0.9rem;
-  border-radius: 10px;
-  margin: 0.5rem 0.5rem 0.5rem 0.5rem;
 
-}
 .iconmem {
   color: $base;
   font-size: 2.5rem;
@@ -175,55 +184,21 @@ $crust: #181926;
 }
 
 
-// Credits AlphaTechnolog
+.ws {
+    font-size: 1.95em;
+    font-weight: normal;
+    margin: 0em 0em 0px;
 
-.powermenu-box {
-  padding: 0 2px;
-  margin: 7px 7px 7px 0px;
-  background: inherit;
-  .dispatcher {
-    border-radius: 15px;
-    background: $base;
-    color: $red;
-    font-size: 14px;
-    padding: 0 10px 0 10px;
-    &:hover { background-color: $surface0; }
-    &:active { background-color: $surface1; }
-  }
-}
-
-// powermenu
-.powermenu-container {
-  background: $crust;
-  color: $text;
-  padding: 10px;
-  font-size: 55px;
-
-  transition: all 200ms cubic-bezier(.1,-0.00,.0,1.49);
-
-  .btn { margin: 1rem;}
-  // shutdown
-  .shutdown-btn-box .btn {
-    color: $red;
-    border-radius: 15px;
-    background-color: $mantle;
-    &:hover { background-color: $base; }
-    &:active { background-color: $surface1; }
-  }
-  // reboot
-  .reboot-btn-box .btn {
-    color: $mauve;
-    border-radius: 15px;
-    background-color: $mantle;
-    &:hover { background-color: $base; }
-    &:active { background-color: $surface1; }
-  }
-  // exit
-  .exit-btn-box .btn {
-    color: $yellow;
-    border-radius: 15px;
-    background-color: $mantle;
-    &:hover { background-color: $base; }
-    &:active { background-color: $surface1; }
-  }
+    .0 , .01, .02, .03, .04, .05, .06,
+    .011, .022, .033, .044, .055, .066 {
+        margin: .75em 0px 0px 0px;
+    }
+    
+    .0, .01, .02, .03, .04, .05, .06 {
+        color: $surface1;
+    }
+    
+    .011, .022, .033, .044, .055, .066 {
+        color: $mauve;
+    }
 }

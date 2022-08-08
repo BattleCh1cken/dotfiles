@@ -1,4 +1,6 @@
 { pkgs, system, config, ... }: {
+
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
   networking.hostName = "Entertainer"; # Define your hostname.
   services.xserver = {
     # Enable the X11 windowing system.
@@ -21,8 +23,8 @@
     gnome.nautilus
     qt5ct
     vscode
-    partition-manager
     qmk-udev-rules
+    libsecret
     #Apps
     mailspring
     vlc
@@ -31,6 +33,7 @@
   ];
 
   services.flatpak.enable = true;
+  services.gnome.gnome-keyring.enable = true;
   xdg.portal = {
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
