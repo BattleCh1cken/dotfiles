@@ -8,13 +8,15 @@
     # desktopManager.plasma5.enable = true;
     windowManager.bspwm.enable = true;
 
-    # displayManager.defaultSession = "none+bspwm";
+    displayManager.defaultSession = "none+bspwm";
     # displayManager.sddm.enable = true;
-    displayManager.lightdm.greeters.mini = {
-      enable = true;
-      user = "battlechicken";
-    };
+    # displayManager.lightdm.greeters.mini = {
+    #   enable = true;
+    #   user = "battlechicken";
+    # };
   };
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
   nixpkgs.config.allowUnfree = true;
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.opengl.enable = true;
@@ -29,14 +31,20 @@
     mailspring
     vlc
     gimp
+    xfce.thunar
+    #Command line utils
+    gotop
+    cava
+    cmus
+    protonup
 
   ];
 
   services.flatpak.enable = true;
   services.gnome.gnome-keyring.enable = true;
   xdg.portal = {
-    enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    # enable = true;
+    # extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
   programs.steam = {
     enable = true;

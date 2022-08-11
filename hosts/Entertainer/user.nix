@@ -13,6 +13,7 @@
       kitty.enable = true;
       steam.enable = true;
       rofi.enable = true;
+      autorandr.enable = true;
     };
     cli = {
       nvim.enable = true;

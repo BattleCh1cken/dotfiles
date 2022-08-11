@@ -3,8 +3,6 @@
   imports = [
     ./desktop/bspwm
     ./desktop/eww
-    # ./desktop/gnome/default.nix
-    # ./desktop/kde/default.nix
 
     ./cli/git
     ./cli/nvim
@@ -17,6 +15,7 @@
     ./programs/firefox
     ./programs/steam
     ./programs/rofi
+    ./programs/autorandr
 
     ./services/dunst
   ];

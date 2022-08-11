@@ -19,7 +19,9 @@ in
           "nitrogen --restore"
           "eww daemon && eww open bar"
         ];
-        monitors = { "focused" = [ "1" "2" "3" "4" "5" "6" ]; };
+        monitors = {
+          "DP-2" = [ "1" "2" "3" "4" "5" "6" ];
+        };
         settings = {
           window_gap = 10;
           border_width = 0;
