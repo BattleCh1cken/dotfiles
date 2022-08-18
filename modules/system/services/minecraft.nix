@@ -47,11 +47,8 @@ in
           --network container:mc \
           -v /home/battlechicken/data/backups:/data \
           -v /home/battlechicken/data/minecraft \
-          -e BACKUP_METHOD="restic" \
           -e INITIAL_DELAY="1m" \
-          -e RESTIC_PASSWORD="password" \
-          -e RESTIC_REPOSITORY="/home/battlechicken/data/backups" \
-          -e PRUNE_RESTIC_RETENTION="--keep-daily 7 --keep-weekly 5" \
+          -e BACKUP_INTERVAL="2h"\
           --rm itzg/mc-backup
         '';
         ExecStop = ''
