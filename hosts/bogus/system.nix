@@ -17,7 +17,7 @@
     passwordAuthentication = false;
   };
 
-  imports = [ ../../modules/services/minecraft.nix ];
+  imports = [ ../../modules/system/services/minecraft.nix ];
   modules.services.minecraft.enable = true;
 
 }

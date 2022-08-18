@@ -46,7 +46,7 @@ in
           --name mc-backup \
           --network container:mc \
           -v /home/battlechicken/data/backups:/backups \
-          -v /home/battlechicken/data/minecraft \
+          -v /home/battlechicken/data/minecraft:ro \
           -e INITIAL_DELAY="1m" \
           -e BACKUP_INTERVAL="2h"\
           --rm itzg/mc-backup
