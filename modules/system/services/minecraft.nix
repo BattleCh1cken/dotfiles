@@ -45,7 +45,7 @@ in
           ${pkgs.docker}/bin/docker run \
           --name mc-backup \
           --network container:mc \
-          -v /home/battlechicken/data/backups:/data \
+          -v /home/battlechicken/data/backups:/backups \
           -v /home/battlechicken/data/minecraft \
           -e INITIAL_DELAY="1m" \
           -e BACKUP_INTERVAL="2h"\
