@@ -19,6 +19,7 @@
     #Apps
     aseprite
     qbittorrent
+    via
 
     #Steam deps
     gamemode
