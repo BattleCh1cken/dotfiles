@@ -17,9 +17,20 @@
     '';
   };
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  #boot.loader.grub.useOSProber = true;
+  boot.loader = {
+    systemd-boot.enable = true;
+    efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot/efi"; # ← use the same mount point here.
+    };
+    grub = {
+      useOSProber = true;
+      efiSupport = true;
+      #efiInstallAsRemovable = true; # in case canTouchEfiVariables doesn't work for your system
+      device = "nodev";
+    };
+  };
+
   #time.hardwareClockInLocalTime = true;
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -68,7 +79,7 @@
     shell = pkgs.zsh;
     isNormalUser = true;
     description = "battlechicken";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "dialout" "docker" ];
   };
 
 

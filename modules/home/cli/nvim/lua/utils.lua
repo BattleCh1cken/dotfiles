@@ -1,5 +1,7 @@
 local M = {}
 M.signs = { Error = "", Warn = "", Hint = "", Info = "" }
+M.diff = {}
+
 M.powerline = {
 	circle = {
 		left = "",

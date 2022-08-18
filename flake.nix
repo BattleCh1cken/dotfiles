@@ -45,7 +45,7 @@
                 useUserPackages = true;
                 useGlobalPkgs = true;
                 extraSpecialArgs = { inherit inputs; };
-                users.battlechicken = (./. + "/hosts/${hostname}/user.nix");
+                users.battlechicken = (./. + "/hosts/${hostname}/home.nix");
               };
               nixpkgs.overlays = [
                 nur.overlay

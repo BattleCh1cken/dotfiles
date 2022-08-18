@@ -1,6 +1,9 @@
 { pkgs, system, config, ... }: {
+  imports = [
+    ../../modules/system/modules.nix
+  ];
+  modules.programs.thunar.enable = true;
 
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
   networking.hostName = "Entertainer"; # Define your hostname.
   services.xserver = {
     # Enable the X11 windowing system.
@@ -10,13 +13,13 @@
 
     displayManager.defaultSession = "none+bspwm";
     # displayManager.sddm.enable = true;
-    # displayManager.lightdm.greeters.mini = {
-    #   enable = true;
-    #   user = "battlechicken";
-    # };
+    displayManager.lightdm.greeters.mini = {
+      enable = true;
+      user = "battlechicken";
+    };
   };
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  # services.xserver.displayManager.gdm.enable = true;
+  # services.xserver.desktopManager.gnome.enable = true;
   nixpkgs.config.allowUnfree = true;
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.opengl.enable = true;
@@ -27,11 +30,15 @@
     vscode
     qmk-udev-rules
     libsecret
+    papirus-icon-theme
     #Apps
+    lxappearance
     mailspring
     vlc
     gimp
-    xfce.thunar
+    aseprite
+    gparted
+    arandr
     #Command line utils
     gotop
     cava
@@ -40,11 +47,13 @@
 
   ];
 
+  networking.firewall.allowedTCPPorts = [ 33709 ];
+
   services.flatpak.enable = true;
   services.gnome.gnome-keyring.enable = true;
   xdg.portal = {
-    # enable = true;
-    # extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
   programs.steam = {
     enable = true;

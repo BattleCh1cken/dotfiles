@@ -11,7 +11,9 @@ in
   config = mkIf cfg.enable {
     home.packages = with pkgs; [ nitrogen picom pamixer brightnessctl flameshot ];
     xsession = {
-      enable = false;
+      enable = true;
+      initExtra = ''
+      '';
       windowManager.bspwm = {
         enable = true;
         startupPrograms = [
@@ -20,13 +22,16 @@ in
           "eww daemon && eww open bar"
         ];
         monitors = {
-          "DP-2" = [ "1" "2" "3" "4" "5" "6" ];
+          "DP-2" = [ "1" "2" "3" "4" "5" ];
+          "HDMI-1" = [ "6" ];
         };
         settings = {
           window_gap = 10;
           border_width = 0;
-
         };
+        extraConfig = ''
+
+        '';
 
       };
 

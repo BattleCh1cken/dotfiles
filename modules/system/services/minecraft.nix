@@ -34,7 +34,7 @@ in
         # Restart = "always";
       };
     };
-    systemd.services.mc-backup = {
+    systemd.services.mcBackup = {
       wantedBy = [ "multi-user.target" ];
       after = [ "docker.service" "docker.socket" ];
       requires = [ "docker.service" "docker.socket" ];

@@ -21,15 +21,22 @@ in
               primary = true;
               mode = "1920x1080";
               rate = "144.00";
+              position = "0x500";
             };
             HDMI-0 = {
               enable = true;
               mode = "1920x1080";
               rate = "60.00";
+              position = "1920x0";
+              rotate = "right";
             };
 
           };
         };
+      };
+      hooks.postswitch = {
+        "reload eww" = "eww reload";
+        "reload bspwm" = "bspc wm -r";
       };
 
 

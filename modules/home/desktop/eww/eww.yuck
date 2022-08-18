@@ -1,26 +1,29 @@
 ;;
 (defwidget bar []
-  (centerbox :orientation "v" :hexpand false
+  (box :orientation "v" :hexpand false
     (box :space-evenly false :valign "start" :halign "center" :vexpand true :hexpand false :orientation "v" :spacing 10
       (launch)
       (box :class "sysinfo-box" :orientation "v" :spacing 10 :hexpand false :active false :vexpand false
       (mem)
       (cpu)
       (disk)
-      (volume)
         )
+      
       ; (wifi)
       )
 
+    
       ; worksapce widget
       (box :class "workspace-box" :orientation "v" :spacing 10 :hexpand false :active false :vexpand false
-        (transform :translate-x "-2px"
+        (transform :translate-x "3px"
         (workspaces :halign "center" :vexpand true :hexpand false :orientation "v")
         )
       )
 
     (box :valign "end" :hexpand false :vexpand true :orientation "v" :space-evenly false :spacing 10
-      (battery)
+      (box :class "volume-box" :space-evenly "false" :valign "start" :orientation "v" :spacing 5 :hexpand false :active false :vexpand false
+      (volume)
+      )
       (time)
       ))
   )
@@ -113,11 +116,16 @@
 (defpoll current-volume :interval "1s" "pamixer --get-volume")
 (defwidget volume []
   (box :vexpand "false" :hexpand "false"
-    (circular-progress
+    (scale
+      :flipped true
+      :class "volume-slider"
+      :hexpand "true"
+      :marks "true"
+      :height 150
+      :min 0
+      :max 100
       :value current-volume
-      :class "volumebar"
-      :start-angle 0
-      :thickness 4
+      :orientation "v"
       )))
 
 
