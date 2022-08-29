@@ -19,7 +19,8 @@
     #Apps
     aseprite
     qbittorrent
-    via
+    printrun
+    cura
 
     #Steam deps
     gamemode
