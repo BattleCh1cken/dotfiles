@@ -50,6 +50,10 @@
               nixpkgs.overlays = [
                 nur.overlay
                 inputs.neovim-nightly-overlay.overlay
+                (final: prev: {
+                  tmux-plugins =
+                    prev.callPackage ./overlays/tmux.nix { };
+                })
               ];
             }
 

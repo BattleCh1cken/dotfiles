@@ -9,6 +9,7 @@
     ./cli/zsh
     ./cli/music
     ./cli/tmux
+    ./cli/fzf
     ./cli/scripts
 
     ./programs/kitty

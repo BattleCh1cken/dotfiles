@@ -10,7 +10,7 @@ in
 
     programs.kitty = {
       enable = true;
-      theme = "Catppuccin";
+      theme = "Catppuccin-Mocha";
       settings = {
         enable_audio_bell = false;
         shell = "zsh";

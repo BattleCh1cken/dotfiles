@@ -1,13 +1,23 @@
-{ lib, stdenv, fetchFromGithub, ... }:
-{
-  battery = mkTmuxPlugin {
-    pluginName = "battery";
-    version = "unstable-2019-07-04";
-    src = fetchFromGitHub {
-      owner = "tmux-plugins";
-      repo = "tmux-battery";
-      rev = "f8b8e8451990365e0c98c38c184962e4f83b793b";
-      sha256 = "1bhdzsx3kdjqjmm1q4j8937lrpkzf71irr3fqhdbddsghwrrmwim";
-    };
+{ lib, mkTmuxPlugin, fetchFromGitHub, thumbs, substituteAll }:
+
+mkTmuxPlugin rec {
+  pluginName = "tmux-thumbs";
+  version = "0.7.1";
+  rtpFilePath = "tmux-thumbs.tmux";
+
+  src = fetchFromGitHub {
+    owner = "fcsonline";
+    repo = pluginName;
+    rev = version;
+    sha256 = "sha256-PH1nscmVhxJFupS7dlbOb+qEwG/Pa/2P6XFIbR/cfaQ=";
+  };
+
+
+  meta = with lib; {
+    homepage = "https://github.com/fcsonline/tmux-thumbs";
+    description = "A lightning fast version of tmux-fingers written in Rust for copy pasting with vimium/vimperator like hints.";
+    license = licenses.mit;
+    platforms = platforms.unix;
+    maintainers = with maintainers; [ ghostbuster91 ];
   };
 }

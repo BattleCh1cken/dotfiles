@@ -12,6 +12,10 @@
     windowManager.bspwm.enable = true;
 
     displayManager.defaultSession = "none+bspwm";
+    displayManager.setupCommands = ''
+      ${pkgs.xorg.xrandr}/bin/xrandr --output DP-2 --rate 144 --mode 1920x1080 --pos 0x500\
+       --output HDMI-0 --rate 60 --mode 1920x1080 --rotate right --pos 1920x0
+    '';
     # displayManager.sddm.enable = true;
     displayManager.lightdm.greeters.mini = {
       enable = true;

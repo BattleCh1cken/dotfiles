@@ -168,6 +168,7 @@
   )
 (defwindow bar
   :monitor 0
+  :windowtype "dock"
   :reserve (struts :distance "55px" :side "left")
   :geometry (geometry :height "98%" :x "6px" :y "10px"
   :width "50px"

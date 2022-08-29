@@ -1,4 +1,4 @@
-local utils = require("utils")
+local icons = require("ui.icons")
 
 local servers = {
 	"null_ls",
@@ -84,7 +84,7 @@ if _lspconfig then
 	end
 end
 
-for type, icon in pairs(utils.signs) do
+for type, icon in pairs(icons.lsp) do
 	local hl = "DiagnosticSign" .. type
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end

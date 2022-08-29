@@ -9,10 +9,7 @@ local ok_ctp_feline, ctp_feline = pcall(require, "catppuccin.groups.integrations
 if not ok_ctp_feline then
 	return
 end
-local symbols = {}
-symbols.lsp = require("utils").signs
-symbols.git = require("utils").git
-
+local icons = require("ui.icons")
 
 ctp_feline.setup({
 	assets = {
@@ -24,10 +21,10 @@ ctp_feline.setup({
 		file = "   ",
 		lsp = {
 			server = "  ",
-			error = symbols.lsp.Error,
-			warning = symbols.lsp.Warn,
-			info = symbols.lsp.Info,
-			hint = symbols.lsp.Hint,
+			error = icons.lsp.Error,
+			warning = icons.lsp.Warn,
+			info = icons.lsp.Info,
+			hint = icons.lsp.Hint,
 		},
 		git = {
 			branch = "  ",

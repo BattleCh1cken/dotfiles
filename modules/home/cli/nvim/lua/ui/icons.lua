@@ -1,5 +1,5 @@
 local M = {}
-M.signs = { Error = "", Warn = "", Hint = "", Info = "" }
+M.lsp = { Error = "", Warn = "", Hint = "", Info = "" }
 M.diff = {}
 
 M.powerline = {

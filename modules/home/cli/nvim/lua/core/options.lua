@@ -1,5 +1,5 @@
-local theme = require("theme")
-local mappings = require("mappings")
+local theme = require("ui.theme")
+local mappings = require("core.mappings")
 
 local options = {
 	termguicolors = true,

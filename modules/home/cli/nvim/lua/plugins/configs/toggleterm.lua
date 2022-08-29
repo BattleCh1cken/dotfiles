@@ -3,10 +3,10 @@ if not status_ok then
 	return
 end
 
-local colors = require("theme").colors
+local colors = require("ui.theme").colors
 toggleterm.setup({
 	size = 20,
-	open_mapping = [[<c-/>]],
+	open_mapping = [[<A-/>]],
 	hide_numbers = true,
 	shade_terminals = true,
 	-- shading_factor = 20,

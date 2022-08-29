@@ -9,11 +9,11 @@ in
   config = mkIf cfg.enable {
     programs.tmux = {
       enable = true;
-      prefix = "C-a";
+      prefix = "C-b";
       keyMode = "vi";
       escapeTime = 0;
       plugins = with pkgs; [
-        tmuxPlugins.vim-tmux-navigator
+        # tmux-plugins.tmux-thumbs
         {
           plugin = tmuxPlugins.resurrect;
           extraConfig = "set -g @resurrect-strategy-nvim 'session'";
@@ -22,7 +22,7 @@ in
           plugin = tmuxPlugins.continuum;
           extraConfig = ''
             set -g @continuum-restore 'on'
-            set -g @continuum-save-interval '60' # minutes
+            set -g @continuum-save-interval '0' # minutes
           '';
         }
       ];

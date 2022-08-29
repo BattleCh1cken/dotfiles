@@ -4,7 +4,7 @@ if not _nvimtree then
     return
 end
 
-local signs = require("utils").signs
+local signs = require("ui.icons").lsp
 
 nvimtree.setup {
     auto_reload_on_write = true,

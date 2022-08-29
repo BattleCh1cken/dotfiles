@@ -12,8 +12,6 @@ in
     home.packages = with pkgs; [ nitrogen picom pamixer brightnessctl flameshot ];
     xsession = {
       enable = true;
-      initExtra = ''
-      '';
       windowManager.bspwm = {
         enable = true;
         startupPrograms = [
@@ -23,7 +21,7 @@ in
         ];
         monitors = {
           "DP-2" = [ "1" "2" "3" "4" "5" ];
-          "HDMI-1" = [ "6" ];
+          "HDMI-0" = [ "6" ];
         };
         settings = {
           window_gap = 10;
@@ -154,7 +152,7 @@ in
           "window_type = 'utility'"
           "window_type = 'dropdown_menu'"
         ];
-        blur-background = true;
+        blur-background = false;
         blur-method = "dual_kawase";
         blur-size = 20;
         blur-deviation = 5;
