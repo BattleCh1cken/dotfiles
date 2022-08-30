@@ -1,12 +1,13 @@
 local ok, treesitter = pcall(require, "nvim-treesitter.configs")
 
 if not ok then
+  print("treesitter missing")
 	return
 end
 
 treesitter.setup({
 	-- A list of parser names, or "all"
-	ensure_installed = { "c", "cpp", "lua", "rust", "python" },
+	ensure_installed = { "c", "cpp", "lua", "rust", "python", "nix" },
 
 	-- Install parsers synchronously (only applied to `ensure_installed`)
 	sync_install = false,

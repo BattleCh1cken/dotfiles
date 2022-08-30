@@ -1,7 +1,3 @@
-local ok, wk = pcall(require, "which-key")
-if not ok then
-	return
-end
 -- Shorten function name
 local keymap = vim.keymap.set
 
@@ -42,8 +38,8 @@ keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
 keymap("n", "<leader>fh", ":Telescope help_tags<CR>", opts)
 -- Comment
-keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle.linewise.current(nil, {cfg})<CR>", opts)
-keymap("x", "<leader>/", "<cmd>lua require('Comment.api').toggle.linewise.current(nil, {cfg})<CR>", opts)
+keymap("n", "<leader>/", "<CMD>lua require('Comment.api').toggle.linewise.current(nil, {cfg})<CR>", opts)
+keymap("x", "<leader>/", "<ESC><CMD>lua require('Comment.api').toggle.linewise.current(nil, {cfg})<CR>", opts)
 
 -- Git
 keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
@@ -56,10 +52,3 @@ keymap("n", "<leader>gb", "<cmd>Gitsigns blame_line<cr>", opts)
 
 keymap("n", "<TAB>", "<cmd>BufferLineCycleNext<CR>", opts)
 keymap("n", "<S-TAB>", "<cmd>BufferLineCyclePrev<CR>", opts)
-wk.register({
-	-- cycle through buffers
-	-- ["<TAB>"] = { "<cmd>BufferLineCycleNext<CR>", "[BUFFERLINE] cycle next buffer" },
-	-- ["<S-Tab>"] = { "<cmd>BufferLineCyclePrev<CR>", "[BUFFERLINE] cycle prev buffer" },
-})
--- Visual Mappings
-wk.setup({})

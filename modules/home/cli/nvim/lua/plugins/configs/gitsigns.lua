@@ -3,8 +3,7 @@ local ok, gitsigns = pcall(require, "gitsigns")
 if not ok then
 	return
 end
-
-gitsigns.setup({
+--[[gitsigns.setup({
 	signs = {
 		add = { hl = "GitSignsAdd", text = "│", numhl = "GitSignsAdd", linehl = "GitSignsAdd" },
 		change = { hl = "GitSignsChange", text = "│", numhl = "GitSignsChange", linehl = "GitSignsChange" },
@@ -56,3 +55,4 @@ gitsigns.setup({
 		enable = false,
 	},
 })
+]]--

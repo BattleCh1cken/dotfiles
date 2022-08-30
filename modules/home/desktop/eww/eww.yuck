@@ -2,14 +2,14 @@
 (defwidget bar []
   (box :orientation "v" :hexpand false
     (box :space-evenly false :valign "start" :halign "center" :vexpand true :hexpand false :orientation "v" :spacing 10
-      (launch)
+      ;(launch)
       (box :class "sysinfo-box" :orientation "v" :spacing 10 :hexpand false :active false :vexpand false
       (mem)
       (cpu)
       (disk)
         )
       
-      ; (wifi)
+       ;(wifi)
       )
 
     

@@ -19,7 +19,6 @@
       nvim.enable = true;
       git.enable = true;
       zsh.enable = true;
-      music.enable = true;
       tmux.enable = true;
       fzf.enable = true;
       scripts.enable = true;

@@ -42,7 +42,7 @@
     gimp
     aseprite
     gparted
-    arandr
+    obsidian
     #Command line utils
     gotop
     cava
