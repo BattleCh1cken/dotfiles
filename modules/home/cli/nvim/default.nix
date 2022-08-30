@@ -43,6 +43,7 @@ in
         bufferline-nvim
         toggleterm-nvim
         #Syntax
+        nvim-treesitter
 
         #Utils
         nvim-tree-lua
@@ -58,7 +59,7 @@ in
 
         #Tmux
         #Comment 
-        # comment-nvim
+        comment-nvim
         #Git
         gitsigns-nvim
         #Lang specifin Utils
