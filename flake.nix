@@ -3,16 +3,17 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-master.url = "github:nixos/nixpkgs";
 
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nur = {
-      url = "github:nix-community/NUR";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    #nur = {
+    #url = "github:nix-community/NUR";
+    #inputs.nixpkgs.follows = "nixpkgs";
+    #};
 
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
 
@@ -23,6 +24,7 @@
     inputs@{ self
     , nixpkgs
     , home-manager
+    , nixpkgs-master
     , nur
     , ...
     }:
@@ -30,6 +32,9 @@
       system = "x86_64-linux";
       pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
       lib = nixpkgs.lib;
+      overlay-master = final: prev: {
+        master = nixpkgs-master.legacyPackages.${prev.system};
+      };
 
       mkSystem = pkgs: system: hostname:
         pkgs.lib.nixosSystem {
@@ -48,12 +53,8 @@
                 users.battlechicken = (./. + "/hosts/${hostname}/home.nix");
               };
               nixpkgs.overlays = [
-                nur.overlay
+                overlay-master
                 inputs.neovim-nightly-overlay.overlay
-                (final: prev: {
-                  tmux-plugins =
-                    prev.callPackage ./overlays/tmux.nix { };
-                })
               ];
             }
 
@@ -78,7 +79,13 @@
           src = self;
           hooks.nixpkgs-fmt.enable = true;
           hooks.shellcheck.enable = true;
-          # hooks.stylua.enable = true;
+          hooks.stylua.enable = true;
         };
+      templates = {
+        basic = {
+          path = ./templates/basic/flake.nix;
+          description = "basic flake";
+        };
+      };
     };
 }

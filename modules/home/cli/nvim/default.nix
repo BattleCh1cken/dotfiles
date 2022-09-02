@@ -17,7 +17,6 @@ in
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      neovide
       ripgrep
       xclip
       #nix
@@ -33,7 +32,7 @@ in
     programs.neovim = {
       enable = true;
       package = pkgs.neovim-nightly;
-      plugins = with pkgs.vimPlugins; [
+      plugins = with pkgs.master.vimPlugins; [
         plenary-nvim
         #UI 
         catppuccin-nvim
@@ -43,8 +42,7 @@ in
         bufferline-nvim
         toggleterm-nvim
         #Syntax
-        nvim-treesitter
-
+        (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
         #Utils
         nvim-tree-lua
         telescope-nvim
@@ -64,7 +62,7 @@ in
         gitsigns-nvim
         #Lang specifin Utils
         #Rust
-        rust-tools-nvim
+        #rust-tools-nvim
         #LSP
         nvim-lspconfig
         null-ls-nvim
