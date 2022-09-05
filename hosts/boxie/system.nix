@@ -16,18 +16,25 @@
     #Drivers
     mesa
 
+
     #Apps
+    firejail
+    google-chrome
     aseprite
     qbittorrent
     printrun
     cura
+    freecad
+    #tor-browser-bundle-bin
 
     #Steam deps
     gamemode
     libstrangle
+    #CLI Tools
+    tailscale
   ];
-  #Android stuff
-  programs.adb.enable = true;
+  networking.firewall.checkReversePath = "loose";
+  services.tailscale.enable = true;
 
 
   services.flatpak.enable = true;
