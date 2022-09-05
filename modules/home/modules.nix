@@ -2,6 +2,7 @@
   home.stateVersion = "22.11";
   imports = [
     ./desktop/bspwm
+    ./desktop/hyprland
     ./desktop/eww
 
     ./cli/git

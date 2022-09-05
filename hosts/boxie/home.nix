@@ -4,6 +4,9 @@
   ];
 
   config.modules = {
+    desktop = {
+      hyprland.enable = true;
+    };
     programs = {
       firefox.enable = true;
       kitty.enable = true;
