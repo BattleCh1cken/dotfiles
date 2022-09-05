@@ -25,6 +25,7 @@
     printrun
     cura
     freecad
+    gparted
     #tor-browser-bundle-bin
 
     #Steam deps
