@@ -63,6 +63,9 @@
               nixpkgs.overlays = [
                 overlay-master
                 inputs.neovim-nightly-overlay.overlay
+                (final: prev: {
+                  dwm = prev.dwm.overrideAttrs (old: { src = /home/battlechicken/Documents/Projects/dwm; });
+                })
               ];
             }
 
@@ -91,7 +94,7 @@
         };
       templates = {
         basic = {
-          path = ./templates/basic/flake.nix;
+          path = ./templates/basic;
           description = "basic flake";
         };
       };
