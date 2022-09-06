@@ -3,4 +3,4 @@ result
 .direnv
 .pre-commit-config.yaml
 
-modules/home/cli/nvim/plugin
+modules/home/cli/nvim/init.vim
