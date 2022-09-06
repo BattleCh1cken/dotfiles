@@ -3,6 +3,7 @@
   imports = [
     ./desktop/bspwm
     ./desktop/hyprland
+    ./desktop/river
     ./desktop/eww
 
     ./cli/git

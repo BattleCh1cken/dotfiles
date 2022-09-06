@@ -24,6 +24,9 @@
       (box :class "volume-box" :space-evenly "false" :valign "start" :orientation "v" :spacing 5 :hexpand false :active false :vexpand false
       (volume)
       )
+      (box :class "battery-box" :space-evenly "false" :valign "start" :orientation "v" :spacing 5 :hexpand false :active false :vexpand false
+      (battery)
+      )
       (time)
       ))
   )
@@ -127,6 +130,21 @@
       :value current-volume
       :orientation "v"
       )))
+
+(defwidget battery []
+  (box :vexpand "false" :hexpand "false"
+    (scale
+      :flipped true
+      :class "volume-slider"
+      :hexpand "true"
+      :marks "true"
+      :height 150
+      :min 0
+      :max 100
+      :value EWW_BATTERY
+      :orientation "v"
+      )))
+
 
 
 

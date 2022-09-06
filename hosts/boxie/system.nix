@@ -1,11 +1,21 @@
 { pkgs, system, config, ... }: {
 
-  environment.variables = {
-    # GDK_SCALE = "2";
-  };
+  networking.hostName = "boxie";
+
+  programs.hyprland.enable = true;
   boot.kernelParams = [ "nvme.noacpi=1" ];
-  services.xserver.enable = true;
+  services.xserver = {
+    enable = true;
+    displayManager.defaultSession = "none+bspwm";
+    windowManager.bspwm.enable = true;
+
+    displayManager.lightdm.greeters.mini = {
+      enable = false;
+      user = "battlechicken";
+    };
+  };
   services.xserver.displayManager.gdm.enable = true;
+  #services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
   environment.systemPackages = with pkgs; [
@@ -34,6 +44,14 @@
     #CLI Tools
     tailscale
   ];
+  #Why must I suffer
+  hardware.video.hidpi.enable = true;
+  services.xserver.dpi = 144;
+  environment.variables = {
+    GDK_SCALE = "2";
+    #GDK_DPI_SCALE = "0.5";
+  };
+  #tailscale stuff
   networking.firewall.checkReversePath = "loose";
   services.tailscale.enable = true;
 

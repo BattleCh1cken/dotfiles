@@ -20,6 +20,8 @@ in
           "eww daemon && eww open bar"
         ];
         monitors = {
+
+          "eDP-1" = [ "1" "2" "3" "4" "5" ];
           "DP-2" = [ "1" "2" "3" "4" "5" ];
           "HDMI-0" = [ "6" ];
         };

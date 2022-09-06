@@ -2,9 +2,10 @@
   imports = [
     ../../modules/system/modules.nix
   ];
-  modules.programs.thunar.enable = true;
 
   networking.hostName = "Entertainer"; # Define your hostname.
+  modules.programs.thunar.enable = true;
+
   services.xserver = {
     # Enable the X11 windowing system.
     enable = true;

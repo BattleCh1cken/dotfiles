@@ -51,6 +51,7 @@
             (./. + "/hosts/${hostname}/system.nix")
             (./. + "/hosts/${hostname}/hardware-configuration.nix")
             ./modules/configuration.nix
+            inputs.hyprland.nixosModules.default
             home-manager.nixosModules.home-manager
             {
               home-manager = {

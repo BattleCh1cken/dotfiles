@@ -10,6 +10,7 @@
     TERMINAL = "kitty";
     BROWSER = "firefox";
   };
+
   nix = {
     package = pkgs.nixFlakes; # or versioned attributes like nixVersions.nix_2_8
     extraOptions = ''
@@ -79,7 +80,7 @@
     shell = pkgs.zsh;
     isNormalUser = true;
     description = "battlechicken";
-    extraGroups = [ "networkmanager" "wheel" "dialout" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
   };
 
 

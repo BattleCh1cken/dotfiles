@@ -5,12 +5,14 @@
 
   config.modules = {
     desktop = {
+      eww.enable = true;
+      bspwm.enable = true;
       hyprland.enable = true;
     };
     programs = {
       firefox.enable = true;
       kitty.enable = true;
-      steam.enable = true;
+      rofi.enable = true;
     };
     cli = {
       nvim.enable = true;
