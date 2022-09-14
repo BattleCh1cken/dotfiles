@@ -64,7 +64,7 @@
                 overlay-master
                 inputs.neovim-nightly-overlay.overlay
                 (final: prev: {
-                  dwm = prev.dwm.overrideAttrs (old: { src = /home/battlechicken/Documents/Projects/dwm; });
+                  dwm = prev.dwm.overrideAttrs (old: { src = ./modules/home/desktop/dwm; });
                 })
               ];
             }
