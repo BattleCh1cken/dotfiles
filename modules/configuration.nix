@@ -80,7 +80,7 @@
     shell = pkgs.zsh;
     isNormalUser = true;
     description = "battlechicken";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" ];
   };
 
 

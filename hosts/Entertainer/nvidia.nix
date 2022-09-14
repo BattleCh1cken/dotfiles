@@ -12,7 +12,7 @@ let
 in
 {
   config = {
-    home-manager.users.cole = { pkgs, ... }: {
+    home-manager.users.battlechicken = { pkgs, ... }: {
       wayland.windowManager.sway = {
         extraOptions = [ "--unsupported-gpu" ];
       };

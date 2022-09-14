@@ -3,8 +3,9 @@
   imports = [
     ./desktop/bspwm
     ./desktop/hyprland
-    ./desktop/river
+    ./desktop/dwm
     ./desktop/eww
+    ./desktop/picom
 
     ./cli/git
     ./cli/nvim

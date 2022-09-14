@@ -5,8 +5,10 @@
 
   config.modules = {
     desktop = {
-      bspwm.enable = true;
+      bspwm.enable = false;
+      dwm.enable = true;
       eww.enable = true;
+      picom.enable = true;
     };
     programs = {
       firefox.enable = true;

@@ -4,14 +4,13 @@
   ];
 
   networking.hostName = "Entertainer"; # Define your hostname.
-  modules.programs.thunar.enable = true;
 
   services.xserver = {
     # Enable the X11 windowing system.
     enable = true;
     # desktopManager.plasma5.enable = true;
     #windowManager.bspwm.enable = true;
-    #windowManager.dwm.enable = true;
+    windowManager.dwm.enable = true;
 
     displayManager.setupCommands = ''
       ${pkgs.xorg.xrandr}/bin/xrandr --output DP-2 --rate 144 --mode 1920x1080 --pos 0x500\
@@ -46,17 +45,15 @@
     obsidian
     freecad
     cura
+    tor-browser-bundle-bin
     #Command line utils
     gotop
     cava
     cmus
+    ranger
     protonup
     tailscale
-
-    dwm
-
-
-
+    killall
   ];
 
   modules.programs.thunar.enable = true;

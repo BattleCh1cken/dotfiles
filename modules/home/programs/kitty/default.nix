@@ -16,6 +16,7 @@ in
         shell = "zsh";
         font_family = "JetBrainsMono Nerd Font";
         hide_window_decorations = "yes";
+        disable_ligatures = "never";
       };
     };
 

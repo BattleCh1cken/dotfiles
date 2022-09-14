@@ -4,3 +4,5 @@ result
 .pre-commit-config.yaml
 
 modules/home/cli/nvim/init.vim
+
+modules/home/cli/nvim/init.vim

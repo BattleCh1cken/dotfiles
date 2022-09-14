@@ -6,11 +6,11 @@ in
   options.modules.programs.rofi = { enable = mkEnableOption "rofi"; };
 
   config = mkIf cfg.enable {
-    home.packages = [
-      (pkgs.writeShellScriptBin "dmenu" ''
-        exec ${pkgs.rofi}/bin/rofi -dmenu "$@"
-      '')
-    ];
+    #home.packages = [
+      #(pkgs.writeShellScriptBin "dmenu" ''
+        #exec ${pkgs.rofi}/bin/rofi -dmenu "$@"
+     #'')
+    #];
 
     programs.rofi = {
       enable = true;
