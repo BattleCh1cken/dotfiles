@@ -36,7 +36,7 @@
     cura
     freecad
     gparted
-    #tor-browser-bundle-bin
+    tor-browser-bundle-bin
 
     #Steam deps
     gamemode
