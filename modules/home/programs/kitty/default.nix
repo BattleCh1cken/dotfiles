@@ -15,6 +15,7 @@ in
         enable_audio_bell = false;
         shell = "zsh";
         font_family = "JetBrainsMono Nerd Font";
+        font_size = "12.0";
         hide_window_decorations = "yes";
         disable_ligatures = "never";
       };

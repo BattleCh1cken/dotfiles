@@ -10,6 +10,7 @@ if not ok_ctp_feline then
 	return
 end
 local icons = require("ui.icons")
+local utils = require("core.utils")
 
 ctp_feline.setup({
 	assets = {
@@ -21,16 +22,16 @@ ctp_feline.setup({
 		file = "   ",
 		lsp = {
 			server = "  ",
-			error = icons.lsp.Error,
-			warning = icons.lsp.Warn,
-			info = icons.lsp.Info,
-			hint = icons.lsp.Hint,
+			error = utils.pad(icons.lsp.Error),
+			warning = utils.pad(icons.lsp.Warn),
+			info = utils.pad(icons.lsp.Info),
+			hint = utils.pad(icons.lsp.Hint),
 		},
 		git = {
 			branch = "  ",
-			added = "  ",
-			changed = "  ",
-			removed = "  ",
+			added = utils.pad(icons.git.added),
+			changed = utils.pad(icons.git.modified),
+			removed = utils.pad(icons.git.removed),
 		},
 	},
 })

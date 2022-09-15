@@ -1,6 +1,18 @@
 local M = {}
-M.lsp = { Error = "", Warn = "", Hint = "", Info = "" }
-M.diff = {}
+M.lsp = {
+	Error = "",
+	Warn = "",
+	Hint = "",
+	Info = "",
+}
+M.git = {
+	added = "",
+	modified = "",
+	removed = "",
+	renamed = "",
+	ignored = "",
+	untracked = "",
+}
 
 M.powerline = {
 	circle = {
