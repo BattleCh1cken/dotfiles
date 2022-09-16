@@ -37,12 +37,14 @@
     freecad
     gparted
     tor-browser-bundle-bin
+    blender
 
     #Steam deps
     gamemode
     libstrangle
     #CLI Tools
-    tailscale
+    #tailscale
+    killall
   ];
   #Why must I suffer
   hardware.video.hidpi.enable = true;
@@ -52,12 +54,14 @@
     #GDK_DPI_SCALE = "0.5";
   };
   #tailscale stuff
-  networking.firewall.checkReversePath = "loose";
-  services.tailscale.enable = true;
+  #networking.firewall.checkReversePath = "loose";
+  #services.tailscale.enable = true;
 
 
   services.flatpak.enable = true;
   programs.steam.enable = true;
   # virtualisation.docker.enable = true;
+
+  security.pki.certificateFiles = [ "/home/battlechicken/Downloads/ckroot.crt" ];
 
 }
