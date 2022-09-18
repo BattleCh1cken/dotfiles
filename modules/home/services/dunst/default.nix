@@ -53,7 +53,7 @@ in
         urgency_critical = {
           background = "#1e1e2e";
           foreground = "#cad3f5";
-          frame_color = "#cba6f7";
+          frame_color = "#1e1e2e";
           timeout = "15";
         };
         notify_send = {

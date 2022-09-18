@@ -86,7 +86,7 @@ in
 
     };
     programs.zsh.shellAliases = {
-      # n = "neovide --maximized --multigrid";
+      #n = "neovide --maximized --multigrid";
       n = "nvim";
     };
     home.file.".config/nvim/lua" = {

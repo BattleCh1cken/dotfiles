@@ -32,7 +32,6 @@
     gnome.nautilus
     qt5ct
     vscode
-    qmk-udev-rules
     libsecret
     papirus-icon-theme
     #Apps
@@ -40,12 +39,11 @@
     mailspring
     vlc
     gimp
-    aseprite
     gparted
     obsidian
     freecad
     cura
-    tor-browser-bundle-bin
+    polymc
     #Command line utils
     gotop
     cava

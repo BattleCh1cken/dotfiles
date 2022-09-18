@@ -7,7 +7,7 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       packwiz
-      cmake
+      gnumake
     ];
     virtualisation.docker.enable = true;
 

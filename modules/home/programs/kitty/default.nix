@@ -18,6 +18,7 @@ in
         font_size = "12.0";
         hide_window_decorations = "yes";
         disable_ligatures = "never";
+        window_padding_width = "5";
       };
     };
 

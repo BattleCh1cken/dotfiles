@@ -13,18 +13,17 @@ local plugins_configs = {
 	"nvimtree",
 	"indent",
 	"autopairs",
-  "toggleterm",
-  "neoscroll",
-  "autosave",
-  --Git
-  "gitsigns",
+	"toggleterm",
+	"neoscroll",
+	"autosave",
+	--Git
+	"gitsigns",
 	--Completion
 	"cmp",
+	"luasnip",
 
-
-
-  --Other
-  "other",
+	--Other
+	"other",
 }
 
 for _, plugin_name in ipairs(plugins_configs) do
