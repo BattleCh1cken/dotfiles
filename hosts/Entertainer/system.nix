@@ -31,7 +31,6 @@
     qbittorrent
     gnome.nautilus
     qt5ct
-    vscode
     libsecret
     papirus-icon-theme
     #Apps
@@ -44,6 +43,8 @@
     freecad
     cura
     polymc
+    virt-manager
+    fritzing
     #Command line utils
     gotop
     cava
@@ -68,5 +69,10 @@
   programs.steam = {
     enable = true;
   };
+  #virtualisation
+  virtualisation.libvirtd.enable = true;
+  programs.dconf.enable = true;
+
+
 
 }

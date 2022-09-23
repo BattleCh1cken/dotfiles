@@ -61,6 +61,10 @@
                 users.battlechicken = (./. + "/hosts/${hostname}/home.nix");
               };
               nixpkgs.overlays = [
+                (final: prev: {
+                  catppuccin-cursors =
+                    prev.callPackage ./overlays/catppuccin-cursors.nix { };
+                })
                 overlay-master
                 inputs.neovim-nightly-overlay.overlay
                 (final: prev: {
@@ -96,6 +100,10 @@
         basic = {
           path = ./templates/basic;
           description = "basic flake";
+        };
+        rust = {
+          path = ./templates/rust;
+          description = "rust flake";
         };
       };
     };

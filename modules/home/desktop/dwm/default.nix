@@ -24,11 +24,16 @@ in
       flameshot
       feh
     ];
+    home.pointerCursor = {
+      package = pkgs.catppuccin-cursors;
+      name = "Catppuccin-Dark-Cursors";
+      size = 32;
+    };
 
     home.file.".config/dwm/autostart.sh".source = ./scripts/autostart.sh;
     home.file.".config/dwm/bar.sh".source = ./scripts/bar.sh;
-    home.file."Pictures/wallpapers/wallpaper.png".source = ../../../../assets/wallpaper.png;
-    home.file."Pictures/wallpapers/wallpaper-tall.png".source = ../../../../assets/wallpaper-tall.png;
+
+    home.file."Pictures/wallpapers/wallpaper.png".source = ../../../../assets/trees.jpg;
 
 
 

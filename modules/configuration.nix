@@ -34,7 +34,7 @@
 
   #time.hardwareClockInLocalTime = true;
 
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = " http://user:password@proxy:port/ ";
@@ -80,7 +80,7 @@
     shell = pkgs.zsh;
     isNormalUser = true;
     description = "battlechicken";
-    extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "dialout" "libvirtd" ];
   };
 
 
