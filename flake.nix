@@ -65,6 +65,13 @@
                   catppuccin-cursors =
                     prev.callPackage ./overlays/catppuccin-cursors.nix { };
                 })
+
+                (final: prev: {
+                  cura =
+                    prev.callPackage ./overlays/cura.nix { };
+                })
+
+
                 overlay-master
                 inputs.neovim-nightly-overlay.overlay
                 (final: prev: {

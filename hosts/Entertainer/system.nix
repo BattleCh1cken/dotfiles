@@ -33,18 +33,17 @@
     qt5ct
     libsecret
     papirus-icon-theme
+
     #Apps
-    lxappearance
     mailspring
     vlc
     gimp
-    gparted
     obsidian
     freecad
     cura
     polymc
     virt-manager
-    fritzing
+    discord
     #Command line utils
     gotop
     cava
@@ -72,6 +71,9 @@
   #virtualisation
   virtualisation.libvirtd.enable = true;
   programs.dconf.enable = true;
+
+
+
 
 
 

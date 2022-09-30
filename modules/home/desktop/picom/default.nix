@@ -13,9 +13,9 @@ in
 
       package = pkgs.picom;
       enable = true;
-      experimentalBackends = true;
+      experimentalBackends = false;
 
-      shadow = false;
+      shadow = true;
       shadowOffsets = [ (-5) (-5) ];
 
       fade = true;
@@ -25,11 +25,11 @@ in
       backend = "glx";
 
       settings = {
-        fading = true;
+        fading = false;
         fade-in-step = "0.02";
         fade-out-step = "0.05";
         corner-radius = 10;
-        xinerama-shadow-crop = false;
+        xinerama-shadow-crop = true;
 
         shadow-ignore-shaped = false;
 
@@ -50,7 +50,7 @@ in
         unredir-if-possible = false;
 
         shadowOpacity = "0.4";
-        shadow-radius = 10;
+        shadow-radius = 8;
         shadowExclude = [
           "class_g = 'dwm'"
           "class_g = 'slop'"
