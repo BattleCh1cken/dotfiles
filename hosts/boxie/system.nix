@@ -38,6 +38,7 @@
     gparted
     tor-browser-bundle-bin
     blender
+    protonvpn-gui
 
     #Steam deps
     gamemode
