@@ -58,8 +58,6 @@
 
 
   services.flatpak.enable = true;
-  services.tailscale.enable = true;
-  networking.firewall.checkReversePath = "loose";
   services.gnome.gnome-keyring.enable = true;
   xdg.portal = {
     enable = true;
