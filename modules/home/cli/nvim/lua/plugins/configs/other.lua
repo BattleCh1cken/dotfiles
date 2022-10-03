@@ -1,3 +1,5 @@
 require("colorizer").setup({
-	names = false,
+	user_default_options = {
+		names = false, -- "Name" codes like Blue
+	},
 })
