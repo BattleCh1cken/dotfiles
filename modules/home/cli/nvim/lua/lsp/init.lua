@@ -30,11 +30,10 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
 	return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
 
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-
--- Set keymaps
-local opts = { noremap = true, silent = true, nowait = true }
+--Keymaps
+local opts = { silent = true }
 vim.api.nvim_set_keymap("n", "<leader>le", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>lee", "<cmd>lua require('telescope.builtin').diagnostics<CR>", opts)
 vim.api.nvim_set_keymap("n", "<leader>lj", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
 vim.api.nvim_set_keymap("n", "<leader>lk", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 vim.api.nvim_set_keymap("n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
@@ -43,33 +42,17 @@ local on_attach = function(client, bufnr)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ld", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lb", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lh", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	--vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>li", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-	--vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
-	--vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
-	--vim.api.nvim_buf_set_keymap(
-	--bufnr,
-	--"n",
-	--"<leader>wl",
-	--"<cmd>lua print(vi.inspect(vim.lsp.buf.list_workleader_folders()))<CR>",
-	--opts
-	--)
-	--vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ld", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
+	vim.api.nvim_buf_set_keymap(
+		bufnr,
+		"n",
+		"<leader>lr",
+		"<cmd>lua require('telescope.builtin').lsp_references()<CR>",
+		opts
+	)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lrn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lc", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lrf", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lf", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
-	-- Format on save
-	-- if client.supports_method("textDocument/formatting") then
-	-- 	vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-	-- 	vim.api.nvim_create_autocmd("BufWritePre", {
-	-- 		group = augroup,
-	-- 		buffer = bufnr,
-	-- 		callback = function()
-	-- 			vim.lsp.buf.format({ bufnr = bufnr })
-	-- 		end,
-	-- 	})
-	-- end
 end
 -- Call the servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
