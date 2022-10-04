@@ -45,7 +45,7 @@ vim.opt.shortmess:append("c")
 vim.cmd("filetype on")
 vim.opt.shortmess:append("sI")
 vim.cmd([[set iskeyword+=-]])
--- vim.cmd([[formatoptions-=cro]])
+vim.cmd([[set formatoptions-=cro]])
 for key, value in pairs(options) do
 	vim.opt[key] = value
 end
