@@ -44,6 +44,7 @@
     polymc
     virt-manager
     discord
+    google-chrome
     #Command line utils
     gotop
     cava
