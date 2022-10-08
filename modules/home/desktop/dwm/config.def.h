@@ -17,14 +17,15 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 
 static const char *fonts[]          = { "JetBrainsMono Nerd Font:size=10" };
 static const char dmenufont[]       = "JetBrainsMono Nerd Font:size=10";
-static const char crust[]           = "#11111b";
+static const char col_crust[]       = "#11111b";
 static const char col_base[]        = "#1e1e2e";
-static const char mantle[]          = "#181825";
+static const char col_mantle[]      = "#181825";
 static const char col_surface0[]    = "#313244";
 static const char col_surface1[]    = "#45475a";
 static const char col_surface2[]    = "#585b70";
+static const char col_pink[]        = "#f5c2e7";
 static const char col_mauve[]       = "#cba6f7";
-static const char col_blue[]        = "#96CDFB";  // focused window border
+static const char col_blue[]        = "#96CDFB";
 static const char col_green[]       = "#ABE9B3";
 static const char col_red[]         = "#F28FAD";
 static const char col_orange[]      = "#F8BD96";
@@ -38,6 +39,19 @@ static const char *colors[][3]      = {
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+
+static const char *tagsel[][2] = {
+	{ col_red, col_surface2 },
+	{ col_orange, col_surface2 },
+	{ col_yellow, col_surface2},
+	{ col_green, col_surface2},
+	{ col_blue, col_surface2 },
+	{ col_mauve, col_surface2 },
+	{ col_pink, col_surface2 },
+	{ col_text, col_surface2 },
+	{ col_crust, col_surface2 },
+};
+
 
 static const Rule rules[] = {
 	/* xprop(1):
