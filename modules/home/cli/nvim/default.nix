@@ -2,14 +2,20 @@
 with lib;
 let
   cfg = config.modules.cli.nvim;
-  autosave-nvim = pkgs.vimUtils.buildVimPlugin {
-    name = "autosave-nvim";
+  autosave-nvim = pkgs.vimUtils.buildVimPlugin rec {
+    pname = "autosave-nvim";
+    version = "2c7a2943340ee2a36c6a61db812418fca1f57866";
     src = pkgs.fetchFromGitHub {
       owner = "Pocco81";
       repo = "AutoSave.nvim";
-      rev = "3d342d6fcebeede15b6511b13a38a522c6f33bf8";
-      sha256 = "1tAYnd4/hGgG2NG8n9hZi9zWM+v1OTh0YBlG8kEZeXI=";
+      rev = version;
+      sha256 = "sha256-keK+IAnHTTA5uFkMivViMMAkYaBvouYqcR+wNPgN3n0=";
     };
+    buildInputs = with pkgs; [
+      git
+      neovim
+      lua
+    ];
   };
 in
 {
@@ -49,10 +55,9 @@ in
         indent-blankline-nvim
         nvim-autopairs
         nvim-colorizer-lua
-        #TODO: add autosave
         lightspeed-nvim
         nvim-autopairs
-        autosave-nvim
+        #autosave-nvim
 
 
         #Tmux
@@ -62,7 +67,7 @@ in
         gitsigns-nvim
         #Lang specifin Utils
         #Rust
-        #rust-tools-nvim
+        rust-tools-nvim
         #LSP
         nvim-lspconfig
         null-ls-nvim

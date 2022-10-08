@@ -28,14 +28,14 @@
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.opengl.enable = true;
   environment.systemPackages = with pkgs; [
-    qbittorrent
-    gnome.nautilus
-    qt5ct
+    #misc
     libsecret
     papirus-icon-theme
+    ntfs3g
 
     #Apps
     mailspring
+    qbittorrent
     vlc
     gimp
     obsidian
