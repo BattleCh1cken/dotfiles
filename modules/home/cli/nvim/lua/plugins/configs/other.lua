@@ -3,3 +3,5 @@ require("colorizer").setup({
 		names = false, -- "Name" codes like Blue
 	},
 })
+
+require("impatient")

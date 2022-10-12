@@ -14,7 +14,6 @@ local plugins_configs = {
 	"indent",
 	"autopairs",
 	"toggleterm",
-	"neoscroll",
 	"autosave",
 	--Git
 	"gitsigns",

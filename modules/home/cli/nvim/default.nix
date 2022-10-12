@@ -2,21 +2,6 @@
 with lib;
 let
   cfg = config.modules.cli.nvim;
-  autosave-nvim = pkgs.vimUtils.buildVimPlugin rec {
-    pname = "autosave-nvim";
-    version = "2c7a2943340ee2a36c6a61db812418fca1f57866";
-    src = pkgs.fetchFromGitHub {
-      owner = "Pocco81";
-      repo = "AutoSave.nvim";
-      rev = version;
-      sha256 = "sha256-keK+IAnHTTA5uFkMivViMMAkYaBvouYqcR+wNPgN3n0=";
-    };
-    buildInputs = with pkgs; [
-      git
-      neovim
-      lua
-    ];
-  };
 in
 {
   options.modules.cli.nvim = { enable = mkEnableOption "nvim"; };
@@ -40,7 +25,7 @@ in
       package = pkgs.neovim-nightly;
       plugins = with pkgs.master.vimPlugins; [
         plenary-nvim
-        #UI 
+        #UI
         catppuccin-nvim
         nvim-web-devicons
 
@@ -57,11 +42,11 @@ in
         nvim-colorizer-lua
         lightspeed-nvim
         nvim-autopairs
-        #autosave-nvim
+        impatient-nvim
 
 
         #Tmux
-        #Comment 
+        #Comment
         comment-nvim
         #Git
         gitsigns-nvim
@@ -71,7 +56,7 @@ in
         #LSP
         nvim-lspconfig
         null-ls-nvim
-        #Completion 
+        #Completion
         nvim-cmp
         cmp-nvim-lsp
         cmp-path
