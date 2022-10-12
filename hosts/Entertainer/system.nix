@@ -3,8 +3,6 @@
     ../../modules/system/modules.nix
   ];
 
-  networking.hostName = "Entertainer"; # Define your hostname.
-
   services.xserver = {
     # Enable the X11 windowing system.
     enable = true;
@@ -19,7 +17,6 @@
     #displayManager.sddm.enable = true;
     displayManager.lightdm.greeters.gtk = {
       enable = true;
-      #user = "battlechicken";
     };
   };
   # services.xserver.displayManager.gdm.enable = true;
@@ -45,6 +42,7 @@
     virt-manager
     discord
     google-chrome
+    vscode.fhs
     #Command line utils
     gotop
     cava
@@ -64,9 +62,24 @@
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
+  #steam stuff
   programs.steam = {
-    enable = true;
+    enable = false;
   };
+
+  #environment.sessionVariables = rec {
+  #XDG_CACHE_HOME = "\${HOME}/.cache";
+  #XDG_CONFIG_HOME = "\${HOME}/.config";
+  #XDG_BIN_HOME = "\${HOME}/.local/bin";
+  #XDG_DATA_HOME = "\${HOME}/.local/share";
+  # Steam needs this to find Proton-GE
+  #STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\${HOME}/.steam/root/compatibilitytools.d";
+  # note: this doesn't replace PATH, it just adds this to it
+  #PATH = [
+  #"\${XDG_BIN_HOME}"
+  #];
+  #};
+
   #virtualisation
   virtualisation.libvirtd.enable = true;
   programs.dconf.enable = true;
