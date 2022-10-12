@@ -39,7 +39,7 @@
     tor-browser-bundle-bin
     blender
     protonvpn-gui
-
+    vscode.fhs
     #Steam deps
     gamemode
     libstrangle
