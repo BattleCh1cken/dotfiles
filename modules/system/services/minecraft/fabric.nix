@@ -3,12 +3,13 @@ with lib;
 let cfg = config.modules.services.minecraft;
 in
 {
-  options.modules.services.minecraft = { enable = mkEnableOption "minecraft"; };
-  config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
-      packwiz
-      gnumake
-    ];
+  options.modules.services.minecraft.mcFabric = {
+    enable = mkEnableOption "mcFabric";
+  };
+
+
+  config = mkIf cfg.minecraft.mcFabric.enable {
+    networking.firewall.allowedTCPPorts = [ 25565 ];
     virtualisation.docker.enable = true;
 
     systemd.services.mcFabric = {
@@ -34,10 +35,11 @@ in
         # Restart = "always";
       };
     };
-    systemd.services.mcBackup = {
+
+    systemd.services.mcFabricBackup = {
       wantedBy = [ "multi-user.target" ];
       after = [ "docker.service" "docker.socket" ];
-      requires = [ "docker.service" "docker.socket" ];
+      requires = [ "mcFabric.service" "docker.service" "docker.socket" ];
       serviceConfig = {
         Type = "simple";
         User = "battlechicken";
@@ -57,7 +59,5 @@ in
         Restart = "always";
       };
     };
-    networking.firewall.allowedTCPPorts = [ 25565 ];
-    networking.firewall.allowedUDPPorts = [ 25565 ];
   };
 }

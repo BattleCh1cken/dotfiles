@@ -17,7 +17,7 @@
     passwordAuthentication = false;
   };
 
-  imports = [ ../../modules/system/services/minecraft.nix ];
-  modules.services.minecraft.enable = true;
+  #imports = [ ../../modules/system/services/minecraft/forge.nix ];
+  #modules.services.minecraft.mcForge.enable = true;
 
 }
