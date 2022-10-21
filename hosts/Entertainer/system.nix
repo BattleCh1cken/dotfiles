@@ -38,11 +38,11 @@
     obsidian
     freecad
     cura
-    polymc
     virt-manager
     discord
     google-chrome
     vscode.fhs
+    prismLauncher
     #Command line utils
     gotop
     cava

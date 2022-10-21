@@ -20,6 +20,7 @@
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
+
     hyprland = {
       url = "github:hyprwm/Hyprland";
       # build with your own instance of nixpkgs
@@ -61,18 +62,21 @@
                 users.battlechicken = (./. + "/hosts/${hostname}/home.nix");
               };
               nixpkgs.overlays = [
+                overlay-master
+
                 (final: prev: {
                   catppuccin-cursors =
                     prev.callPackage ./overlays/catppuccin-cursors.nix { };
                 })
-
                 (final: prev: {
                   cura =
                     prev.callPackage ./overlays/cura.nix { };
                 })
+                (final: prev: {
+                  prismLauncher =
+                    prev.callPackage ./overlays/prismLauncher.nix { };
+                })
 
-
-                overlay-master
                 inputs.neovim-nightly-overlay.overlay
                 (final: prev: {
                   dwm = prev.dwm.overrideAttrs (old: { src = ./modules/home/desktop/dwm; });
