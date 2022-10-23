@@ -33,7 +33,7 @@ end
 --Keymaps
 local opts = { silent = true }
 vim.api.nvim_set_keymap("n", "<leader>le", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>lee", "<cmd>lua require('telescope.builtin').diagnostics<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>ll", "<cmd>lua require('telescope.builtin').diagnostics()<CR>", opts)
 vim.api.nvim_set_keymap("n", "<leader>lj", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
 vim.api.nvim_set_keymap("n", "<leader>lk", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 vim.api.nvim_set_keymap("n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
