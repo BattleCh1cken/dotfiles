@@ -1,100 +1,73 @@
+# flake.nix --- the heart of my dotfiles
+#
+# Credit to hlissner
+#
+# Welcome to ground zero. Where the whole flake gets set up and all its modules
+# are loaded.
+
 {
-  description = "My NixOS configuration";
+  description = "A grossly incandescent nixos config.";
 
-  inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-master.url = "github:nixos/nixpkgs";
+  inputs =
+    {
+      # Core dependencies.
+      nixpkgs.url = "nixpkgs/nixos-unstable"; # primary nixpkgs
+      nixpkgs-unstable.url = "nixpkgs/nixpkgs-unstable"; # for packages on the edge
+      home-manager.url = "github:rycee/home-manager/master";
+      home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # Extras
+      #emacs-overlay.url = "github:nix-community/emacs-overlay";
+      neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+      nixos-hardware.url = "github:nixos/nixos-hardware";
+      pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
     };
 
-
-    #nur = {
-    #url = "github:nix-community/NUR";
-    #inputs.nixpkgs.follows = "nixpkgs";
-    #};
-
-    pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
-
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-
-
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-      # build with your own instance of nixpkgs
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-
-  };
-  outputs =
-    inputs@{ self
-    , nixpkgs
-    , home-manager
-    , nixpkgs-master
-    , ...
-    }:
+  outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, ... }:
     let
+      inherit (lib.my) mapModules mapModulesRec mapHosts;
+
       system = "x86_64-linux";
-      pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-      lib = nixpkgs.lib;
-      overlay-master = final: prev: {
-        master = nixpkgs-master.legacyPackages.${prev.system};
+
+      mkPkgs = pkgs: extraOverlays: import pkgs {
+        inherit system;
+        config.allowUnfree = true; # forgive me Stallman senpai
+        overlays = extraOverlays ++ (lib.attrValues self.overlays);
       };
+      pkgs = mkPkgs nixpkgs [ self.overlay ];
+      pkgs' = mkPkgs nixpkgs-unstable [ ];
 
-      mkSystem = pkgs: system: hostname:
-        pkgs.lib.nixosSystem {
-          system = system;
-          modules = [
-            { networking.hostName = hostname; }
-            (./. + "/hosts/${hostname}/system.nix")
-            (./. + "/hosts/${hostname}/hardware-configuration.nix")
-            ./modules/configuration.nix
-            inputs.hyprland.nixosModules.default
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useUserPackages = true;
-                useGlobalPkgs = true;
-                extraSpecialArgs = { inherit inputs; };
-                users.battlechicken = (./. + "/hosts/${hostname}/home.nix");
-              };
-              nixpkgs.overlays = [
-                overlay-master
-
-                (final: prev: {
-                  catppuccin-cursors =
-                    prev.callPackage ./overlays/catppuccin-cursors.nix { };
-                })
-                (final: prev: {
-                  cura =
-                    prev.callPackage ./overlays/cura.nix { };
-                })
-                inputs.neovim-nightly-overlay.overlay
-                (final: prev: {
-                  dwm = prev.dwm.overrideAttrs (old: { src = ./modules/home/desktop/dwm; });
-                })
-              ];
-            }
-
-          ];
-          specialArgs = { inherit inputs; };
-        };
+      lib = nixpkgs.lib.extend
+        (self: super: { my = import ./lib { inherit pkgs inputs; lib = self; }; });
     in
     {
-      nixosConfigurations = {
-        Entertainer = mkSystem inputs.nixpkgs "x86_64-linux" "Entertainer";
-        boxie = mkSystem inputs.nixpkgs "x86_64-linux" "boxie";
-        bogus = mkSystem inputs.nixpkgs "x86_64-linux" "bogus";
-      };
+      lib = lib.my;
+
+      overlay =
+        final: prev: {
+          unstable = pkgs';
+          my = self.packages."${system}";
+        };
+
+      overlays =
+        mapModules ./overlays import;
+
+      packages."${system}" =
+        mapModules ./packages (p: pkgs.callPackage p { });
+
+      nixosModules =
+        { dotfiles = import ./.; } // mapModulesRec ./modules import;
+
+      nixosConfigurations =
+        mapHosts ./hosts { };
+
+      #devShell."${system}" =
+      #import ./shell.nix { inherit pkgs; };
 
       devShell.${system} = pkgs.mkShell {
         packages = [ pkgs.nixpkgs-fmt ];
         inherit (self.checks.${system}.pre-commit-check) shellHook;
       };
-
       checks.${system}.pre-commit-check =
         inputs.pre-commit-hooks.lib.${system}.run {
           src = self;
@@ -102,15 +75,7 @@
           hooks.shellcheck.enable = true;
           hooks.stylua.enable = true;
         };
-      templates = {
-        basic = {
-          path = ./templates/basic;
-          description = "basic flake";
-        };
-        rust = {
-          path = ./templates/rust;
-          description = "rust flake";
-        };
-      };
+
+
     };
 }

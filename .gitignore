@@ -3,15 +3,7 @@ result
 .direnv
 .pre-commit-config.yaml
 
-modules/home/cli/nvim/init.vim
 
 
-
-modules/home/desktop/dwm/config.h
-modules/home/desktop/dwm/drw.o
-modules/home/desktop/dwm/dwm
-modules/home/desktop/dwm/dwm.o
-modules/home/desktop/dwm/util.o
-
-modules/home/cli/nvim/init-home-manager.vim
-modules/home/cli/nvim/init.lua
+*.o
+./config/dwm/dwm
