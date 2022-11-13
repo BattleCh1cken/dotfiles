@@ -62,7 +62,3 @@ alias gs='git status'
 
 
 alias ssh='kitty +kitten ssh'
-
-#External Plugins
-eval "$(zoxide init zsh)"
-eval "$(starship init zsh)"

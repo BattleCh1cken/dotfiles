@@ -64,7 +64,8 @@ in
 
     # link recursively so other modules can link files in their folders
     home.configFile = {
-      #"wallpapers/wallpaper.png".source = "../../assets/trees.jpg";
+      "wallpapers/wallpaper.png".source = "${configDir}/wallpapers/trees.jpg";
+      "picom/picom.conf".source = "${configDir}/picom/picom.conf";
       "dwm" = {
         source = "${configDir}/dwm/scripts";
         recursive = true;

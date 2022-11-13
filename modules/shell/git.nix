@@ -16,10 +16,10 @@ in
       git
     ];
 
-    #home.configFile = {
-    #"git/config".source = "${configDir}/git/config";
-    #"git/ignore".source = "${configDir}/git/ignore";
-    #};
+    home.configFile = {
+      "git/config".source = "${configDir}/git/config";
+      "git/ignore".source = "${configDir}/git/ignore";
+    };
 
   };
 }
