@@ -8,7 +8,7 @@
   modules = {
     term.kitty.enable = true;
     desktop = {
-      #dwm.enable = true;
+      dwm.enable = true;
       apps.steam.enable = true;
       apps.thunar.enable = true;
     };
@@ -16,7 +16,7 @@
     shell.git.enable = true;
     editors.neovim.enable = true;
     hardware = {
-      audio.enable = true;
+      #audio.enable = true;
     };
     theme.active = "catppuccin";
 
@@ -32,8 +32,8 @@
 
   services.xserver = {
     enable = true;
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
+    #displayManager.gdm.enable = true;
+    #desktopManager.gnome.enable = true;
   };
   services.gnome.gnome-keyring.enable = true;
   environment.systemPackages = with pkgs;[
