@@ -97,7 +97,7 @@ static const Layout layouts[] = {
 static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", col_surface0, "-nf", col_text, "-sb", col_mauve, "-sf", col_base, NULL };
 static const char *termcmd[]  = { "kitty", NULL };
 
-static const char *screenshot[]  = { "flameshot", "gui", NULL };
+static const char *screenshot[]  = { "scrcap",  NULL };
 
 
 //Media stuff
