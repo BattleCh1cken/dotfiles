@@ -20,6 +20,7 @@
       audio.enable = true;
       nvidia.enable = true;
     };
+    theme.active = "catppuccin";
 
   };
 
@@ -37,8 +38,8 @@
        --output HDMI-0 --rate 60 --mode 1920x1080 --rotate right --pos 1920x0
     '';
     enable = true;
-    displayManager.sddm.enable = true;
-    desktopManager.plasma5.enable = true;
+    #displayManager.sddm.enable = true;
+    #desktopManager.plasma5.enable = true;
   };
   services.gnome.gnome-keyring.enable = true;
   environment.systemPackages = with pkgs;[
@@ -50,6 +51,7 @@
 
     #Apps
     firefox
+    brave
     mailspring
     qbittorrent
     vlc
@@ -57,7 +59,7 @@
     obsidian
     freecad
     virt-manager
-    discord
+    discord-canary
     google-chrome
     vscode.fhs
     cura

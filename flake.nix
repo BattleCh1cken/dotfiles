@@ -1,6 +1,7 @@
 # flake.nix --- the heart of my dotfiles
 #
 # Credit to hlissner
+# Definetly not stolen
 #
 # Welcome to ground zero. Where the whole flake gets set up and all its modules
 # are loaded.

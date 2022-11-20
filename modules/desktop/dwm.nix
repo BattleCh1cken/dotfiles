@@ -12,10 +12,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    #modules.theme.onReload.bspwm = ''
-    #${pkgs.bspwm}/bin/bspc wm -r
-    #source $XDG_CONFIG_HOME/bspwm/bspwmrc
-    #'';
     nixpkgs.overlays = [
       (final: prev: {
         dwm = prev.dwm.overrideAttrs (old: { src = ../../config/dwm; });
@@ -34,21 +30,21 @@ in
       flameshot
       feh
 
-      picom
       lightdm
       dunst
       libnotify
+      sx
     ];
 
     services = {
-      #picom.enable = true;
+      picom.enable = true;
       xserver = {
         enable = true;
-        #displayManager = {
-        #defaultSession = "none+dwm";
-        #lightdm.enable = true;
-        #lightdm.greeters.mini.enable = true;
-        #};
+        displayManager = {
+          defaultSession = "none+dwm";
+          lightdm.enable = true;
+          lightdm.greeters.gtk.enable = true;
+        };
         windowManager.dwm.enable = true;
       };
     };
@@ -64,8 +60,7 @@ in
 
     # link recursively so other modules can link files in their folders
     home.configFile = {
-      "wallpapers/wallpaper.png".source = "${configDir}/wallpapers/trees.jpg";
-      "picom/picom.conf".source = "${configDir}/picom/picom.conf";
+      #"picom/picom.conf".source = "${configDir}/picom/picom.conf";
       "dwm" = {
         source = "${configDir}/dwm/scripts";
         recursive = true;
