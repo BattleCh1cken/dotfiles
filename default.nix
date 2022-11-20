@@ -54,16 +54,17 @@ with lib.my;
   networking.useDHCP = mkDefault false;
 
   # Use the latest kernel
-  boot = {
-    #I should probably pin the kernel but I'm too lazy
+  /*
+    boot = {
     #kernelPackages = mkDefault pkgs.linuxKernel.packages.linux_5_18;
     loader = {
-      efi.efiSysMountPoint = "/boot/efi"; # ← use the same mount point here.
+
       efi.canTouchEfiVariables = mkDefault true;
       systemd-boot.configurationLimit = 10;
       systemd-boot.enable = mkDefault true;
     };
-  };
+    };
+  */
 
   # Just the bear necessities...
   environment.systemPackages = with pkgs; [

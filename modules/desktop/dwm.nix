@@ -27,13 +27,10 @@ in
 
       dmenu
       pamixer
-      flameshot
       feh
 
-      lightdm
       dunst
       libnotify
-      sx
     ];
 
     services = {
