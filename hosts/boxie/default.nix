@@ -16,7 +16,8 @@
     shell.git.enable = true;
     editors.neovim.enable = true;
     hardware = {
-      #audio.enable = true;
+      audio.enable = true;
+      touchpad.enable = true;
     };
     theme.active = "catppuccin";
 
