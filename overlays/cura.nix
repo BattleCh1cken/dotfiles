@@ -1,4 +1,4 @@
 (final: prev: {
-  cura =
+  cura-appimage =
     prev.callPackage ../packages/cura.nix { };
 })
