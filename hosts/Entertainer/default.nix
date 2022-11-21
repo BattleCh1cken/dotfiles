@@ -10,6 +10,7 @@
     term.kitty.enable = true;
     desktop = {
       dwm.enable = true;
+      #hyperland.enable = true;
       apps.steam.enable = true;
       apps.thunar.enable = true;
     };
@@ -63,6 +64,7 @@
     google-chrome
     vscode.fhs
     cura
+    prusa-slicer
     #prismlauncher
     libreoffice
     zoom-us
