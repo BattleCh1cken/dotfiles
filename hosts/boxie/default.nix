@@ -36,6 +36,7 @@
     #displayManager.gdm.enable = true;
     #desktopManager.gnome.enable = true;
   };
+  services.xserver.dpi = 144;
   services.gnome.gnome-keyring.enable = true;
   environment.systemPackages = with pkgs;[
     #misc
@@ -50,6 +51,7 @@
     discord-canary
     google-chrome
     vscode.fhs
+    arduino
     #prismlauncher
     #Command line utils
     gotop
