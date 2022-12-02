@@ -53,6 +53,7 @@ in
     home.configFile = {
       #Write it recursively so other modules can write files to it
       "zsh" = { source = "${configDir}/zsh"; recursive = true; };
+      "starship.toml" = { source = "${configDir}/starship.toml"; };
 
     };
 

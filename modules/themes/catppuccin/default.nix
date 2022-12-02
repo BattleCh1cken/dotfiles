@@ -112,7 +112,11 @@ in
         {
           #Sourced from sessionCommands in modules/themes/default.nix
           "xtheme/90-theme".source = ./config/Xresources;
+
         }
+        (mkIf desktop.term.kitty.enable {
+          "kitty/extra/catppuccin.conf".source = ./config/kitty/catppuccin.conf;
+        })
       ];
     })
   ]);

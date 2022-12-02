@@ -22,6 +22,7 @@
       neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
       nixos-hardware.url = "github:nixos/nixos-hardware";
       pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
+      nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
 
       #wayland nonsense
       nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
@@ -77,6 +78,7 @@
         packages = [ pkgs.nixpkgs-fmt ];
         inherit (self.checks.${system}.pre-commit-check) shellHook;
       };
+
       checks.${system}.pre-commit-check =
         inputs.pre-commit-hooks.lib.${system}.run {
           src = self;
@@ -84,6 +86,17 @@
           hooks.shellcheck.enable = true;
           hooks.stylua.enable = true;
         };
+
+      templates = {
+        basic = {
+          path = ./templates/basic;
+          description = "A very basic flake";
+        };
+        rust = {
+          path = ./templates/rust;
+          description = "rust moment";
+        };
+      };
 
 
     };

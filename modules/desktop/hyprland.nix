@@ -8,7 +8,7 @@ let
 in
 {
   imports = [
-    inputs.hyprland.nixosModules.default
+    #inputs.hyprland.nixosModules.default
   ];
 
   options.modules.desktop.hyprland = {
@@ -16,9 +16,9 @@ in
   };
 
   config = mkIf cfg.enable {
-    wayland.windowManager.hyprland = {
-      enable = true;
-    };
+    #wayland.windowManager.hyprland = {
+    #enable = true;
+    #};
     environment.systemPackages = with pkgs; [
 
     ];

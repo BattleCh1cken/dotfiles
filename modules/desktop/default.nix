@@ -30,9 +30,9 @@ in
       xclip
       xdotool
       xorg.xwininfo
-      libqalculate # calculator cli w/ currency conversion
-      qgnomeplatform # QPlatformTheme for a better Qt application inclusion in GNOME
-      libsForQt5.qtstyleplugin-kvantum # SVG-based Qt5 theme engine plus a config tool and extra theme
+      #libqalculate # calculator cli w/ currency conversion
+      #qgnomeplatform # QPlatformTheme for a better Qt application inclusion in GNOME
+      #libsForQt5.qtstyleplugin-kvantum # SVG-based Qt5 theme engine plus a config tool and extra theme
     ];
 
     fonts = {
@@ -64,7 +64,7 @@ in
         "100:class_g = 'mpv'"
         "100:class_g = 'Rofi'"
         "100:class_g = 'Peek'"
-        "99:_NET_WM_STATE@:32a = '_NET_WM_STATE_FULLSCREEN'"
+        #"99:_NET_WM_STATE@:32a = '_NET_WM_STATE_FULLSCREEN'"
       ];
       shadowExclude = [
         # Put shadows on notifications, the scratch popup and rofi only
@@ -81,7 +81,7 @@ in
         # Unredirect all windows if a full-screen opaque window is detected, to
         # maximize performance for full-screen windows. Known to cause
         # flickering when redirecting/unredirecting windows.
-        unredir-if-possible = true;
+        #unredir-if-possible = true;
 
         # GLX backend: Avoid using stencil buffer, useful if you don't have a
         # stencil buffer. Might cause incorrect opacity when rendering

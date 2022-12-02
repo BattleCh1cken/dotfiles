@@ -17,6 +17,7 @@ M.setup = function(on_attach, capabilities)
 					enable = true,
 					globals = {
 						"vim",
+						"awesome",
 					},
 				},
 			},

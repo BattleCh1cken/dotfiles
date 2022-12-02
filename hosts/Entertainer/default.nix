@@ -6,23 +6,27 @@
 
   ## Modules
   modules = {
-
-    term.kitty.enable = true;
     desktop = {
-      dwm.enable = true;
-      #hyperland.enable = true;
+      awesomewm.enable = true;
+      term = {
+        default = "wezterm";
+        wezterm.enable = true;
+      };
       apps.steam.enable = true;
       apps.thunar.enable = true;
+      media.ncmpcpp.enable = true;
     };
     shell.zsh.enable = true;
     shell.git.enable = true;
-    editors.neovim.enable = true;
+    editors = {
+      default = "nvim";
+      neovim.enable = true;
+    };
     hardware = {
       audio.enable = true;
       nvidia.enable = true;
     };
     theme.active = "catppuccin";
-
   };
 
 
@@ -43,12 +47,9 @@
     #desktopManager.plasma5.enable = true;
   };
   services.gnome.gnome-keyring.enable = true;
-  environment.systemPackages = with pkgs;[
+  environment.systemPackages = with pkgs; [
     #misc
     libsecret
-    papirus-icon-theme
-    ntfs3g
-    flatpak
 
     #Apps
     firefox
@@ -65,6 +66,7 @@
     vscode.fhs
     cura
     prusa-slicer
+    godot
     #prismlauncher
     libreoffice
     zoom-us

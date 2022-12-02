@@ -3,11 +3,11 @@
 with lib;
 with lib.my;
 let
-  cfg = config.modules.term.kitty;
+  cfg = config.modules.desktop.term.kitty;
   configDir = config.dotfiles.configDir;
 in
 {
-  options.modules.term.kitty = {
+  options.modules.desktop.term.kitty = {
     enable = mkBoolOpt false;
   };
 
