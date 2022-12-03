@@ -64,7 +64,7 @@
     discord-canary
     google-chrome
     vscode.fhs
-    cura
+    cura-appimage
     prusa-slicer
     godot
     #prismlauncher
