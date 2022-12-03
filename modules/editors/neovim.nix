@@ -19,6 +19,7 @@ in
 
     home-manager.users.${username} = {
       programs.neovim = {
+        enable = true;
         plugins = with pkgs.unstable.vimPlugins; [
           plenary-nvim
           #UI
@@ -29,7 +30,7 @@ in
           bufferline-nvim
           toggleterm-nvim
           #Syntax
-          (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
+          nvim-treesitter.withAllGrammars
           #Utils
           nvim-tree-lua
           telescope-nvim
