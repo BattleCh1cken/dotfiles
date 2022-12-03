@@ -9,35 +9,32 @@
       (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "uas" "usb_storage" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "uas" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
     {
-      device = "/dev/disk/by-uuid/5b851b64-cab8-412c-8d66-83f13724c21b";
+      device = "/dev/disk/by-uuid/2b4cd498-3d7b-4e91-9ceb-5f3df8ec666b";
       fsType = "ext4";
     };
 
-  boot.initrd.luks.devices."luks-2d8e5c95-bbaa-412c-8d33-50fcdc1ac38b".device = "/dev/disk/by-uuid/2d8e5c95-bbaa-412c-8d33-50fcdc1ac38b";
-
   fileSystems."/boot/efi" =
     {
-      device = "/dev/disk/by-uuid/3829-89AA";
+      device = "/dev/disk/by-uuid/A33A-A61C";
       fsType = "vfat";
     };
 
   swapDevices =
-    [
-      # { device = "/dev/disk/by-uuid/d175f093-b9c9-4712-9da7-261b580ef62b"; }
-    ];
+    [{ device = "/dev/disk/by-uuid/66401430-0278-4d2b-89de-a3c008397a14"; }];
 
-  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-  # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replicates the default behaviour.
-  networking.useDHCP = lib.mkDefault false;
-  networking.interfaces.wlp170s0.useDHCP = lib.mkDefault true;
+  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
+  # (the default) this is the recommended approach. When using systemd-networkd it's
+  # still possible to use this option, but it's recommended to use it in conjunction
+  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
+  networking.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlp170s0.useDHCP = lib.mkDefault true;
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
