@@ -2,6 +2,7 @@ local wibox = require("wibox")
 local awful = require("awful")
 local beautiful = require("beautiful")
 local menubar = require("menubar")
+local dpi = require("beautiful").xresources.apply_dpi
 
 -- {{{ Menu
 -- @DOC_MENU@
@@ -125,6 +126,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
 	-- @DOC_WIBAR@
 	-- Create the wibox
 	s.mywibox = awful.wibar({
+		border_width = dpi(5),
 		position = "top",
 		screen = s,
 		-- @DOC_SETUP_WIDGETS@

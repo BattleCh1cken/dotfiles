@@ -3,20 +3,20 @@
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
 
--- @DOC_REQUIRE_SECTION@
--- Standard awesome library
-local gears = require("gears")
 require("awful.autofocus")
--- Widget and layout library
--- Theme handling library
-local beautiful = require("beautiful")
--- Notification library
--- Declarative object management
--- Enable hotkeys help widget for VIM and other apps
--- when client with a matching name is opened:
-
--- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+local naughty = require("naughty")
+-- {{{ Error handling
+-- Check if awesome encountered an error during startup and fell back to
+-- another config (This code will only ever execute for the fallback config)
+-- @DOC_ERROR_HANDLING@
+naughty.connect_signal("request::display_error", function(message, startup)
+	naughty.notification({
+		urgency = "critical",
+		title = "Oops, an error happened" .. (startup and " during startup!" or "!"),
+		message = message,
+	})
+end)
+-- }}}
 
 -- @DOC_DEFAULT_APPLICATIONS@
 -- This is used later as the default terminal and editor to run.
@@ -36,7 +36,7 @@ require("config.bindings")
 require("config.rules")
 require("config.mouse")
 
---ui
+require("themes.linear")
 require("ui.bar")
 require("ui.notifications")
 require("ui.titlebars")

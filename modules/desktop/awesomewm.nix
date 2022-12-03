@@ -69,7 +69,7 @@ in
       light
     ];
     home.configFile = {
-      "awesome" = { source = "${configDir}/awesome"; recursive = true; };
+      #"awesome" = { source = "${configDir}/awesome"; recursive = true; };
     };
   };
 }
