@@ -40,6 +40,14 @@ awful.keyboard.append_global_keybindings({
 	end),
 	{ description = "open launcher", group = "launcher" },
 })
+
+--launchers
+awful.keyboard.append_global_keybindings({
+	awful.key({ modkey, "Shift" }, "s", function()
+		awful.spawn.with_shell("scrcap")
+	end),
+	{ description = "take screenshot", group = "launcher" },
+})
 --media and brighness
 awful.keyboard.append_global_keybindings({
 	awful.key({}, "XF86AudioRaiseVolume", function()

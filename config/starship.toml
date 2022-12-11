@@ -17,7 +17,7 @@ disabled = true
 
 [character]
 success_symbol = "[](fg:#313244 bg:none)[](fg:#89b4fa bg:#313244)[](fg:#313244 bg:none)" # The "success_symbol" segment is being set to "➜" with the color "bold green"
-# success_symbol = " [](#89b4fa)"
+ #success_symbol = " [](#89b4fa)"
 error_symbol = "[](fg:#313244 bg:none)[](fg:#f38ba8 bg:#313244)[](fg:#313244 bg:none)"
 vicmd_symbol = "[](fg:#313244 bg:none)[](fg:#a6e3a1 bg:#313244)[](fg:#313244 bg:none)"
 

@@ -68,10 +68,12 @@ in
       ];
       shadowExclude = [
         # Put shadows on notifications, the scratch popup and rofi only
-        "! name~='(rofi|scratch|Dunst)$'"
+        #"! name~='(rofi|scratch|Dunst)$'"
+        "class_g = 'awesome'"
       ];
       settings = {
         blur-background-exclude = [
+          "class_g = 'awesome'"
           "window_type = 'dock'"
           "window_type = 'desktop'"
           "class_g = 'Rofi'"

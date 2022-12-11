@@ -23,6 +23,7 @@ M.setup = function(on_attach)
 			diagnostics.jsonlint,
 			diagnostics.shellcheck,
 
+			formatting.black,
 			formatting.prettierd,
 			formatting.clang_format,
 			formatting.stylua,
