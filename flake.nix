@@ -18,7 +18,7 @@
       home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
       # Extras
-      #emacs-overlay.url = "github:nix-community/emacs-overlay";
+      emacs-overlay.url = "github:nix-community/emacs-overlay";
       neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
       nixos-hardware.url = "github:nixos/nixos-hardware";
       pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";

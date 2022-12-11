@@ -21,6 +21,7 @@
     editors = {
       default = "nvim";
       neovim.enable = true;
+      emacs.enable = true;
     };
     hardware = {
       audio.enable = true;
@@ -64,10 +65,11 @@
     discord-canary
     google-chrome
     vscode.fhs
+    cura
     cura-appimage
-    prusa-slicer
     godot
-    #prismlauncher
+    android-studio
+    prismlauncher
     libreoffice
     zoom-us
     #Command line utils
@@ -84,7 +86,7 @@
     xclip
     neofetch
   ];
-
+  services.xserver.desktopManager.wallpaper.mode = "fill";
   networking.networkmanager.enable = true;
   time.timeZone = "America/New_York";
   i18n.defaultLocale = "en_US.UTF-8";
