@@ -51,15 +51,15 @@ awful.keyboard.append_global_keybindings({
 --media and brighness
 awful.keyboard.append_global_keybindings({
 	awful.key({}, "XF86AudioRaiseVolume", function()
-		awful.spawn.with_shell("amixer -q set Master 10%+ unmute")
+		awful.spawn.with_shell("pactl set-sink-volume 0 +5%")
 	end, { description = "raise volume", group = "volume" }),
 
 	awful.key({}, "XF86AudioLowerVolume", function()
-		awful.spawn.with_shell("amixer -q set Master 10%- unmute")
+		awful.spawn.with_shell("pactl set-sink-volume 0 -5%")
 	end, { description = "lower volume", group = "volume" }),
 
 	awful.key({}, "XF86AudioMute", function()
-		awful.spawn.with_shell("amixer -q set Master toggle")
+		awful.spawn.with_shell("pactl set-sink-mute @DEFAULT_SINK@ toggle")
 	end, { description = "mute volume", group = "volume" }),
 
 	awful.key({}, "XF86MonBrightnessUp", function()
