@@ -39,6 +39,7 @@ in
 
     environment.systemPackages = with pkgs; [
       alsa-utils
+      pulseaudio
       light
     ];
     home.configFile = {
