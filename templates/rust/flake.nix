@@ -15,7 +15,7 @@
         pkgs = import nixpkgs {
           inherit system;
           overlays = [
-            fenix.overlay
+            fenix.overlays.default
           ];
         };
       in
