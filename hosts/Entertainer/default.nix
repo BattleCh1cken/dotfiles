@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, config, lib, inputs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -9,8 +9,9 @@
     desktop = {
       awesomewm.enable = true;
       term = {
-        default = "wezterm";
+        default = "kitty";
         wezterm.enable = true;
+        kitty.enable = true;
       };
       apps.steam.enable = true;
       apps.thunar.enable = true;
@@ -23,6 +24,7 @@
       neovim.enable = true;
       emacs.enable = true;
     };
+    services.docker.enable = true;
     hardware = {
       audio.enable = true;
       nvidia.enable = true;
@@ -59,6 +61,7 @@
     qbittorrent
     vlc
     gimp
+    krita
     obsidian
     freecad
     virt-manager

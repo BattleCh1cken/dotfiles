@@ -64,6 +64,7 @@ in
         "100:class_g = 'mpv'"
         "100:class_g = 'Rofi'"
         "100:class_g = 'Peek'"
+        "90:class_g = 'kitty'"
         #"99:_NET_WM_STATE@:32a = '_NET_WM_STATE_FULLSCREEN'"
       ];
       shadowExclude = [
@@ -73,6 +74,7 @@ in
       ];
       settings = {
         blur-background-exclude = [
+          "class_g = 'slop'"
           "class_g = 'awesome'"
           "window_type = 'dock'"
           "window_type = 'desktop'"
