@@ -16,6 +16,8 @@
       nixpkgs-unstable.url = "nixpkgs/nixpkgs-unstable"; # for packages on the edge
       home-manager.url = "github:rycee/home-manager/master";
       home-manager.inputs.nixpkgs.follows = "nixpkgs";
+      agenix.url = "github:ryantm/agenix";
+      agenix.inputs.nixpkgs.follows = "nixpkgs";
 
       # Extras
       emacs-overlay.url = "github:nix-community/emacs-overlay";
@@ -23,8 +25,11 @@
       nixos-hardware.url = "github:nixos/nixos-hardware";
       pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
       nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
+      fred.url = "github:area-53-robotics/discord-bot";
 
-      #wayland nonsense
+
+      # wayland nonsense
+      # TODO make a functioning hyprland module
       nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
       nixpkgs-wayland.inputs.nixpkgs.follows = "nixpkgs";
       hyprland = {

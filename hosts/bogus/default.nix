@@ -1,10 +1,11 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, config, lib, inputs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
   ];
   modules = {
     #services.minecraft.quilt.enable = true;
+
     shell.zsh.enable = true;
     shell.git.enable = true;
     editors = {
