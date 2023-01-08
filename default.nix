@@ -51,7 +51,7 @@ with lib.my;
   # The global useDHCP flag is deprecated, therefore explicitly set to false
   # here. Per-interface useDHCP will be mandatory in the future, so we enforce
   # this default behavior here.
-  networking.useDHCP = mkDefault false;
+  #networking.useDHCP = mkDefault false;
 
   # Use the latest kernel
   /*

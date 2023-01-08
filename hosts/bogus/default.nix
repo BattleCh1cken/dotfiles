@@ -2,10 +2,10 @@
 {
   imports = [
     ./hardware-configuration.nix
+    inputs.fred.nixosModule
   ];
   modules = {
-    #services.minecraft.quilt.enable = true;
-
+    services.minecraft.quilt.enable = true;
     shell.zsh.enable = true;
     shell.git.enable = true;
     editors = {
@@ -13,12 +13,21 @@
       neovim.enable = true;
     };
   };
-
+  services.fred = {
+    enable = true;
+    envFilePath = "/home/battlechicken/fred/.env";
+    dbFilePath = "/home/battlechicken/fred/bot.db";
+  };
   services.openssh = {
     enable = true;
-    startWhenNeeded = true;
     passwordAuthentication = false;
     kbdInteractiveAuthentication = false;
-    #permitRootLogin = "yes";
   };
+
+  environment.systemPackages = with pkgs; [
+    sqlite
+    sqlx-cli
+  ];
+
+
 }
