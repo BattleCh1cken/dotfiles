@@ -316,11 +316,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1673115801,
-        "narHash": "sha256-qaLWTRQOe9M0+sL175i6/qz8sxMzO+BnQnIGv1eaUhQ=",
+        "lastModified": 1673201225,
+        "narHash": "sha256-jsMYpPKFxNLek+vonfy/dBo4hGvSFcvPTpMh7WF31r0=",
         "owner": "area-53-robotics",
         "repo": "discord-bot",
-        "rev": "902bd86e88e4a4907224d6c9f494bf5dad9ba81e",
+        "rev": "6bc6b32f777cf9b4359dac497af9ededd45dd21c",
         "type": "github"
       },
       "original": {
