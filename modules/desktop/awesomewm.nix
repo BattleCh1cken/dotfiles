@@ -41,6 +41,7 @@ in
       alsa-utils
       pulseaudio
       light
+      redshift
     ];
     home.configFile = {
       #"awesome" = { source = "${configDir}/awesome"; recursive = true; };

@@ -4,7 +4,6 @@ local beautiful = require("beautiful")
 local menubar = require("menubar")
 local dpi = require("beautiful").xresources.apply_dpi
 
--- {{{ Menu
 -- @DOC_MENU@
 -- Create a launcher widget and a main menu
 myawesomemenu = {
@@ -32,13 +31,8 @@ mymainmenu = awful.menu({
 	},
 })
 
-mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon, menu = mymainmenu })
-
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
--- }}}
-
--- {{{ Wibar
 
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
@@ -126,7 +120,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
 	-- @DOC_WIBAR@
 	-- Create the wibox
 	s.mywibox = awful.wibar({
-		border_width = dpi(5),
+		border_width = dpi(0),
 		position = "top",
 		screen = s,
 		-- @DOC_SETUP_WIDGETS@
@@ -134,7 +128,6 @@ screen.connect_signal("request::desktop_decoration", function(s)
 			layout = wibox.layout.align.horizontal,
 			{ -- Left widgets
 				layout = wibox.layout.fixed.horizontal,
-				mylauncher,
 				s.mytaglist,
 				s.mypromptbox,
 			},
@@ -148,5 +141,3 @@ screen.connect_signal("request::desktop_decoration", function(s)
 		},
 	})
 end)
-
--- }}}

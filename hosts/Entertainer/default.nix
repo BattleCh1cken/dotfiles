@@ -13,8 +13,11 @@
         wezterm.enable = true;
         kitty.enable = true;
       };
-      apps.steam.enable = true;
-      apps.thunar.enable = true;
+      apps = {
+        rofi.enable = true;
+        steam.enable = true;
+        thunar.enable = true;
+      };
       media.ncmpcpp.enable = true;
     };
     shell.zsh.enable = true;
@@ -75,6 +78,7 @@
     prismlauncher
     libreoffice
     zoom-us
+    aseprite-unfree
     #Command line utils
     gotop
     htop
@@ -88,6 +92,7 @@
     fd
     xclip
     neofetch
+    libnotify
   ];
   services.xserver.desktopManager.wallpaper.mode = "fill";
   networking.networkmanager.enable = true;

@@ -15,7 +15,7 @@ in
           gtk = {
             theme = "Catppuccin";
             iconTheme = "Papirus";
-            cursorTheme = "Catppuccin-Mocchiato-Dark";
+            cursorTheme = "Catppuccin-Mocha-Dark";
           };
           fonts = {
             sans.name = "Fira Sans";
@@ -84,7 +84,7 @@ in
         fade = true;
         fadeDelta = 1;
         fadeSteps = [ 0.01 0.012 ];
-        shadow = true;
+        shadow = false;
         shadowOffsets = [ (-10) (-10) ];
         shadowOpacity = 0.52;
         #activeOpacity = "1.00";
@@ -110,13 +110,17 @@ in
       # Other dotfiles
       home.configFile = with config.modules; mkMerge [
         {
-          #Sourced from sessionCommands in modules/themes/default.nix
+          #Sourced from sessionCommands in modulesothemes/default.nix
           "xtheme/90-theme".source = ./config/Xresources;
 
         }
         (mkIf desktop.term.kitty.enable {
           "kitty/extra/catppuccin.conf".source = ./config/kitty/catppuccin.conf;
         })
+        (mkIf desktop.apps.rofi.enable {
+          "rofi/config.rasi".source = ./config/rofi/config.rasi;
+        })
+
       ];
     })
   ]);

@@ -35,17 +35,6 @@ close:connect_signal("button::press", function()
 	end
 end)
 
--- Launcher
-launcher = wibox.widget({
-	buttons = {
-		awful.button({}, 1, function()
-			awesome.emit_signal("widget::launcher")
-		end),
-	},
-	image = beautiful.awesome_icon,
-	widget = wibox.widget.imagebox,
-})
-
 -- Systray
 systray = wibox.widget({
 	buttons = {

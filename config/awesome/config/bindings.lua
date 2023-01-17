@@ -36,7 +36,7 @@ awful.keyboard.append_global_keybindings({
 	end, { description = "show the menubar", group = "launcher" }),
 
 	awful.key({ modkey }, "d", function()
-		app_launcher:toggle()
+		awful.spawn.with_shell("rofi -show drun")
 	end),
 	{ description = "open launcher", group = "launcher" },
 })
