@@ -40,6 +40,7 @@ in
           lightspeed-nvim
           nvim-autopairs
           impatient-nvim
+          auto-save-nvim
 
 
           #Tmux
