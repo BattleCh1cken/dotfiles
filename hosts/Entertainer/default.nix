@@ -73,6 +73,7 @@
     vscode.fhs
     cura
     cura-appimage
+    super-slicer-latest
     godot
     android-studio
     prismlauncher
