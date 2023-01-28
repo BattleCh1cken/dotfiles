@@ -94,6 +94,7 @@
     xclip
     neofetch
     libnotify
+    feh
   ];
   services.xserver.desktopManager.wallpaper.mode = "fill";
   networking.networkmanager.enable = true;
