@@ -13,9 +13,9 @@ in
         theme = {
           wallpaper = mkDefault ./config/wallpaper.jpg;
           gtk = {
-            theme = "Catppuccin";
+            theme = "Catppuccin-purple";
             iconTheme = "Papirus";
-            cursorTheme = "Catppuccin-Mocha-Dark";
+            cursorTheme = "Catppuccin-Macchiato-Dark";
           };
           fonts = {
             sans.name = "Fira Sans";
