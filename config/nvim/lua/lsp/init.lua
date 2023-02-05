@@ -8,7 +8,6 @@ local servers = {
 	"clangd",
 	"rust_analyzer",
 	"pyright",
-	"arduino_language_server",
 }
 
 local border = {

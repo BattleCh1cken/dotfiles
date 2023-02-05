@@ -20,6 +20,9 @@ local plugins_configs = {
 	--Completion
 	"cmp",
 	"luasnip",
+	--Rust
+	"rust-tools",
+	"crates",
 
 	--Other
 	"other",
