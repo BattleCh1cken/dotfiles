@@ -44,7 +44,7 @@ in
       redshift
     ];
     home.configFile = {
-      #"awesome" = { source = "${configDir}/awesome"; recursive = true; };
+      "awesome" = { source = "${configDir}/awesome"; recursive = true; };
     };
   };
 }

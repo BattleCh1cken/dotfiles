@@ -6,11 +6,15 @@
 
   ## Modules
   modules = {
-    term.kitty.enable = true;
     desktop = {
-      dwm.enable = true;
+      term.default = "kitty";
+      term.kitty.enable = true;
+      #awesomewm.enable = true;
+      hyprland.enable = true;
       apps.steam.enable = true;
       apps.thunar.enable = true;
+      apps.rofi.enable = true;
+
     };
     shell.zsh.enable = true;
     shell.git.enable = true;
@@ -66,6 +70,7 @@
     fd
     xclip
     neofetch
+    acpi
   ];
 
   networking.networkmanager.enable = true;

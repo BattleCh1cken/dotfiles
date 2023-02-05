@@ -1,4 +1,4 @@
-{ options, config, lib, pkgs, ... }:
+{ options, config, lib, pkgs, inputs, ... }:
 
 with lib;
 with lib.my;
@@ -8,7 +8,7 @@ let
 in
 {
   imports = [
-    #inputs.hyprland.nixosModules.default
+    inputs.hyprland.nixosModules.default
   ];
 
   options.modules.desktop.hyprland = {
@@ -16,19 +16,44 @@ in
   };
 
   config = mkIf cfg.enable {
-    #wayland.windowManager.hyprland = {
-    #enable = true;
-    #};
-    environment.systemPackages = with pkgs; [
 
+    nixpkgs.overlays = [
+      (self: super: {
+        waybar = super.waybar.overrideAttrs (oldAttrs: {
+          mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+        });
+      })
+    ];
+    programs.hyprland = {
+      enable = true;
+    };
+
+    services.xserver = {
+      displayManager = {
+        sddm.enable = true;
+        #lightdm.greeters.mini.enable = true;
+      };
+    };
+
+
+    environment.systemPackages = with pkgs; [
+      waybar
+      hyprpaper
+
+      wl-clipboard
     ];
 
     # link recursively so other modules can link files in their folders
     home.configFile = {
-      "hyprland/" = {
+      "hypr" = {
         source = "${configDir}/hyprland/";
         recursive = true;
       };
+      "waybar" = {
+        source = "${configDir}/waybar/";
+        recursive = true;
+      };
+
     };
   };
 }
