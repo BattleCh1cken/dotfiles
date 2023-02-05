@@ -5,13 +5,14 @@
 with builtins;
 with lib;
 with lib.my;
-let inherit (inputs) agenix;
+let
+  inherit (inputs) agenix;
   secretsDir = "${toString ../hosts}/${config.networking.hostName}/secrets";
   secretsFile = "${secretsDir}/secrets.nix";
 in
 {
   imports = [ agenix.nixosModules.age ];
-  environment.systemPackages = [ agenix.defaultPackage.x86_64-linux ];
+  environment.systemPackages = [ agenix.packages.x86_64-linux.default ];
 
   age = {
     secrets =
