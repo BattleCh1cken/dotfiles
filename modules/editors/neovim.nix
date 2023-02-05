@@ -51,6 +51,7 @@ in
           #Lang specifin Utils
           #Rust
           rust-tools-nvim
+          crates-nvim
           #LSP
           nvim-lspconfig
           null-ls-nvim
@@ -72,63 +73,6 @@ in
 
 
     environment.systemPackages = with pkgs; [
-      /*
-        (neovim.override {
-        vimAlias = true;
-        configure = {
-        packages.myPlugins = with pkgs.unstable.vimPlugins; {
-        start = [
-        plenary-nvim
-        #UI
-        catppuccin-nvim
-        nvim-web-devicons
-
-        feline-nvim
-        bufferline-nvim
-        toggleterm-nvim
-        #Syntax
-        (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
-        #Utils
-        nvim-tree-lua
-        telescope-nvim
-        indent-blankline-nvim
-        nvim-autopairs
-        nvim-colorizer-lua
-        lightspeed-nvim
-        nvim-autopairs
-        impatient-nvim
-
-
-        #Tmux
-        #Comment
-        comment-nvim
-        #Git
-        gitsigns-nvim
-        #Lang specifin Utils
-        #Rust
-        rust-tools-nvim
-        #LSP
-        nvim-lspconfig
-        null-ls-nvim
-        #Completion
-        nvim-cmp
-        cmp-nvim-lsp
-        cmp-path
-        cmp-buffer
-        cmp-nvim-lua
-        cmp_luasnip
-        #Snippets
-        luasnip
-        friendly-snippets
-
-
-        ];
-        opt = [ ];
-        };
-        };
-        }
-        )
-      */
       ripgrep
       xclip
       lazygit
