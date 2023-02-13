@@ -28,6 +28,11 @@ in
 
     programs.hyprland = {
       enable = true;
+      nvidiaPatches = if cfg.nvidia then true else false;
+      xwayland = {
+        enable = true;
+        hidpi = true;
+      };
     };
 
 
@@ -45,6 +50,8 @@ in
       hyprpaper
 
       wl-clipboard
+      pulseaudio
+      dunst
     ];
 
     environment.variables = mkIf cfg.nvidia {
