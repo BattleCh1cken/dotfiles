@@ -1,12 +1,4 @@
 local awful = require("awful")
-local bling = require("modules.bling")
-
-local args = {
-	apps_per_column = 2,
-	sort_alphabetically = false,
-	reverse_sort_alphabetically = true,
-}
-local app_launcher = bling.widget.app_launcher(args)
 
 --  Key bindings
 -- @doc_GLOBAL_KEYBINDINGS@
@@ -44,7 +36,7 @@ awful.keyboard.append_global_keybindings({
 --launchers
 awful.keyboard.append_global_keybindings({
 	awful.key({ modkey, "Shift" }, "s", function()
-		awful.spawn.with_shell("scrcap")
+		awful.spawn.with_shell("screenshot-x")
 	end),
 	{ description = "take screenshot", group = "launcher" },
 })

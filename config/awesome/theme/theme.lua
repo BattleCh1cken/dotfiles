@@ -1,8 +1,8 @@
 local theme_assets = require("beautiful.theme_assets")
 local dpi = require("beautiful").xresources.apply_dpi
-local colors = require("themes.colors.catppuccin.init")
+local colors = require("theme.catppuccin")
 local gears = require("gears")
-local theme_path = require("gears").filesystem.get_configuration_dir() .. "themes/linear/"
+local theme_path = require("gears").filesystem.get_configuration_dir() .. "theme/"
 local icon_path = theme_path .. "icons/"
 local theme = {}
 
@@ -85,7 +85,7 @@ theme.notification_spacing = dpi(10)
 theme.tooltip_opacity = 0
 
 -- Wallpaper
-theme.wallpaper = "~/.config/wallpaper.jpg"
+theme.wallpaper = "~/.config/wallpaper"
 
 -- Layout icons
 theme.layout_floating = gears.color.recolor_image(icon_path .. "floating.png", colors.fg)
