@@ -1,5 +1,5 @@
 (final: prev: {
-  discord = super.discord.overrideAttrs (_: {
+  discord = prev.discord.overrideAttrs (_: {
     withOpenASAR = true;
   });
 })
