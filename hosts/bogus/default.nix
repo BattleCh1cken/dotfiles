@@ -5,7 +5,7 @@
     inputs.fred.nixosModule
   ];
   modules = {
-    services.minecraft.quilt.enable = true;
+    services.minecraft.fabric.enable = true;
     shell.zsh.enable = true;
     shell.git.enable = true;
     editors = {
@@ -20,9 +20,10 @@
   };
   services.openssh = {
     enable = true;
-    passwordAuthentication = false;
-    kbdInteractiveAuthentication = false;
+    settings.PasswordAuthentication = false;
+    settings.KbdInteractiveAuthentication = false;
   };
+
 
   environment.systemPackages = with pkgs; [
     sqlite
