@@ -39,10 +39,12 @@ local options = {
 	updatetime = 250,
 	background = "dark",
 	foldmethod = "marker",
+	spelllang = "en",
 }
 
 vim.opt.shortmess:append("c")
 vim.cmd("filetype on")
+vim.cmd("set spell")
 vim.opt.shortmess:append("sI")
 vim.cmd([[set iskeyword+=-]])
 vim.cmd([[set formatoptions-=cro]])
