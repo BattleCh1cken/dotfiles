@@ -1,8 +1,10 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, config, lib, inputs, ... }:
 {
   imports = [
+    inputs.nixos-hardware.nixosModules.framework
     ./hardware-configuration.nix
   ];
+
 
   ## Modules
   modules = {
@@ -27,7 +29,6 @@
 
   };
 
-
   fonts.fonts = with pkgs; [
     noto-fonts
     noto-fonts-cjk
@@ -35,13 +36,12 @@
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
 
-  services.xserver = {
-    enable = true;
-    #displayManager.gdm.enable = true;
-    #desktopManager.gnome.enable = true;
-  };
   services.xserver.dpi = 144;
   services.gnome.gnome-keyring.enable = true;
+  environment.variables = {
+    GDK_SCALE = "2";
+    XCURSOR_SIZE = "32";
+  };
   environment.systemPackages = with pkgs;[
     #misc
     libsecret
@@ -52,16 +52,21 @@
     vlc
     gimp
     obsidian
-    discord-canary
+    discord
     google-chrome
     vscode.fhs
-    arduino
-    #prismlauncher
+    vscodium-fhs
+    signal-desktop
+    prismlauncher
+    pavucontrol
+    protonvpn-cli
+    tor-browser-bundle-bin
+    audacity
+    gimp
     #Command line utils
     gotop
     htop
     cava
-    cmus
     ranger
     protonup
     killall
@@ -71,7 +76,11 @@
     xclip
     neofetch
     acpi
+    # Drivers etc
+    intel-media-driver
+    intel-gpu-tools
   ];
+  services.xserver.enable = true;
 
   networking.networkmanager.enable = true;
   time.timeZone = "America/New_York";
