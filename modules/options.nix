@@ -46,7 +46,7 @@ with lib.my;
       {
         inherit name;
         description = "The primary user account";
-        extraGroups = [ "wheel" "dialout" "docker" "networkmanager" ];
+        extraGroups = [ "wheel" "dialout" "docker" "networkmanager" "libvirtd" ];
         isNormalUser = true;
         home = "/home/${name}";
         group = "users";
