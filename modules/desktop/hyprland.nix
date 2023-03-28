@@ -50,6 +50,7 @@ in
       hyprpaper
 
       wl-clipboard
+      wlr-randr
       pulseaudio
       dunst
     ];

@@ -181,7 +181,7 @@ in
     }
 
     (mkIf (cfg.wallpaper != null) {
-      home.configFile."wallpaper".source = cfg.wallpaper;
+      home.configFile."wallpaper.jpg".source = cfg.wallpaper;
     })
 
     /*
