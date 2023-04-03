@@ -3,7 +3,7 @@ local icons = require("ui.icons")
 local servers = {
 	"null_ls",
 	"bashls",
-	"sumneko_lua",
+	"lua-language-server",
 	"rnix",
 	"clangd",
 	"rust_analyzer",
