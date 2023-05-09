@@ -22,9 +22,12 @@ M.setup = function(on_attach)
 		sources = {
 			diagnostics.jsonlint,
 			diagnostics.shellcheck,
+			diagnostics.markdownlint.with({
+				extra_args = { "--disable MD013" },
+			}),
 
 			formatting.black,
-			formatting.prettierd,
+			formatting.prettier,
 			formatting.clang_format,
 			formatting.stylua,
 			formatting.shfmt.with({
