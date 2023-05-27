@@ -8,6 +8,7 @@ local servers = {
 	"clangd",
 	"rust_analyzer",
 	"pyright",
+	"tsserver",
 }
 
 local border = {
