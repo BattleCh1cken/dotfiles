@@ -74,6 +74,7 @@ in
 
     environment.systemPackages = with pkgs; [
       ripgrep
+      fd
       xclip
       lazygit
       #nix
@@ -85,6 +86,9 @@ in
       shellcheck
       nodePackages.bash-language-server
       shfmt
+      # Markdown
+      nodePackages.markdownlint-cli
+      nodePackages.prettier
     ];
 
     home.configFile = {
