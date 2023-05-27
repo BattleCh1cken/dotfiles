@@ -13,6 +13,8 @@
       term.kitty.enable = true;
       #awesomewm.enable = true;
       hyprland.enable = true;
+
+      apps.firefox.enable = true;
       apps.steam.enable = true;
       apps.thunar.enable = true;
       apps.rofi.enable = true;
@@ -36,18 +38,12 @@
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
 
-  services.xserver.dpi = 144;
   services.gnome.gnome-keyring.enable = true;
-  environment.variables = {
-    GDK_SCALE = "2";
-    XCURSOR_SIZE = "32";
-  };
   environment.systemPackages = with pkgs;[
     #misc
     libsecret
 
     #Apps
-    firefox
     mailspring
     vlc
     gimp
@@ -85,4 +81,16 @@
   networking.networkmanager.enable = true;
   time.timeZone = "America/New_York";
   i18n.defaultLocale = "en_US.UTF-8";
+
+  # bigger tty fonts
+  console.font =
+    "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
+  services.xserver.dpi = 200;
+  environment.variables = {
+
+    XCURSOR_SIZE = "32";
+    GDK_SCALE = "2";
+    #GDK_DPI_SCALE = "0.5";
+    _JAVA_OPTIONS = "-Dsun.java2d.uiScale=2";
+  };
 }
