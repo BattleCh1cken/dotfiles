@@ -14,7 +14,6 @@
       };
       grub = {
         enable = true;
-        version = 2;
         enableCryptodisk = true;
         device = "nodev";
         efiSupport = true;
