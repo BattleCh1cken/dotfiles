@@ -14,7 +14,7 @@ in {
     enable = mkEnableOption "starship";
   };
   config = mkIf cfg.enable {
-    home-manager.users.${username} = {
+    home.config = {
       programs.starship = {
         enable = true;
 

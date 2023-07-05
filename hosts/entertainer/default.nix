@@ -1,9 +1,8 @@
-{
-  pkgs,
-  config,
-  lib,
-  inputs,
-  ...
+{ pkgs
+, config
+, lib
+, inputs
+, ...
 }: {
   imports = [
     ./hardware-configuration.nix
@@ -36,7 +35,6 @@
 
     editors = {
       default = "nvim";
-      neovim.enable = false;
       nixvim.enable = true;
     };
 

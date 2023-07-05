@@ -1,13 +1,10 @@
 {
-  options,
   config,
   lib,
-  pkgs,
   ...
 }:
 with lib; let
   cfg = config.modules.services.syncthing;
-  configDir = config.dotfiles.configDir;
 in {
   options.modules.services.syncthing = {
     enable = mkEnableOption "syncthing";

@@ -1,60 +1,63 @@
 {
   config,
-  options,
   lib,
   pkgs,
   ...
 }:
-with lib;
-with lib.my; let
+with lib; let
   cfg = config.modules.shell.zsh;
-  configDir = config.dotfiles.configDir;
 in {
   options.modules.shell.zsh = {
-    enable = mkBoolOpt false;
+    enable = mkEnableOption "zsh";
   };
   config = mkIf cfg.enable {
-    users.defaultUserShell = pkgs.zsh;
-
-    programs.zsh = {
-      enable = true;
-      enableCompletion = true;
-      # I init completion myself, because enableGlobalCompInit initializes it
-      # too soon, which means commands initialized later in my config won't get
-      # completion, and running compinit twice is slow.
-      enableGlobalCompInit = false;
-      promptInit = ''
-        eval "$(zoxide init zsh)"
-        eval "$(starship init zsh)"
-        eval "$(direnv hook zsh)"
-      '';
-    };
-
     environment.systemPackages = with pkgs; [
-      zsh
-      nix-zsh-completions
-      bat
+      # Rewrite it in rust
       exa
-      fd
-      fzf
+      bat
       ripgrep
-      tldr
-      starship
-      zoxide
-      direnv
     ];
+    user.shell = pkgs.zsh;
+    programs.zsh.enable = true;
+    home.config = {
+      programs.direnv = {
+        enable = true;
+        nix-direnv.enable = true;
+        enableZshIntegration = true;
+      };
 
-    env = {
-      ZDOTDIR = "$XDG_CONFIG_HOME/zsh";
-      ZSH_CACHE = "$XDG_CACHE_HOME/zsh";
-      ZGEN_DIR = "$XDG_DATA_HOME/zgenom";
-    };
+      programs.zsh = {
+        enable = true;
+        enableAutosuggestions = true;
+        autocd = true;
+        dotDir = ".config/zsh";
+        history = {
+          expireDuplicatesFirst = true;
+        };
 
-    home.configFile = {
-      #Write it recursively so other modules can write files to it
-      "zsh" = {
-        source = "${configDir}/zsh";
-        recursive = true;
+        initExtra = ''
+          # run programs that are not in PATH with comma
+          command_not_found_handler() {
+            ${pkgs.comma}/bin/comma "$@"
+          }
+        '';
+
+        shellAliases = {
+          grep = "grep --color";
+          ip = "ip --color";
+
+          ls = "exa --icons --group-directories-first";
+          sl = "ls";
+          la = "exa -la";
+          tree = "exa --tree --icons";
+
+          c = "clear";
+          n = "nvim";
+          e = "exit";
+          g = "git";
+          cleanup = "sudo nix-collect-garbage --delete-older-than 7d";
+          rebuild = "sudo nix-store --verify; sudo nixos-rebuild switch --flake '.#'";
+        };
       };
     };
   };

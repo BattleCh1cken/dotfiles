@@ -4,7 +4,6 @@
 # but this takes care of the general cases.
 {
   config,
-  home-manager,
   ...
 }: {
   ### A tidy $HOME is a tidy mind

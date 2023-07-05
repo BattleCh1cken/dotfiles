@@ -40,7 +40,7 @@
       visual."K" = ":m '<-2<CR>gv=gv";
       visual."J" = ":m '>+1<CR>gv=gv";
 
-      # Plugins
+      # Plugins TODO: move to their respective files
 
       # NvimTree
       normal."<leader>n" = ":NvimTreeToggle<CR>";

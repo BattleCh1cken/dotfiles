@@ -2,6 +2,7 @@
   config,
   lib,
   inputs,
+  pkgs,
   ...
 }:
 with lib; let
@@ -12,6 +13,9 @@ in {
   };
 
   config = mkIf cfg.enable {
+    environment.systemPackages = with pkgs;[
+      lazygit
+    ];
     home.config = {
       imports = [
         inputs.nixvim.homeManagerModules.nixvim

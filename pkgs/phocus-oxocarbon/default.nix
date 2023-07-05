@@ -48,5 +48,6 @@ stdenvNoCC.mkDerivation rec {
   '';
 
   nativeBuildInputs = [nodePackages.sass];
+
   installFlags = ["DESTDIR=$(out)" "PREFIX="];
 }

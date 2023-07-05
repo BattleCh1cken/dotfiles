@@ -27,6 +27,10 @@ in {
           name = "phocus";
           package = pkgs.my.phocus-oxocarbon;
         };
+        cursorTheme = {
+          name = "Bibata-Modern-Classic";
+          package = pkgs.bibata-cursors;
+        };
       };
       # gtk 4 themes suck
       xdg.configFile."gtk-4.0/gtk.css".text = ''

@@ -2,7 +2,7 @@
   programs.nixvim.plugins.comment-nvim = {
     enable = true;
 
-    opleader = {line = "<C-/>";};
-    toggler = {line = "<C-/>";};
+    opleader = {line = "<leader>/";};
+    toggler = {line = "<leader>/";};
   };
 }

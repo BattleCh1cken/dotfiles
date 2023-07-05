@@ -13,19 +13,18 @@
           };
 
           lspBuf = {
-            ld = "definition";
-            lr = "references";
-            rt = "type_definition";
-            ri = "implementation";
-            K = "hover";
-            lrn = "rename";
-            lf = "format";
+            "<leader>ld" = "definition";
+            "<leader>lr" = "references";
+            "<leader>rt" = "type_definition";
+            "<leader>ri" = "implementation";
+            e = "hover";
+            "<leader>lrn" = "rename";
+            "<leader>lf" = "format";
           };
         };
 
         servers = {
           bashls.enable = true;
-          rnix-lsp.enable = true;
           clangd.enable = true;
           nil_ls.enable = true;
           lua-ls.enable = true;
