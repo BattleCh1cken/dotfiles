@@ -855,14 +855,17 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1688378679,
-        "narHash": "sha256-IUeFKuYkB8MBOpnJAE/RX4K7B8yCswlfpwRGOBuLeMI=",
-        "type": "git",
-        "url": "file:///home/battlechicken/Projects/nixvim"
+        "lastModified": 1688526560,
+        "narHash": "sha256-SN8hXonqYKatc67FlkMfKFlBqm8lMkbkcqv4c0xJirs=",
+        "owner": "BattleCh1cken",
+        "repo": "nixvim",
+        "rev": "13ac58b601c323637827c6fee01f6a0076a5aa6b",
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "file:///home/battlechicken/Projects/nixvim"
+        "owner": "BattleCh1cken",
+        "repo": "nixvim",
+        "type": "github"
       }
     },
     "poetry2nix": {

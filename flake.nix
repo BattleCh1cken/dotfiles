@@ -13,7 +13,7 @@
     hyprland.url = "github:hyprwm/hyprland";
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    nixvim.url = "/home/battlechicken/Projects/nixvim";
+    nixvim.url = "github:BattleCh1cken/nixvim";
     eww.url = "github:elkowar/eww";
     fred.url = "github:area-53-robotics/discord-bot";
 

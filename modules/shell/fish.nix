@@ -6,9 +6,9 @@
   ...
 }:
 with lib; let
-  cfg = config.modules.shell.zsh;
+  cfg = config.modules.shell.fish;
 in {
-  options.modules.shell.zsh = {
+  options.modules.shell.fish = {
     enable = mkEnableOption "fish";
   };
   config = mkIf cfg.enable {
