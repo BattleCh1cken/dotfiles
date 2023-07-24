@@ -1,12 +1,12 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
+{ config
+, lib
+, pkgs
+, ...
 }:
 with lib; let
   cfg = config.modules.shell.zsh;
-in {
+in
+{
   options.modules.shell.zsh = {
     enable = mkEnableOption "zsh";
   };
@@ -35,17 +35,10 @@ in {
         enable = true;
         enableAutosuggestions = true;
         autocd = true;
-        dotDir = ".config/zsh";
+        #dotDir = ".config/zsh";
         history = {
           expireDuplicatesFirst = true;
         };
-
-        initExtra = ''
-          # run programs that are not in PATH with comma
-          command_not_found_handler() {
-            ${pkgs.comma}/bin/comma "$@"
-          }
-        '';
 
         shellAliases = {
           grep = "grep --color";

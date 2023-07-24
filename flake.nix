@@ -16,6 +16,7 @@
     nixvim.url = "github:BattleCh1cken/nixvim";
     eww.url = "github:elkowar/eww";
     fred.url = "github:area-53-robotics/discord-bot";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     # Default Nixpkgs for packages and modules
     nixpkgs.follows = "unstable";
@@ -31,70 +32,72 @@
     nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs @ {
-    self,
-    nixpkgs,
-    stable,
-    master,
-    ...
-  }: let
-    inherit (lib.my) mapModules mapModulesRec mapHosts;
+  outputs =
+    inputs @ { self
+    , nixpkgs
+    , stable
+    , master
+    , ...
+    }:
+    let
+      inherit (lib.my) mapModules mapModulesRec mapHosts;
 
-    system = "x86_64-linux";
+      system = "x86_64-linux";
 
-    mkPkgs = pkgs: extraOverlays:
-      import pkgs {
-        inherit system;
-        config.allowUnfree = true; # forgive me Stallman senpai
-        overlays = extraOverlays;
-      };
-
-    pkgs = mkPkgs nixpkgs [self.overlay];
-
-    pkgs-stable = mkPkgs stable [self.overlay];
-    pkgs-master = mkPkgs master [self.overlay];
-
-    lib =
-      nixpkgs.lib.extend
-      (self: super: {
-        my = import ./lib {
-          inherit pkgs inputs;
-          lib = self;
+      mkPkgs = pkgs: extraOverlays:
+        import pkgs {
+          inherit system;
+          config.allowUnfree = true; # forgive me Stallman senpai
+          overlays = extraOverlays;
         };
-      });
-  in {
-    overlay = final: prev: {
-      master = pkgs-master;
-      stable = pkgs-stable;
-      my = self.packages."${system}";
-    };
 
-    packages."${system}" =
-      mapModules ./pkgs (p: pkgs.callPackage p {});
+      pkgs = mkPkgs nixpkgs [ self.overlay ];
 
-    nixosConfigurations =
-      mapHosts ./hosts {};
+      pkgs-stable = mkPkgs stable [ self.overlay ];
+      pkgs-master = mkPkgs master [ self.overlay ];
 
-    devShell.${system} = pkgs.mkShell {
-      packages = with pkgs; [
-        alejandra
-        cachix
-        deadnix
-      ];
-    };
-
-    formatter.${system} = pkgs.alejandra;
-
-    # TODO: move to import
-    templates = {
-      basic = {
-        path = ./templates/basic;
-        description = "A very basic flake";
+      lib =
+        nixpkgs.lib.extend
+          (self: super: {
+            my = import ./lib {
+              inherit pkgs inputs;
+              lib = self;
+            };
+          });
+    in
+    {
+      overlay = final: prev: {
+        master = pkgs-master;
+        stable = pkgs-stable;
+        my = self.packages."${system}";
       };
-      rust = {
-        path = ./templates/rust;
-        description = "rust moment";
+
+      packages."${system}" =
+        mapModules ./pkgs (p: pkgs.callPackage p { });
+
+      nixosConfigurations =
+        mapHosts ./hosts { };
+
+      devShell.${system} = pkgs.mkShell {
+        packages = with pkgs; [
+          alejandra
+          cachix
+          deadnix
+        ];
+      };
+
+      formatter.${system} = pkgs.alejandra;
+
+      # TODO: move to import
+      templates = {
+        basic = {
+          path = ./templates/basic;
+          description = "A very basic flake";
+        };
+        rust = {
+          path = ./templates/rust;
+          description = "rust moment";
+        };
       };
     };
-  };
 }
