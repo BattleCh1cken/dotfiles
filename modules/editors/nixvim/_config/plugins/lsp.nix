@@ -29,9 +29,14 @@
           nil_ls.enable = true;
           lua-ls.enable = true;
           texlab.enable = true;
+          typst-lsp.enable = true;
+          typst-lsp.extraOptions.settings = {
+            exportPdf = "onType";
+          };
           rust-analyzer.enable = true;
         };
       };
+
       null-ls = {
         enable = true;
         sources = {

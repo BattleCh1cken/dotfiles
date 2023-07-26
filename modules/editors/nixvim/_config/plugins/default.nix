@@ -16,6 +16,7 @@
   programs.nixvim = {
     colorschemes.oxocarbon.enable = true;
     plugins = {
+      typst-vim.enable = true;
       nvim-colorizer = {
         enable = true;
         userDefaultOptions.names = false;

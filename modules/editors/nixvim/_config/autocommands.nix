@@ -19,6 +19,7 @@
       pattern = [
         "tex"
         "latex"
+        "typst"
         "markdown"
       ];
       command = "setlocal spell spelllang=en,fr";
