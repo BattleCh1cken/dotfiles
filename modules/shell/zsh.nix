@@ -52,9 +52,13 @@ in
           c = "clear";
           n = "nvim";
           e = "exit";
+
           g = "git";
+          gs = "git status";
+
           cleanup = "sudo nix-collect-garbage --delete-older-than 7d";
           rebuild = "sudo nix-store --verify; sudo nixos-rebuild switch --flake '.#'";
+
         };
       };
     };
