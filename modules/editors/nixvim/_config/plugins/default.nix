@@ -21,7 +21,6 @@
         enable = true;
         userDefaultOptions.names = false;
       };
-      typst-vim.enable = true;
     };
   };
 }
