@@ -1,27 +1,31 @@
-{ options
-, config
-, lib
-, pkgs
-, inputs
-, ...
-}:
-with lib; let
-  cfg = config.modules.desktop.hyprland;
-in
 {
+  options,
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
+with lib;
+with lib.my; let
+  cfg = config.modules.desktop.hyprland;
+in {
   options.modules.desktop.hyprland = {
     enable = mkEnableOption "hyprland";
     monitors = mkOption {
       type = with types; listOf string;
       description = "A list of monitors to use, and their config. Needs to be formatted according to the Hyprland monitor config.";
-      default = [ "monitor=,preferred,auto,1" ];
+      default = ["monitor=,preferred,auto,1"];
+    };
+    # TODO: find a better way to do this
+    rules = mkOption {
+      type = with types; listOf string;
+      default = [""];
     };
   };
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      hyprpaper
-
       wl-clipboard
       wlr-randr
       pulseaudio
@@ -33,6 +37,8 @@ in
       swappy
     ];
 
+    programs.hyprland.enable = true;
+
     home.config = {
       imports = [
         inputs.hyprland.homeManagerModules.default
@@ -40,7 +46,6 @@ in
 
       wayland.windowManager.hyprland = {
         enable = true;
-        systemdIntegration = true;
         extraConfig = ''
           exec-once = wl-clipboard-history -t
           exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
@@ -49,7 +54,6 @@ in
           # sets xwayland scale
           exec-once=xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
 
-          exec = hyprpaper
           exec-once = dunst
 
           $mod = SUPER
@@ -152,8 +156,17 @@ in
             animation = workspaces, 1, 6, default
 
           }
+
+          ${builtins.concatStringsSep "\n" cfg.rules}
         '';
       };
+    };
+    xdg.portal = {
+      enable = true;
+      extraPortals = [pkgs.xdg-desktop-portal-hyprland];
+    };
+    environment.sessionVariables = {
+      NIXOS_OZONE_WL = "1";
     };
   };
 }

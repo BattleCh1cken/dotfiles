@@ -1,17 +1,15 @@
-{ options
-, config
-, lib
-, pkgs
-, inputs
-, ...
+{
+  options,
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
 }:
 with lib;
-with lib.my;
-let
+with lib.my; let
   cfg = config.modules.desktop.waybar;
-  configDir = config.dotfiles.configDir;
-in
-{
+in {
   options.modules.desktop.waybar = {
     enable = mkEnableOption "waybar";
     battery = mkBoolOpt false;
@@ -19,9 +17,9 @@ in
 
   config = mkIf cfg.enable {
     programs.waybar = {
-      enable = true;
+      enable =  true;
       package = pkgs.waybar.overrideAttrs (oldAttrs: {
-        mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+        mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
       });
     };
   };

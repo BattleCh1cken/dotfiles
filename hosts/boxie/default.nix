@@ -1,8 +1,9 @@
-{ pkgs
-, config
-, lib
-, inputs
-, ...
+{
+  pkgs,
+  config,
+  lib,
+  inputs,
+  ...
 }: {
   imports = [
     ./hardware-configuration.nix
@@ -20,7 +21,7 @@
     desktop = {
       hyprland = {
         enable = true;
-        monitors = [ "monitor=,preferred,auto,1.5" ];
+        monitors = ["monitor=,preferred,auto,1.5"];
       };
       greetd.enable = true;
       gtk.enable = true;
@@ -78,22 +79,10 @@
     acpi
   ];
 
-  programs.dconf.enable = true;
+  programs.dconf.enable = true; # Not sure where to put this yet
 
   networking.networkmanager.enable = true;
 
   time.timeZone = "America/New_York";
   i18n.defaultLocale = "en_US.UTF-8";
-
-  xdg.portal = {
-    enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
-  };
-  environment.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
-    # XCURSOR_SIZE = "32";
-    # GDK_SCALE = "2";
-    #GDK_DPI_SCALE = "0.5";
-    #_JAVA_OPTIONS = "-Dsun.java2d.uiScale=2";
-  };
 }

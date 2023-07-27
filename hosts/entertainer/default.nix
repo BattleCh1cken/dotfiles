@@ -1,8 +1,9 @@
-{ pkgs
-, config
-, lib
-, inputs
-, ...
+{
+  pkgs,
+  config,
+  lib,
+  inputs,
+  ...
 }: {
   imports = [
     ./hardware-configuration.nix
@@ -11,9 +12,29 @@
   ## Modules
   modules = {
     desktop = {
-      hyprland.enable = true;
+      hyprland = {
+        monitors = [
+          "monitor=DP-1,highrr 1920x1080, 0x500, 1"
+          "monitor=HDMI-A-1, 1920x1080, 1920x0, 1, transform, 3"
+        ];
+        rules = [
+          "workspace = 1, monitor:DP-1"
+          "workspace = 2, monitor:DP-1"
+          "workspace = 3, monitor:DP-1"
+          "workspace = 4, monitor:DP-1"
+          "workspace = 5, monitor:DP-1"
+
+          "workspace = 6, monitor:HDMI-A-1"
+          "workspace = 7, monitor:HDMI-A-1"
+          "workspace = 8, monitor:HDMI-A-1"
+          "workspace = 9, monitor:HDMI-A-1"
+          "workspace = 10, monitor:HDMI-A-1"
+        ];
+        enable = true;
+      };
       greetd.enable = true;
-      eww.enable = true;
+      waybar.enable = true;
+      swaybg.enable = true;
       gtk.enable = true;
       term = {
         default = "wezterm";
@@ -35,7 +56,8 @@
 
     editors = {
       default = "nvim";
-      nixvim.enable = true;
+      nixvim.enable = false;
+      neovim.enable = true;
     };
 
     services = {
@@ -58,6 +80,7 @@
   environment.systemPackages = with pkgs; [
     #misc
     libsecret
+    mesa
 
     #Apps
     firefox
@@ -84,25 +107,32 @@
 
     #Command line utils
     gotop
+    unzip
     htop
-    cava
-    cmus
     ranger
     protonup
     killall
     wget
     cmatrix
     fd
-    xclip
     neofetch
     libnotify
     feh
     sshfs
     gh
     avrdude
+    my.mrpack-install
+    my.rcon-cli
+    jdk8
+    tailscale
+    zathura
   ];
 
-  services.gnome.gnome-keyring.enable = true;
+  programs.dconf.enable = true; # TODO: relocate to module
+
+  services.gnome.gnome-keyring.enable = true; # TODO: relocate to module
+
+  services.tailscale.enable = true;
 
   networking.networkmanager.enable = true;
   time.timeZone = "America/New_York";
