@@ -2,6 +2,7 @@
   stdenv,
   fetchFromGitHub,
   papirus-icon-theme,
+  getent,
 }:
 stdenv.mkDerivation rec {
   pname = "oxocarbon-folders";
@@ -13,6 +14,8 @@ stdenv.mkDerivation rec {
     rev = "${version}";
     sha256 = "sha256-o0g7o+tzBRpTLbIGczaAeYfU/rJ2fZ6cQcL6FKeoxcw=";
   };
+
+  nativeBuildInputs = [getent];
 
   installPhase = ''
     mkdir -p $out/share/icons/Papirus
