@@ -20,6 +20,10 @@ in {
       lazygit
       ripgrep
       neovim
+
+      # Language servers
+      lua-language-server
+      rnix-lsp
     ];
   };
 }
