@@ -1,9 +1,8 @@
-{
-  pkgs,
-  config,
-  lib,
-  inputs,
-  ...
+{ pkgs
+, config
+, lib
+, inputs
+, ...
 }: {
   imports = [
     ./hardware-configuration.nix
@@ -44,7 +43,7 @@
         steam.enable = true;
         thunar.enable = true;
         qemu.enable = true;
-        rofi.enable = true;
+        anyrun.enable = true;
       };
       media.ncmpcpp.enable = true;
     };

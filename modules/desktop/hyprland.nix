@@ -1,26 +1,26 @@
-{
-  options,
-  config,
-  lib,
-  pkgs,
-  inputs,
-  ...
+{ options
+, config
+, lib
+, pkgs
+, inputs
+, ...
 }:
 with lib;
 with lib.my; let
   cfg = config.modules.desktop.hyprland;
-in {
+in
+{
   options.modules.desktop.hyprland = {
     enable = mkEnableOption "hyprland";
     monitors = mkOption {
       type = with types; listOf string;
       description = "A list of monitors to use, and their config. Needs to be formatted according to the Hyprland monitor config.";
-      default = ["monitor=,preferred,auto,1"];
+      default = [ "monitor=,preferred,auto,1" ];
     };
     # TODO: find a better way to do this
     rules = mkOption {
       type = with types; listOf string;
-      default = [""];
+      default = [ "" ];
     };
   };
 
@@ -37,7 +37,10 @@ in {
       swappy
     ];
 
-    programs.hyprland.enable = true;
+    programs.hyprland = {
+      enable = true;
+      xwayland.enable = true;
+    };
 
     home.config = {
       imports = [
@@ -55,6 +58,7 @@ in {
           exec-once=xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
 
           exec-once = dunst
+          exec-once = waybar
 
           $mod = SUPER
 
@@ -64,7 +68,7 @@ in {
           bind = $mod, return, exec, ${config.modules.desktop.term.default}
           bind = $mod, Q, killactive,
           bind = $mod SHIFT, Q, exit,
-          bind = $mod, D, exec, rofi -show drun
+          bind = $mod, D, exec, anyrun
 
           bind = SUPER, F, fullscreen,
           bind = SUPER, Space, togglefloating,
@@ -84,7 +88,7 @@ in {
           bind = $mod SHIFT, J, movewindow, d
 
           # Hotkeys
-          bind = $mod SHIFT, s, exec, grim -g "$(slurp)" - | swappy -f - -o ~/Pictures/Screenshots/screenshot$(date +%s).png
+          bind = $mod SHIFT, s, exec, grim -g "$(slurp -w 0)" - | swappy -f - -o ~/Pictures/Screenshots/screenshot$(date +%s).png
 
           # Volume
           binde=, XF86AudioRaiseVolume, exec, pactl set-sink-volume 0 +5%
@@ -163,7 +167,7 @@ in {
     };
     xdg.portal = {
       enable = true;
-      extraPortals = [pkgs.xdg-desktop-portal-hyprland];
+      extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
     };
     environment.sessionVariables = {
       NIXOS_OZONE_WL = "1";
