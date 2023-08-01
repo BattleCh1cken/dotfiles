@@ -29,6 +29,7 @@ return {
 	hide_tab_bar_if_only_one_tab = true,
 	custom_block_glyphs = true,
 	audible_bell = "Disabled",
+	hide_mouse_cursor_when_typing = false,
 
 	-- Get rid of close prompt
 	window_close_confirmation = "NeverPrompt",
