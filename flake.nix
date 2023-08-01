@@ -17,6 +17,7 @@
     eww.url = "github:elkowar/eww";
     fred.url = "github:area-53-robotics/discord-bot";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    anyrun.url = "github:Kirottu/anyrun";
 
     # Default Nixpkgs for packages and modules
     nixpkgs.follows = "unstable";
@@ -28,6 +29,7 @@
     eww.inputs.nixpkgs.follows = "nixpkgs";
     neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
+    anyrun.inputs.nixpkgs.follows = "nixpkgs";
     nixpkgs-wayland.inputs.nixpkgs.follows = "nixpkgs";
     nix.inputs.nixpkgs.follows = "nixpkgs";
   };
