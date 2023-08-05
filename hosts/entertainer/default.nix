@@ -32,6 +32,7 @@
         enable = true;
       };
       greetd.enable = true;
+      dunst.enable = true;
       waybar.enable = true;
       swaybg.enable = true;
       gtk.enable = true;
