@@ -1,13 +1,13 @@
-{
-  config,
-  lib,
-  inputs,
-  pkgs,
-  ...
+{ config
+, lib
+, inputs
+, pkgs
+, ...
 }:
 with lib; let
   cfg = config.modules.editors.neovim;
-in {
+in
+{
   options.modules.editors.neovim = {
     enable = mkEnableOption "neovim";
   };
@@ -17,13 +17,15 @@ in {
       inputs.neovim-nightly-overlay.overlay
     ];
     environment.systemPackages = with pkgs; [
+      neovim
       lazygit
       ripgrep
-      neovim
+      gcc
 
       # Language servers
       lua-language-server
       rnix-lsp
+      nodePackages_latest.typescript-language-server
     ];
   };
 }
