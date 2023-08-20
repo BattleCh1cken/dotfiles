@@ -24,6 +24,7 @@ return {
       "pyright",
       "tsserver",
       "typst_lsp",
+      "svelte",
     }
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
