@@ -13,18 +13,19 @@ in
   options.modules.desktop.hyprland = {
     enable = mkEnableOption "hyprland";
     monitors = mkOption {
-      type = with types; listOf string;
+      type = with types; listOf str;
       description = "A list of monitors to use, and their config. Needs to be formatted according to the Hyprland monitor config.";
       default = [ "monitor=,preferred,auto,1" ];
     };
     # TODO: find a better way to do this
     rules = mkOption {
-      type = with types; listOf string;
+      type = with types; listOf str;
       default = [ "" ];
     };
   };
 
   config = mkIf cfg.enable {
+
     environment.systemPackages = with pkgs; [
       wl-clipboard
       wlr-randr
@@ -35,23 +36,15 @@ in
       swappy
     ];
 
-    programs.hyprland = {
-      enable = true;
-      xwayland.enable = true;
-    };
 
     home.config = {
-      imports = [
-        inputs.hyprland.homeManagerModules.default
-      ];
-
       wayland.windowManager.hyprland = {
         enable = true;
+        systemdIntegration = true;
         extraConfig = ''
           exec-once = wl-clipboard-history -t
           exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
           exec-once = systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-          exec-once=/usr/lib/polkit-kde-authentication-agent-1
 
           # sets xwayland scale
           exec-once=xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
@@ -62,6 +55,8 @@ in
 
           # monitors
           ${builtins.concatStringsSep "\n" cfg.monitors}
+
+          bindm=SUPER,mouse:272,movewindow
 
           bind = $mod, return, exec, ${config.modules.desktop.term.default}
           bind = $mod, Q, killactive,
@@ -116,7 +111,6 @@ in
           }
 
           master {
-              # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
               new_is_master = true
           }
 
@@ -127,36 +121,13 @@ in
             active_opacity = 1.0
             inactive_opacity = 1.0
 
-            blur = true
-            blur_size = 3
-            blur_passes = 3
-            blur_new_optimizations = true
+            blur {
+              enabled = true;
+            }
+
 
             drop_shadow = true
             shadow_ignore_window = true
-            shadow_offset = 2 2
-            shadow_range = 4
-            shadow_render_power = 2
-            col.shadow = 0x66000000
-
-            blurls = gtk-layer-shell
-            # blurls = waybar
-            blurls = lockscreen
-          }
-          animations {
-            enabled = true
-            bezier = overshot, 0.05, 0.9, 0.1, 1.05
-            bezier = smoothOut, 0.36, 0, 0.66, -0.56
-            bezier = smoothIn, 0.25, 1, 0.5, 1
-
-            animation = windows, 1, 5, overshot, slide
-            animation = windowsOut, 1, 4, smoothOut, slide
-            animation = windowsMove, 1, 4, default
-            animation = border, 1, 10, default
-            animation = fade, 1, 10, smoothIn
-            animation = fadeDim, 1, 10, smoothIn
-            animation = workspaces, 1, 6, default
-
           }
 
           ${builtins.concatStringsSep "\n" cfg.rules}
