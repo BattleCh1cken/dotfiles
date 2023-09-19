@@ -10,10 +10,11 @@
     # Flake inputs
     home-manager.url = "github:nix-community/home-manager";
     agenix.url = "github:ryantm/agenix";
-    hyprland.url = "github:hyprwm/hyprland";
+
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     nixvim.url = "github:BattleCh1cken/nixvim";
+
     eww.url = "github:elkowar/eww";
     fred.url = "github:area-53-robotics/discord-bot";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -25,7 +26,6 @@
     # Minimize duplicate instances of inputs
     agenix.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    hyprland.inputs.nixpkgs.follows = "nixpkgs";
     eww.inputs.nixpkgs.follows = "nixpkgs";
     neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
