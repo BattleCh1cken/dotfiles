@@ -42,6 +42,7 @@ in
             ];
             modules-right = [
               "tray"
+              "battery"
               "pulseaudio"
               "clock"
               # "custom/randwall" 
