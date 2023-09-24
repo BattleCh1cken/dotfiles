@@ -13,7 +13,7 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       # Rewrite it in rust
-      exa
+      eza
       bat
       ripgrep
     ];
@@ -31,6 +31,7 @@ in
         enableZshIntegration = true;
       };
 
+
       programs.zsh = {
         enable = true;
         enableAutosuggestions = true;
@@ -40,14 +41,27 @@ in
           expireDuplicatesFirst = true;
         };
 
+        plugins = [
+          {
+            name = "zsh-nix-shell";
+            file = "nix-shell.plugin.zsh";
+            src = pkgs.fetchFromGitHub {
+              owner = "chisui";
+              repo = "zsh-nix-shell";
+              rev = "v0.5.0";
+              sha256 = "0za4aiwwrlawnia4f29msk822rj9bgcygw6a8a6iikiwzjjz0g91";
+            };
+          }
+        ];
+
         shellAliases = {
           grep = "grep --color";
           ip = "ip --color";
 
-          ls = "exa --icons --group-directories-first";
+          ls = "eza --icons --group-directories-first";
           sl = "ls";
-          la = "exa -la";
-          tree = "exa --tree --icons";
+          la = "eza -la";
+          tree = "eza --tree --icons";
 
           c = "clear";
           n = "nvim";
