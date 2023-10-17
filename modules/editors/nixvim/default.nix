@@ -13,7 +13,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs;[
+    environment.systemPackages = with pkgs; [
       lazygit
     ];
     home.config = {
@@ -21,7 +21,7 @@ in {
         inputs.nixvim.homeManagerModules.nixvim
         ./_config/options.nix
         ./_config/mappings.nix
-      ./_config/plugins
+        ./_config/plugins
       ];
 
       programs.nixvim = {

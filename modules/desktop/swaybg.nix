@@ -1,12 +1,12 @@
-{ pkgs
-, lib
-, config
-, ...
+{
+  pkgs,
+  lib,
+  config,
+  ...
 }:
 with lib; let
   cfg = config.modules.desktop.swaybg;
-in
-{
+in {
   options.modules.desktop.swaybg = {
     enable = mkEnableOption "swaybg";
   };
@@ -16,18 +16,16 @@ in
       systemd.user.services.swaybg = {
         Unit = {
           Description = "Wallpaper chooser service";
-          PartOf = [ "graphical-session.target" ];
-          After = [ "graphical-session.target" ];
+          PartOf = ["graphical-session.target"];
+          After = ["graphical-session.target"];
         };
-        Install.WantedBy = [ "graphical-session.target" ];
-        Service =
-          let
-            wallpaper = ../../config/wallpaper.jpg;
-          in
-          {
-            ExecStart = "${lib.getExe pkgs.swaybg} -m fill -i ${wallpaper}";
-            Restart = "always";
-          };
+        Install.WantedBy = ["graphical-session.target"];
+        Service = let
+          wallpaper = ../../config/wallpaper.jpg;
+        in {
+          ExecStart = "${lib.getExe pkgs.swaybg} -m fill -i ${wallpaper}";
+          Restart = "always";
+        };
       };
     };
   };

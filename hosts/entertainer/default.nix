@@ -1,8 +1,9 @@
-{ pkgs
-, config
-, lib
-, inputs
-, ...
+{
+  pkgs,
+  config,
+  lib,
+  inputs,
+  ...
 }: {
   imports = [
     ./hardware-configuration.nix
@@ -31,7 +32,7 @@
         ];
         enable = true;
       };
-      greetd.enable = true;
+      #greetd.enable = true;
       dunst.enable = true;
       waybar.enable = true;
       swaybg.enable = true;
@@ -46,7 +47,6 @@
         qemu.enable = true;
         anyrun.enable = true;
       };
-      media.ncmpcpp.enable = true;
     };
     shell = {
       zsh.enable = true;
@@ -56,7 +56,6 @@
 
     editors = {
       default = "nvim";
-      nixvim.enable = false;
       neovim.enable = true;
     };
 
@@ -70,13 +69,6 @@
     };
   };
 
-  services.xserver = {
-    #displayManager.setupCommands = ''
-    #${pkgs.xorg.xrandr}/bin/xrandr --output DP-2 --rate 144 --mode 1920x1080 --pos 0x500 --output HDMI-1 --rate 60 --mode 1920x1080 --pos 1920x0 --rotate right
-    #'';
-    enable = true;
-  };
-
   environment.systemPackages = with pkgs; [
     #misc
     libsecret
@@ -84,6 +76,10 @@
 
     #Apps
     firefox
+<<<<<<< HEAD
+=======
+    thunderbird
+>>>>>>> 182b326 (Format: formatted with Alejandra)
     qbittorrent
     vlc
     thunderbird
@@ -92,6 +88,7 @@
     obsidian
     freecad
     webcord
+<<<<<<< HEAD
     (pkgs.discord.override {
       #remove any overrides that you don't want
       withOpenASAR = true;
@@ -99,14 +96,19 @@
     })
     google-chrome
     vscode.fhs
+=======
+    google-chrome
+    vscode.fhs
+    godot_4
+>>>>>>> 182b326 (Format: formatted with Alejandra)
     prismlauncher
     zoom-us
     super-slicer-latest
-    #blender
-    #aseprite-unfree
     pavucontrol
-    arduino
     inkscape
+    libsForQt5.kdenlive
+    obs-studio
+    zathura
 
     #Command line utils
     gotop
@@ -128,12 +130,38 @@
     my.rcon-cli
     jdk8
     tailscale
-    zathura
+    ventoy
+    spotdl
   ];
 
   programs.dconf.enable = true; # TODO: relocate to module
-
   services.gnome.gnome-keyring.enable = true; # TODO: relocate to module
+
+  services.grafana = {
+    enable = true;
+    settings = {
+      server = {
+        http_addr = "127.0.0.1";
+        http_port = 3000;
+      };
+    };
+  };
+
+  services.mosquitto = {
+    enable = true;
+    listeners = [
+      {
+        acl = ["pattern readwrite #"];
+        omitPasswordAuth = true;
+        settings.allow_anonymous = true;
+      }
+    ];
+  };
+
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [1883];
+  };
 
   services.tailscale.enable = true;
 

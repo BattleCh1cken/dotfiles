@@ -10,6 +10,7 @@ return {
       indent = { enable = true },
       autopairs = { enable = true },
       ensure_installed = "all",
+
       auto_install = true,
     }
   end

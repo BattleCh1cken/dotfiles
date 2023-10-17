@@ -1,31 +1,30 @@
-{ options
-, config
-, lib
-, pkgs
-, inputs
-, ...
+{
+  options,
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
 }:
 with lib;
 with lib.my; let
   cfg = config.modules.desktop.hyprland;
-in
-{
+in {
   options.modules.desktop.hyprland = {
     enable = mkEnableOption "hyprland";
     monitors = mkOption {
       type = with types; listOf str;
       description = "A list of monitors to use, and their config. Needs to be formatted according to the Hyprland monitor config.";
-      default = [ "monitor=,preferred,auto,1" ];
+      default = ["monitor=,preferred,auto,1"];
     };
     # TODO: find a better way to do this
     rules = mkOption {
       type = with types; listOf str;
-      default = [ "" ];
+      default = [""];
     };
   };
 
   config = mkIf cfg.enable {
-
     environment.systemPackages = with pkgs; [
       wl-clipboard
       wlr-randr
@@ -36,11 +35,14 @@ in
       swappy
     ];
 
-
     home.config = {
       wayland.windowManager.hyprland = {
         enable = true;
+<<<<<<< HEAD
         #systemd.enable = true;
+=======
+        systemd.enable = true;
+>>>>>>> 182b326 (Format: formatted with Alejandra)
         extraConfig = ''
           exec-once = wl-clipboard-history -t
           exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
@@ -143,7 +145,11 @@ in
     };
     xdg.portal = {
       enable = true;
+<<<<<<< HEAD
       extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+=======
+      extraPortals = [pkgs.xdg-desktop-portal-hyprland];
+>>>>>>> 182b326 (Format: formatted with Alejandra)
     };
   };
 }

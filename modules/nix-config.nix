@@ -4,7 +4,11 @@
 , pkgs
 , ...
 }: {
+<<<<<<< HEAD
   # Configure nix
+=======
+
+>>>>>>> 182b326 (Format: formatted with Alejandra)
   nix = {
     extraOptions = "experimental-features = nix-command flakes";
     settings = {

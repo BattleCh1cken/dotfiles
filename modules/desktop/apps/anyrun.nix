@@ -1,22 +1,21 @@
-{ config
-, options
-, lib
-, pkgs
-, inputs
-, ...
+{
+  config,
+  options,
+  lib,
+  pkgs,
+  inputs,
+  ...
 }:
 with lib;
 with lib.my; let
   cfg = config.modules.desktop.apps.anyrun;
-in
-{
+in {
   options.modules.desktop.apps.anyrun = {
     enable = mkEnableOption "anyrun";
   };
 
   config = mkIf cfg.enable {
     home.config = {
-
       imports = [
         inputs.anyrun.homeManagerModules.default
       ];
@@ -74,7 +73,6 @@ in
           }
         '';
       };
-
     };
   };
 }

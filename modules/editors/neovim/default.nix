@@ -1,13 +1,13 @@
-{ config
-, lib
-, inputs
-, pkgs
-, ...
+{
+  config,
+  lib,
+  inputs,
+  pkgs,
+  ...
 }:
 with lib; let
   cfg = config.modules.editors.neovim;
-in
-{
+in {
   options.modules.editors.neovim = {
     enable = mkEnableOption "neovim";
   };
