@@ -74,6 +74,7 @@
         my = self.packages."${system}";
       };
 
+      # Export packages for other flakes to use
       packages."${system}" =
         mapModules ./pkgs (p: pkgs.callPackage p { });
 

@@ -4,11 +4,7 @@
 , pkgs
 , ...
 }: {
-  # Configure nix and nixpkgs
-  environment.variables.NIXPKGS_ALLOW_UNFREE = "1";
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.allowUnfreePredicate = pkg: true;
-
+  # Configure nix
   nix = {
     extraOptions = "experimental-features = nix-command flakes";
     settings = {

@@ -40,14 +40,13 @@ in
     home.config = {
       wayland.windowManager.hyprland = {
         enable = true;
-        systemdIntegration = true;
+        #systemd.enable = true;
         extraConfig = ''
           exec-once = wl-clipboard-history -t
           exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
           exec-once = systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
           # sets xwayland scale
-          exec-once=xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
 
           exec-once = waybar
 
@@ -126,20 +125,25 @@ in
             }
 
 
+
+
             drop_shadow = true
             shadow_ignore_window = true
           }
 
+
           ${builtins.concatStringsSep "\n" cfg.rules}
+
+          xwayland {
+            force_zero_scaling = true
+          }
+
         '';
       };
     };
     xdg.portal = {
       enable = true;
       extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
-    };
-    environment.sessionVariables = {
-      NIXOS_OZONE_WL = "1";
     };
   };
 }

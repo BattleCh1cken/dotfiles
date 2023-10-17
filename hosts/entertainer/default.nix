@@ -84,18 +84,21 @@
 
     #Apps
     firefox
-    mailspring
     qbittorrent
     vlc
+    thunderbird
     gimp
     krita
     obsidian
     freecad
-    discord-canary
+    webcord
+    (pkgs.discord.override {
+      #remove any overrides that you don't want
+      withOpenASAR = true;
+      withVencord = true;
+    })
     google-chrome
     vscode.fhs
-    #godot_4
-    godot
     prismlauncher
     zoom-us
     super-slicer-latest
