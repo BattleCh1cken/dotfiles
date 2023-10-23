@@ -1,26 +1,26 @@
-{
-  options,
-  config,
-  lib,
-  pkgs,
-  inputs,
-  ...
+{ options
+, config
+, lib
+, pkgs
+, inputs
+, ...
 }:
 with lib;
 with lib.my; let
   cfg = config.modules.desktop.hyprland;
-in {
+in
+{
   options.modules.desktop.hyprland = {
     enable = mkEnableOption "hyprland";
     monitors = mkOption {
       type = with types; listOf str;
       description = "A list of monitors to use, and their config. Needs to be formatted according to the Hyprland monitor config.";
-      default = ["monitor=,preferred,auto,1"];
+      default = [ "monitor=,preferred,auto,1" ];
     };
     # TODO: find a better way to do this
     rules = mkOption {
       type = with types; listOf str;
-      default = [""];
+      default = [ "" ];
     };
   };
 
@@ -29,20 +29,21 @@ in {
       wl-clipboard
       wlr-randr
       pulseaudio
+      dunst
+
+      networkmanagerapplet
+
       # Screenshot deps
       grim
       slurp
       swappy
     ];
 
+
     home.config = {
       wayland.windowManager.hyprland = {
         enable = true;
-<<<<<<< HEAD
-        #systemd.enable = true;
-=======
         systemd.enable = true;
->>>>>>> 182b326 (Format: formatted with Alejandra)
         extraConfig = ''
           exec-once = wl-clipboard-history -t
           exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
@@ -51,6 +52,7 @@ in {
           # sets xwayland scale
 
           exec-once = waybar
+          exec-once = nm-applet
 
           $mod = SUPER
 
@@ -122,10 +124,6 @@ in {
             active_opacity = 1.0
             inactive_opacity = 1.0
 
-            blur {
-              enabled = true;
-            }
-
 
 
 
@@ -133,6 +131,14 @@ in {
             shadow_ignore_window = true
           }
 
+          # unscale XWayland
+          xwayland {
+            force_zero_scaling = true
+          }
+          
+          # toolkit-specific scale
+          env = GDK_SCALE,2
+          env = XCURSOR_SIZE,32
 
           ${builtins.concatStringsSep "\n" cfg.rules}
 
@@ -145,11 +151,7 @@ in {
     };
     xdg.portal = {
       enable = true;
-<<<<<<< HEAD
       extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
-=======
-      extraPortals = [pkgs.xdg-desktop-portal-hyprland];
->>>>>>> 182b326 (Format: formatted with Alejandra)
     };
   };
 }
