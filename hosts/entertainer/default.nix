@@ -1,9 +1,8 @@
-{
-  pkgs,
-  config,
-  lib,
-  inputs,
-  ...
+{ pkgs
+, config
+, lib
+, inputs
+, ...
 }: {
   imports = [
     ./hardware-configuration.nix
@@ -76,10 +75,7 @@
 
     #Apps
     firefox
-<<<<<<< HEAD
-=======
     thunderbird
->>>>>>> 182b326 (Format: formatted with Alejandra)
     qbittorrent
     vlc
     thunderbird
@@ -88,7 +84,6 @@
     obsidian
     freecad
     webcord
-<<<<<<< HEAD
     (pkgs.discord.override {
       #remove any overrides that you don't want
       withOpenASAR = true;
@@ -96,11 +91,7 @@
     })
     google-chrome
     vscode.fhs
-=======
     google-chrome
-    vscode.fhs
-    godot_4
->>>>>>> 182b326 (Format: formatted with Alejandra)
     prismlauncher
     zoom-us
     super-slicer-latest
@@ -151,7 +142,7 @@
     enable = true;
     listeners = [
       {
-        acl = ["pattern readwrite #"];
+        acl = [ "pattern readwrite #" ];
         omitPasswordAuth = true;
         settings.allow_anonymous = true;
       }
@@ -160,7 +151,7 @@
 
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [1883];
+    allowedTCPPorts = [ 1883 ];
   };
 
   services.tailscale.enable = true;
