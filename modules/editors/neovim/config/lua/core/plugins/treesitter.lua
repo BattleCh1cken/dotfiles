@@ -12,6 +12,7 @@ return {
       ensure_installed = "all",
 
       auto_install = true,
+      ignore_install = { "jsdoc", "comment" },
     }
   end
 }
