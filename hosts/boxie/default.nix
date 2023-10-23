@@ -1,9 +1,8 @@
-{
-  pkgs,
-  config,
-  lib,
-  inputs,
-  ...
+{ pkgs
+, config
+, lib
+, inputs
+, ...
 }: {
   imports = [
     ./hardware-configuration.nix
@@ -12,7 +11,8 @@
 
   ## Modules
   modules = {
-    editors.nixvim.enable = true;
+    editors.neovim.enable = true;
+    editors.default = "nvim";
 
     shell.zsh.enable = true;
     shell.starship.enable = true;
@@ -21,11 +21,13 @@
     desktop = {
       hyprland = {
         enable = true;
-        monitors = ["monitor=,preferred,auto,1.5"];
+        monitors = [ "monitor=,preferred,auto,1.5" ];
       };
-      greetd.enable = true;
+      #greetd.enable = true;
       gtk.enable = true;
       waybar.enable = true;
+      swaybg.enable = true;
+      dunst.enable = true;
 
       term.default = "wezterm";
       term.wezterm.enable = true;
@@ -34,7 +36,7 @@
       apps = {
         steam.enable = true;
         thunar.enable = true;
-        rofi.enable = true;
+        anyrun.enable = true;
       };
     };
 
@@ -42,6 +44,8 @@
       audio.enable = true;
       touchpad.enable = true;
     };
+    services.syncthing.enable = true;
+    services.docker.enable = true;
   };
 
   services.gnome.gnome-keyring.enable = true;
@@ -51,20 +55,26 @@
     libsecret
 
     #Apps
-    mailspring
+    thunderbird
     firefox
     vlc
     gimp
     obsidian
     discord
     google-chrome
+    vscode-fhs
     vscodium-fhs
     prismlauncher
     pavucontrol
     gimp
     zathura
+    prusa-slicer
+    obs-studio
+    networkmanager-openvpn
+    tor-browser-bundle-bin
 
     #Command line utils
+    unzip
     gotop
     htop
     cava
@@ -77,12 +87,62 @@
     xclip
     neofetch
     acpi
+    gh
   ];
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+
 
   programs.dconf.enable = true; # Not sure where to put this yet
 
-  networking.networkmanager.enable = true;
+  systemd.services.wpa_supplicant.environment.OPENSSL_CONF = pkgs.writeText "openssl.cnf" ''
+    openssl_conf = openssl_init
+    [openssl_init]
+    ssl_conf = ssl_sect
+    [ssl_sect]
+    system_default = system_default_sect
+    [system_default_sect]
+    Options = UnsafeLegacyRenegotiation
+  '';
+
+  boot.tmp.useTmpfs = true;
+  boot.tmp.tmpfsSize = "95%";
+
+  networking.networkmanager = {
+    enable = true;
+    wifi.scanRandMacAddress = true;
+  };
 
   time.timeZone = "America/New_York";
   i18n.defaultLocale = "en_US.UTF-8";
+
+  services.grafana = {
+    enable = true;
+    settings = {
+      server = {
+        # Listening Address
+        http_addr = "127.0.0.1";
+        # and Port
+        http_port = 3000;
+      };
+    };
+  };
+
+  services.mosquitto = {
+    enable = true;
+    listeners = [
+      {
+        acl = [ "pattern readwrite #" ];
+        omitPasswordAuth = true;
+        settings.allow_anonymous = true;
+      }
+    ];
+  };
+
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 1883 ];
+  };
+
+
 }
