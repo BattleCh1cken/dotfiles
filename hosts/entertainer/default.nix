@@ -89,6 +89,7 @@
       withOpenASAR = true;
       withVencord = true;
     })
+    signal-desktop
     google-chrome
     vscode.fhs
     google-chrome
@@ -98,10 +99,12 @@
     pavucontrol
     inkscape
     libsForQt5.kdenlive
+    audacity
     obs-studio
     zathura
 
     #Command line utils
+    ollama
     gotop
     unzip
     htop
@@ -138,16 +141,16 @@
     };
   };
 
-  services.mosquitto = {
-    enable = true;
-    listeners = [
-      {
-        acl = [ "pattern readwrite #" ];
-        omitPasswordAuth = true;
-        settings.allow_anonymous = true;
-      }
-    ];
-  };
+  #services.mosquitto = {
+  #enable = true;
+  #listeners = [
+  #{
+  #acl = [ "pattern readwrite #" ];
+  #omitPasswordAuth = true;
+  #settings.allow_anonymous = true;
+  #}
+  #];
+  #};
 
   networking.firewall = {
     enable = true;
