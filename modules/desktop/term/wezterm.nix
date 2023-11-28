@@ -1,15 +1,15 @@
-{
-  config,
-  options,
-  lib,
-  pkgs,
-  ...
+{ config
+, options
+, lib
+, pkgs
+, ...
 }:
 with lib;
 with lib.my; let
   cfg = config.modules.desktop.term.wezterm;
   configDir = config.dotfiles.configDir;
-in {
+in
+{
   options.modules.desktop.term.wezterm = {
     enable = mkBoolOpt false;
   };
@@ -18,6 +18,8 @@ in {
     environment.systemPackages = with pkgs; [
       wezterm
     ];
+
+
     home.configFile = {
       "wezterm" = {
         source = "${configDir}/wezterm";
