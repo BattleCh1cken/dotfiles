@@ -6,7 +6,7 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-    inputs.nixos-hardware.nixosModules.framework
+    inputs.nixos-hardware.nixosModules.framework-11th-gen-intel
   ];
 
   ## Modules
@@ -29,8 +29,7 @@
       swaybg.enable = true;
       dunst.enable = true;
 
-      term.default = "wezterm";
-      term.wezterm.enable = true;
+      term.default = "kitty";
       term.kitty.enable = true;
 
       apps = {
@@ -68,6 +67,7 @@
     pavucontrol
     gimp
     zathura
+    feh
     prusa-slicer
     obs-studio
     networkmanager-openvpn
@@ -88,6 +88,7 @@
     neofetch
     acpi
     gh
+    protonvpn-cli
   ];
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
