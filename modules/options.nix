@@ -1,62 +1,63 @@
-{
-  config,
-  options,
-  lib,
-  home-manager,
-  ...
+{ config
+, options
+, lib
+, home-manager
+, ...
 }:
 with lib;
 with lib.my; {
   options = with types; {
-    user = mkOpt attrs {};
+    user = mkOpt attrs { };
 
     dotfiles = {
       dir =
         mkOpt path
-        (removePrefix "/mnt"
-          (findFirst pathExists (toString ../.) [
-            "/mnt/etc/dotfiles"
-            "/etc/dotfiles"
-          ]));
+          (removePrefix "/mnt"
+            (findFirst pathExists (toString ../.) [
+              "/mnt/etc/dotfiles"
+              "/etc/dotfiles"
+            ]));
       configDir = mkOpt path "${config.dotfiles.dir}/config";
       modulesDir = mkOpt path "${config.dotfiles.dir}/modules";
     };
 
     home = {
-      config = mkOpt' attrs {} "Access home mananger config";
-      file = mkOpt' attrs {} "Files to place directly in $HOME";
-      configFile = mkOpt' attrs {} "Files to place in $XDG_CONFIG_HOME";
-      dataFile = mkOpt' attrs {} "Files to place in $XDG_DATA_HOME";
+      config = mkOpt' attrs { } "Access home mananger config";
+      file = mkOpt' attrs { } "Files to place directly in $HOME";
+      configFile = mkOpt' attrs { } "Files to place in $XDG_CONFIG_HOME";
+      dataFile = mkOpt' attrs { } "Files to place in $XDG_DATA_HOME";
     };
 
     env = mkOption {
-      type = attrsOf (oneOf [str path (listOf (either str path))]);
+      type = attrsOf (oneOf [ str path (listOf (either str path)) ]);
       apply =
         mapAttrs
-        (n: v:
-          if isList v
-          then concatMapStringsSep ":" (x: toString x) v
-          else (toString v));
-      default = {};
+          (n: v:
+            if isList v
+            then concatMapStringsSep ":" (x: toString x) v
+            else (toString v));
+      default = { };
       description = "TODO";
     };
   };
 
   config = {
-    user = let
-      user = builtins.getEnv "USER";
-      name =
-        if elem user ["" "root"]
-        then "battlechicken"
-        else user;
-    in {
-      inherit name;
-      extraGroups = ["wheel" "dialout" "docker" "networkmanager" "libvirtd" "input"]; # TODO: make this an option, not every host needs these groups
-      isNormalUser = true;
-      home = "/home/${name}";
-      group = "users";
-      uid = 1000;
-    };
+    user =
+      let
+        user = builtins.getEnv "USER";
+        name =
+          if elem user [ "" "root" ]
+          then "battlechicken"
+          else user;
+      in
+      {
+        inherit name;
+        extraGroups = [ "wheel" "dialout" "docker" "networkmanager" "libvirtd" "input" ]; # TODO: make this an option, not every host needs these groups
+        isNormalUser = true;
+        home = "/home/${name}";
+        group = "users";
+        uid = 1000;
+      };
 
     # Install user packages to /etc/profiles instead. Necessary for
     # nixos-rebuild build-vm to work.
@@ -80,15 +81,17 @@ with lib.my; {
 
     users.users.${config.user.name} = mkAliasDefinitions options.user;
 
-    nix.settings = let
-      users = ["root" config.user.name];
-    in {
-      trusted-users = users;
-      allowed-users = users;
-    };
+    nix.settings =
+      let
+        users = [ "root" config.user.name ];
+      in
+      {
+        trusted-users = users;
+        allowed-users = users;
+      };
 
     environment.extraInit =
       concatStringsSep "\n"
-      (mapAttrsToList (n: v: "export ${n}=\"${v}\"") config.env);
+        (mapAttrsToList (n: v: "export ${n}=\"${v}\"") config.env);
   };
 }
