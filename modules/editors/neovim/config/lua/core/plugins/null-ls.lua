@@ -1,7 +1,7 @@
 -- TODO: deprecated https://github.com/jose-elias-alvarez/null-ls.nvim/issues/1621
 
 return {
-  "jose-elias-alvarez/null-ls.nvim",
+  "nvimtools/none-ls.nvim",
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
@@ -18,6 +18,7 @@ return {
 
         formatting.black,
         formatting.prettier,
+        formatting.typstfmt,
       },
     })
   end
