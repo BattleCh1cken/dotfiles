@@ -2,3 +2,7 @@ result/
 result
 .direnv
 .pre-commit-config.yaml
+
+# Neovim spell files
+*.add
+*.spl
