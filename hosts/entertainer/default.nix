@@ -37,8 +37,8 @@
       swaybg.enable = true;
       gtk.enable = true;
       term = {
-        default = "wezterm";
-        wezterm.enable = true;
+        default = "kitty";
+        kitty.enable = true;
       };
       apps = {
         steam.enable = true;
@@ -81,7 +81,7 @@
     thunderbird
     gimp
     krita
-    obsidian
+    #obsidian
     freecad
     webcord
     (pkgs.discord.override {
@@ -102,6 +102,13 @@
     audacity
     obs-studio
     zathura
+    libreoffice
+    (obsidian.override {
+      electron = electron_25.overrideAttrs (_: {
+        preFixup = "patchelf --add-needed ${libglvnd}/lib/libEGL.so.1 $out/bin/electron"; # NixOS/nixpkgs#272912
+        meta.knownVulnerabilities = [ ]; # NixOS/nixpkgs#273611
+      });
+    })
 
     #Command line utils
     ollama
@@ -125,32 +132,11 @@
     jdk8
     tailscale
     ventoy
-    spotdl
+    #spotdl
   ];
 
   programs.dconf.enable = true; # TODO: relocate to module
   services.gnome.gnome-keyring.enable = true; # TODO: relocate to module
-
-  services.grafana = {
-    enable = true;
-    settings = {
-      server = {
-        http_addr = "127.0.0.1";
-        http_port = 3000;
-      };
-    };
-  };
-
-  #services.mosquitto = {
-  #enable = true;
-  #listeners = [
-  #{
-  #acl = [ "pattern readwrite #" ];
-  #omitPasswordAuth = true;
-  #settings.allow_anonymous = true;
-  #}
-  #];
-  #};
 
   networking.firewall = {
     enable = true;
