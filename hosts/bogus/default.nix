@@ -7,22 +7,19 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-    inputs.fred.nixosModule
   ];
+
   modules = {
-    services.minecraft.fabric.enable = true;
+    services.minecraft.bepic-create.enable = true;
     shell.zsh.enable = true;
     shell.git.enable = true;
+    shell.starship.enable = true;
     editors = {
       default = "nvim";
-      neovim.enable = true;
+      nixvim.enable = true;
     };
   };
-  services.fred = {
-    enable = true;
-    envFilePath = "/home/battlechicken/fred/.env";
-    dbFilePath = "/home/battlechicken/fred/bot.db";
-  };
+
   services.openssh = {
     enable = true;
     settings.PasswordAuthentication = false;
@@ -30,7 +27,22 @@
   };
 
   environment.systemPackages = with pkgs; [
-    sqlite
-    sqlx-cli
+    wget
+    my.mrpack-install
+    jdk17
+    unzip
+    tailscale
   ];
+  services.tailscale.enable = true;
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [
+      25565
+      24454
+    ];
+    allowedUDPPorts = [
+      25565
+      24454
+    ];
+  };
 }

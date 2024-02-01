@@ -26,9 +26,8 @@ in {
                     	-e EULA=true \
                     	-e TYPE=FABRIC \
                     	-e VERSION="1.19.2" \
-                    	-e PACKWIZ_URL="https://battlech1cken.github.io/fabric-modpack/pack.toml" \
                     	-e MOTD="powered by imbeciles" \
-                    	-e MEMORY=6G \
+                    	-e MEMORY=8G \
                     	-e DIFFICULTY=hard \
                       -e ALLOW_FLIGHT=TRUE \
                       --rm itzg/minecraft-server
