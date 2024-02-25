@@ -58,7 +58,12 @@
     firefox
     vlc
     gimp
-    #obsidian
+    (obsidian.override {
+      electron = electron_25.overrideAttrs (_: {
+        preFixup = "patchelf --add-needed ${libglvnd}/lib/libEGL.so.1 $out/bin/electron"; # NixOS/nixpkgs#272912
+        meta.knownVulnerabilities = [ ]; # NixOS/nixpkgs#273611
+      });
+    })
     discord
     google-chrome
     vscode-fhs
@@ -72,6 +77,8 @@
     obs-studio
     networkmanager-openvpn
     tor-browser-bundle-bin
+    inkscape
+    libreoffice
 
     #Command line utils
     unzip
