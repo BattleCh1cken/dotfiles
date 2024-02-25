@@ -58,7 +58,7 @@
     firefox
     vlc
     gimp
-    obsidian
+    #obsidian
     discord
     google-chrome
     vscode-fhs
@@ -120,6 +120,10 @@
   services.grafana = {
     enable = true;
     settings = {
+      date_formats = {
+        full_date = "YYYY-MM-DD HH:mm:ss.SSSS";
+      };
+
       server = {
         # Listening Address
         http_addr = "127.0.0.1";
