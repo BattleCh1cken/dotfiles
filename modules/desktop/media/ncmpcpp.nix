@@ -13,7 +13,6 @@ with lib.my; let
 in {
   options.modules.desktop.media.ncmpcpp = {
     enable = mkBoolOpt false;
-    # modipy.enable = mkBoolOpt false;
   };
 
   config = mkIf cfg.enable {
