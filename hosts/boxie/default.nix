@@ -21,7 +21,7 @@
     desktop = {
       hyprland = {
         enable = true;
-        monitors = [ "monitor=,preferred,auto,1.5" ];
+        monitors = [ "monitor=eDP-1,2256x1504,0x0,1.6" ];
       };
       #greetd.enable = true;
       gtk.enable = true;
@@ -79,6 +79,9 @@
     tor-browser-bundle-bin
     inkscape
     libreoffice
+    protonvpn-cli
+    protonvpn-gui
+    signal-desktop
 
     #Command line utils
     unzip
@@ -95,7 +98,6 @@
     neofetch
     acpi
     gh
-    protonvpn-cli
   ];
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;

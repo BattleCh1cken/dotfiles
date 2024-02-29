@@ -35,10 +35,21 @@ return {
 
 
     for _, server in ipairs(servers) do
-      lspconfig[server].setup({
-        capabilities = capabilities,
-        on_attach = on_attach
-      })
+      -- FIXME: make a better way to pass settings to language servers
+      if server == "typst_lsp" then
+        lspconfig[server].setup({
+          capabilities = capabilities,
+          on_attach = on_attach,
+          settings = {
+            exportPdf = "never"
+          }
+        })
+      else
+        lspconfig[server].setup({
+          capabilities = capabilities,
+          on_attach = on_attach
+        })
+      end
     end
   end,
 
