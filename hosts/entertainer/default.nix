@@ -40,6 +40,7 @@
         default = "kitty";
         kitty.enable = true;
       };
+      media.ncmpcpp.enable = true;
       apps = {
         steam.enable = true;
         thunar.enable = true;
@@ -47,6 +48,7 @@
         anyrun.enable = true;
       };
     };
+
     shell = {
       zsh.enable = true;
       starship.enable = true;
@@ -109,6 +111,7 @@
         meta.knownVulnerabilities = [ ]; # NixOS/nixpkgs#273611
       });
     })
+    protonvpn-gui
 
     #Command line utils
     ollama
@@ -129,7 +132,7 @@
     avrdude
     my.mrpack-install
     my.rcon-cli
-    jdk8
+    jdk17
     tailscale
     ventoy
     #spotdl
