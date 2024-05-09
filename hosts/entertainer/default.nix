@@ -6,9 +6,7 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-  ];
-
-  ## Modules
+  ]; ## Modules
   modules = {
     desktop = {
       hyprland = {
@@ -84,7 +82,6 @@
     gimp
     krita
     #obsidian
-    freecad
     webcord
     (pkgs.discord.override {
       #remove any overrides that you don't want
@@ -105,16 +102,11 @@
     obs-studio
     zathura
     libreoffice
-    (obsidian.override {
-      electron = electron_25.overrideAttrs (_: {
-        preFixup = "patchelf --add-needed ${libglvnd}/lib/libEGL.so.1 $out/bin/electron"; # NixOS/nixpkgs#272912
-        meta.knownVulnerabilities = [ ]; # NixOS/nixpkgs#273611
-      });
-    })
+    obsidian
     protonvpn-gui
+    bitwarden
 
     #Command line utils
-    ollama
     gotop
     unzip
     htop
@@ -129,11 +121,9 @@
     feh
     sshfs
     gh
-    avrdude
     my.mrpack-install
     my.rcon-cli
     jdk17
-    tailscale
     ventoy
     #spotdl
   ];
@@ -146,7 +136,6 @@
     allowedTCPPorts = [ 1883 ];
   };
 
-  services.tailscale.enable = true;
 
   networking.networkmanager.enable = true;
   time.timeZone = "America/New_York";

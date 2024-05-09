@@ -58,12 +58,13 @@
     firefox
     vlc
     gimp
-    (obsidian.override {
-      electron = electron_25.overrideAttrs (_: {
-        preFixup = "patchelf --add-needed ${libglvnd}/lib/libEGL.so.1 $out/bin/electron"; # NixOS/nixpkgs#272912
-        meta.knownVulnerabilities = [ ]; # NixOS/nixpkgs#273611
-      });
-    })
+    #(obsidian.override {
+    #electron = electron_25.overrideAttrs (_: {
+    #preFixup = "patchelf --add-needed ${libglvnd}/lib/libEGL.so.1 $out/bin/electron"; # NixOS/nixpkgs#272912
+    #meta.knownVulnerabilities = [ ]; # NixOS/nixpkgs#273611
+    #});
+    #})
+    obsidian
     discord
     google-chrome
     vscode-fhs
