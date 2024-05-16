@@ -58,17 +58,9 @@
     firefox
     vlc
     gimp
-    #(obsidian.override {
-    #electron = electron_25.overrideAttrs (_: {
-    #preFixup = "patchelf --add-needed ${libglvnd}/lib/libEGL.so.1 $out/bin/electron"; # NixOS/nixpkgs#272912
-    #meta.knownVulnerabilities = [ ]; # NixOS/nixpkgs#273611
-    #});
-    #})
     obsidian
-    discord
     google-chrome
     vscode-fhs
-    vscodium-fhs
     prismlauncher
     pavucontrol
     gimp
@@ -126,38 +118,5 @@
 
   time.timeZone = "America/New_York";
   i18n.defaultLocale = "en_US.UTF-8";
-
-  services.grafana = {
-    enable = true;
-    settings = {
-      date_formats = {
-        full_date = "YYYY-MM-DD HH:mm:ss.SSSS";
-      };
-
-      server = {
-        # Listening Address
-        http_addr = "127.0.0.1";
-        # and Port
-        http_port = 3000;
-      };
-    };
-  };
-
-  services.mosquitto = {
-    enable = true;
-    listeners = [
-      {
-        acl = [ "pattern readwrite #" ];
-        omitPasswordAuth = true;
-        settings.allow_anonymous = true;
-      }
-    ];
-  };
-
-  networking.firewall = {
-    enable = true;
-    allowedTCPPorts = [ 1883 ];
-  };
-
 
 }
