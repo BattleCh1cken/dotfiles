@@ -22,9 +22,21 @@ in {
       ripgrep
       gcc
 
+      tree-sitter
+      nodejs
+
       # Language servers
       lua-language-server
-      rnix-lsp
+
+      ## Typst
+      typstyle
+      tinymist
+
+      ## Nix
+      nil
+      nixpkgs-fmt
+
+      ## JS/TS
       nodePackages_latest.typescript-language-server
     ];
   };

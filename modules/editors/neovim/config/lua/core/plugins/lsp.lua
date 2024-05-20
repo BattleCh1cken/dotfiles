@@ -13,43 +13,39 @@ return {
       underline = false,
       update_in_insert = true,
     })
+
     local lspconfig = require('lspconfig')
 
+    lspconfig.tinymist.setup {
+      settings = {
+        formatterMode = "typstyle"
+      },
+    }
+
+    lspconfig.nil_ls.setup {
+      settings = {
+        ['nil'] = {
+          formatting = {
+            command = { "nixpkgs-fmt" },
+          },
+        },
+      },
+    }
+
+
+    -- these servers require no extra config
     local servers = {
       "rust_analyzer",
       "bashls",
       "lua_ls",
-      "rnix",
       "clangd",
       "pyright",
       "tsserver",
-      "typst_lsp",
       "svelte",
     }
 
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
-
-    local on_attach = function()
-    end
-
-
     for _, server in ipairs(servers) do
-      -- FIXME: make a better way to pass settings to language servers
-      if server == "typst_lsp" then
-        lspconfig[server].setup({
-          capabilities = capabilities,
-          on_attach = on_attach,
-          settings = {
-            exportPdf = "never"
-          }
-        })
-      else
-        lspconfig[server].setup({
-          capabilities = capabilities,
-          on_attach = on_attach
-        })
-      end
+      lspconfig[server].setup({})
     end
   end,
 

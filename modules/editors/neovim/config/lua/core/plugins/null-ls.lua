@@ -18,7 +18,6 @@ return {
 
         formatting.black,
         formatting.prettier,
-        formatting.typstfmt,
       },
     })
   end
