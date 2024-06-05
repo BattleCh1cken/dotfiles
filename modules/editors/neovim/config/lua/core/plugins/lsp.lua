@@ -18,7 +18,8 @@ return {
 
     lspconfig.tinymist.setup {
       settings = {
-        formatterMode = "typstyle"
+        formatterMode = "typstyle",
+        formatterPrintWidth = 80,
       },
     }
 
