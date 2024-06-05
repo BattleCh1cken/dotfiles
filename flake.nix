@@ -83,15 +83,14 @@
 
       devShell.${system} = pkgs.mkShell {
         packages = with pkgs; [
-          alejandra
+          nixpkgs-fmt
           cachix
           deadnix
         ];
       };
 
-      formatter.${system} = pkgs.alejandra;
+      formatter.${system} = pkgs.nixpkgs-fmt;
 
-      # TODO: move to import
       templates = {
         basic = {
           path = ./templates/basic;
