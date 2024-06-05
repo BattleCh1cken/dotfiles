@@ -1,15 +1,15 @@
-{
-  config,
-  options,
-  lib,
-  pkgs,
-  inputs,
-  ...
+{ config
+, options
+, lib
+, pkgs
+, inputs
+, ...
 }:
 with lib;
 with lib.my; let
   cfg = config.modules.desktop.apps.anyrun;
-in {
+in
+{
   options.modules.desktop.apps.anyrun = {
     enable = mkEnableOption "anyrun";
   };
@@ -26,9 +26,10 @@ in {
         config = {
           plugins = with inputs.anyrun.packages.${pkgs.system}; [
             applications
-            randr
             rink
             shell
+            symbols
+            websearch
           ];
 
           width.fraction = 0.3;
@@ -53,7 +54,7 @@ in {
           }
 
           #match:selected {
-            background: #be95ff;
+            background: #b7bdf8;
           }
 
           #match {
@@ -66,8 +67,8 @@ in {
           }
 
           box#main {
-            background: #262626;
-            border: 1px solid #393939;
+            background: #24273a;
+            border: 1px solid #363a4f;
             border-radius: 24px;
             padding: 8px;
           }
