@@ -27,21 +27,16 @@ in
 
       # Language servers
       lua-language-server
-
-      ## Typst
-      typstyle
+      typstyle # Typst
       tinymist
-
-      ## Nix
-      nil
+      nil # Nix
       nixpkgs-fmt
-
-      ## JS/TS
-      nodePackages_latest.typescript-language-server
-
-      ## Rust
-      rust-analyzer
+      nodePackages_latest.typescript-language-server # JS/TS
+      rust-analyzer # Rust
       rustfmt
+      stylua # Lua
+      black # Python
+      nodePackages_latest.prettier # Markdown + misc
     ];
   };
 }
