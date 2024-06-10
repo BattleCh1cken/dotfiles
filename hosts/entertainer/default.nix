@@ -81,13 +81,6 @@
     thunderbird
     gimp
     krita
-    #obsidian
-    webcord
-    (pkgs.discord.override {
-      #remove any overrides that you don't want
-      withOpenASAR = true;
-      withVencord = true;
-    })
     signal-desktop
     google-chrome
     vscode.fhs
@@ -95,6 +88,7 @@
     prismlauncher
     zoom-us
     super-slicer-latest
+    orca-slicer
     pavucontrol
     inkscape
     libsForQt5.kdenlive
@@ -105,8 +99,12 @@
     obsidian
     protonvpn-gui
     bitwarden
+    figma-linux
+    figma-agent
+    aseprite
 
     #Command line utils
+    xdg-utils
     gotop
     unzip
     htop
