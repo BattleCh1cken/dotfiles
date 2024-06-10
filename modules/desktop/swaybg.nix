@@ -21,7 +21,7 @@ in {
         };
         Install.WantedBy = ["graphical-session.target"];
         Service = let
-          wallpaper = ../../config/wallpaper.jpg;
+          wallpaper = ../../config/wallpaper.png;
         in {
           ExecStart = "${lib.getExe pkgs.swaybg} -m fill -i ${wallpaper}";
           Restart = "always";
