@@ -1,14 +1,10 @@
 {
   config,
-  options,
   lib,
-  pkgs,
   ...
 }:
 with lib; let
   cfg = config.modules.shell.starship;
-
-  username = config.user.name;
 in {
   options.modules.shell.starship = {
     enable = mkEnableOption "starship";
