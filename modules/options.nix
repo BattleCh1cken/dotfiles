@@ -52,7 +52,7 @@ with lib.my; {
       in
       {
         inherit name;
-        extraGroups = [ "wheel" "dialout" "docker" "networkmanager" "libvirtd" "input" ]; # TODO: make this an option, not every host needs these groups
+        extraGroups = [ "wheel" "dialout" "networkmanager" "libvirtd" "input" ];
         isNormalUser = true;
         home = "/home/${name}";
         group = "users";
