@@ -1,12 +1,12 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
+{ config
+, lib
+, pkgs
+, ...
 }:
 with lib; let
   cfg = config.modules.shell.zsh;
-in {
+in
+{
   options.modules.shell.zsh = {
     enable = mkEnableOption "zsh";
   };
@@ -34,7 +34,7 @@ in {
 
       programs.zsh = {
         enable = true;
-        enableAutosuggestions = true;
+        autosuggestion.enable = true;
         autocd = true;
         #dotDir = ".config/zsh";
         history = {
