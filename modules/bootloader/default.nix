@@ -1,17 +1,15 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
+{ config
+, pkgs
+, lib
+, ...
 }: {
   boot = {
     # Use the latest kernel
     kernelPackages = pkgs.linuxPackages_latest;
-    #I should probably pin the kernel but I'm too lazy
+    # I should probably pin the kernel but I'm too lazy
     loader = {
       efi = {
         canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot/efi";
       };
       grub = {
         enable = true;
