@@ -19,6 +19,8 @@
     fred.url = "github:area-53-robotics/discord-bot";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     anyrun.url = "github:Kirottu/anyrun";
+    ags.url = "github:Aylur/ags";
+    disko.url = "github:nix-community/disko";
 
     # Default Nixpkgs for packages and modules
     nixpkgs.follows = "unstable";
@@ -32,6 +34,8 @@
     anyrun.inputs.nixpkgs.follows = "nixpkgs";
     nixpkgs-wayland.inputs.nixpkgs.follows = "nixpkgs";
     nix.inputs.nixpkgs.follows = "nixpkgs";
+    ags.inputs.nixpkgs.follows = "nixpkgs";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
