@@ -37,6 +37,8 @@ in
       stylua # Lua
       black # Python
       nodePackages_latest.prettier # Markdown + misc
+      nodePackages_latest.bash-language-server # Bash
+      shfmt
     ];
   };
 }
