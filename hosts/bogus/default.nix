@@ -1,22 +1,22 @@
-{
-  pkgs,
-  config,
-  lib,
-  inputs,
-  ...
+{ pkgs
+, config
+, lib
+, inputs
+, ...
 }: {
   imports = [
     ./hardware-configuration.nix
+    inputs.disko.nixosModules.disko
+    ./disko-config.nix
   ];
 
   modules = {
-    services.minecraft.bepic-create.enable = true;
     shell.zsh.enable = true;
     shell.git.enable = true;
     shell.starship.enable = true;
     editors = {
       default = "nvim";
-      nixvim.enable = true;
+      neovim.enable = true;
     };
   };
 
@@ -31,9 +31,8 @@
     my.mrpack-install
     jdk17
     unzip
-    tailscale
   ];
-  services.tailscale.enable = true;
+
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [
