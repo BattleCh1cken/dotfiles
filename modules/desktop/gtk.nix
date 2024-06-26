@@ -1,21 +1,21 @@
-{
-  options,
-  config,
-  lib,
-  pkgs,
-  inputs,
-  ...
+{ options
+, config
+, lib
+, pkgs
+, inputs
+, ...
 }:
 with lib; let
   cfg = config.modules.desktop.gtk;
   username = config.user.name;
-in {
+in
+{
   options.modules.desktop.gtk = {
     enable = mkEnableOption "gtk";
   };
 
   config = mkIf cfg.enable {
-    home-manager.users.${username} = {
+    home.config = {
       gtk = {
         enable = true;
         font.name = "JetBrains Mono Nerd Font";
@@ -32,6 +32,7 @@ in {
           package = pkgs.bibata-cursors;
         };
       };
+
       # gtk 4 themes suck
       xdg.configFile."gtk-4.0/gtk.css".text = ''
         @define-color surface-strongest rgb(10, 10, 10);
