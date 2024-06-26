@@ -39,6 +39,7 @@ in
       nodePackages_latest.prettier # Markdown + misc
       nodePackages_latest.bash-language-server # Bash
       shfmt
+      clang-tools
     ];
   };
 }
