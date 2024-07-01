@@ -16,11 +16,13 @@
     nixvim.url = "github:BattleCh1cken/nixvim";
 
     eww.url = "github:elkowar/eww";
-    fred.url = "github:area-53-robotics/discord-bot";
+    catppuccin.url = "github:catppuccin/nix";
+
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     anyrun.url = "github:Kirottu/anyrun";
     ags.url = "github:Aylur/ags";
     disko.url = "github:nix-community/disko";
+    sops-nix.url = "github:Mic92/sops-nix";
 
     # Default Nixpkgs for packages and modules
     nixpkgs.follows = "unstable";
@@ -36,6 +38,7 @@
     nix.inputs.nixpkgs.follows = "nixpkgs";
     ags.inputs.nixpkgs.follows = "nixpkgs";
     disko.inputs.nixpkgs.follows = "nixpkgs";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
