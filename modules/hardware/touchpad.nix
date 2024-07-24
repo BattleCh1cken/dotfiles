@@ -1,20 +1,20 @@
-{
-  options,
-  config,
-  lib,
-  pkgs,
-  ...
+{ options
+, config
+, lib
+, pkgs
+, ...
 }:
 with lib;
 with lib.my; let
   cfg = config.modules.hardware.touchpad;
-in {
+in
+{
   options.modules.hardware.touchpad = {
     enable = mkBoolOpt false;
   };
 
   config = mkIf cfg.enable {
-    services.xserver.libinput = {
+    services.libinput = {
       enable = true;
       touchpad.tapping = true;
     };
