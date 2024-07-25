@@ -1,5 +1,5 @@
 return {
-  'neovim/nvim-lspconfig',
+  "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     { "onsails/lspkind-nvim" },
@@ -14,25 +14,24 @@ return {
       update_in_insert = true,
     })
 
-    local lspconfig = require('lspconfig')
+    local lspconfig = require("lspconfig")
 
-    lspconfig.tinymist.setup {
+    lspconfig.tinymist.setup({
       settings = {
         formatterMode = "typstyle",
         formatterPrintWidth = 80,
       },
-    }
+    })
 
-    lspconfig.nil_ls.setup {
+    lspconfig.nil_ls.setup({
       settings = {
-        ['nil'] = {
+        ["nil"] = {
           formatting = {
             command = { "nixpkgs-fmt" },
           },
         },
       },
-    }
-
+    })
 
     -- these servers require no extra config
     local servers = {
@@ -49,5 +48,4 @@ return {
       lspconfig[server].setup({})
     end
   end,
-
 }
