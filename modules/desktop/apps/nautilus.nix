@@ -10,13 +10,12 @@ with lib.my; let
 in
 {
   options.modules.desktop.apps.nautilus = with types; {
-    enable = mkBoolOpt false;
+    enable = mkEnableOption "nautilus";
   };
 
   config = mkIf cfg.enable {
     environment.systemPackages = [
-      pkgs.gnome.nautilus
-
+      pkgs.nautilus
     ];
 
     services.gvfs.enable = true; # Mount, trash, and other functionalities
