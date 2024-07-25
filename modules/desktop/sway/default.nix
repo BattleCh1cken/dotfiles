@@ -12,6 +12,11 @@ in
 {
   options.modules.desktop.sway = {
     enable = mkEnableOption "sway";
+
+    extraConfig = mkOption {
+      type = lib.types.str;
+      default = "";
+    };
   };
 
   config = mkIf cfg.enable {
@@ -20,6 +25,7 @@ in
 
       wl-clipboard
       pulseaudio
+      light
 
       flameshot
       shotman
@@ -31,7 +37,18 @@ in
       xdg-desktop-portal
     ];
 
+    home.configFile."sway/config" = {
+      text = lib.strings.concatStrings [
+        (builtins.readFile
+          ./config)
+        "\n"
+        cfg.extraConfig
+      ];
+    };
+
     environment.sessionVariables = {
+      # this needs to be here so that the xdg portal doesn't freak out
+      # and actually gives us permission to do things
       XDG_CURRENT_DESKTOP = "sway";
     };
 
@@ -46,6 +63,7 @@ in
       dconf.enable = true;
       xwayland.enable = true;
     };
+
     services.gnome.gnome-keyring.enable = true;
 
     xdg.portal = {

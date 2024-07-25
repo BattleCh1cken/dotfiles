@@ -16,40 +16,6 @@ set $term kitty
 # on the original workspace that the command was run on.
 set $menu dmenu_path | anyrun | xargs swaymsg exec --
 
-### Output configuration
-#
-# Default wallpaper (more resolutions are available in @datadir@/backgrounds/sway/)
-#output * bg @datadir@/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-#
-# Example configuration:
-#
-
-# TODO: expose this as an option to the module to support multiple hosts
-output DP-1 {
-  mode 1920x1080@144.001Hz
-  position 0 400
-}
-
-output HDMI-A-1 {
-  mode 1920x1080@75Hz
-  transform 90
-  position 1920 0
-}
-
-set $out-left DP-1
-set $out-right HDMI-A-1
-
-workspace 1 output $out-left
-workspace 2 output $out-left
-workspace 3 output $out-left
-workspace 4 output $out-left
-workspace 5 output $out-left
-
-workspace 6 output $out-right
-workspace 7 output $out-right
-workspace 8 output $out-right
-workspace 9 output $out-right
-workspace 0 output $out-right
 
 ### Idle configuration
 #
