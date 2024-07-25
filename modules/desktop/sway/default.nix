@@ -27,9 +27,7 @@ in
 
       wl-clipboard
       pulseaudio
-      light
-      #networkmanagerapplet
-
+      brightnessctl
 
       sway-contrib.grimshot
 
