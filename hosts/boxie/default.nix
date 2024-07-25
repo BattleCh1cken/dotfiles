@@ -9,6 +9,9 @@
     inputs.nixos-hardware.nixosModules.framework-11th-gen-intel
   ];
 
+  # FIXME: when reinstalling this system make sure this ends up as the default /boot instead
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
+
   ## Modules
   modules = {
     editors.neovim.enable = true;
@@ -19,13 +22,21 @@
     shell.git.enable = true;
 
     desktop = {
-      hyprland = {
+      sway = {
         enable = true;
+        extraConfig = ''
+          output eDP-1 {
+            mode 2256x1504@144.001Hz
+            scale 1.6
+          }
+        '';
+      };
+
+      hyprland = {
+        enable = false;
         monitors = [ "monitor=eDP-1,2256x1504,0x0,1.6" ];
       };
-      #greetd.enable = true;
       gtk.enable = true;
-      waybar.enable = true;
       swaybg.enable = true;
       dunst.enable = true;
 
@@ -54,6 +65,8 @@
     libsecret
 
     #Apps
+    qbittorrent
+    zoom-us
     thunderbird
     firefox
     vlc
@@ -72,8 +85,6 @@
     tor-browser-bundle-bin
     inkscape
     libreoffice
-    protonvpn-cli
-    protonvpn-gui
     signal-desktop
 
     #Command line utils

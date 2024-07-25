@@ -9,27 +9,37 @@
   ]; ## Modules
   modules = {
     desktop = {
-      hyprland = {
-        monitors = [
-          "monitor=DP-1,highrr 1920x1080, 0x500, 1"
-          "monitor=HDMI-A-1, 1920x1080, 1920x0, 1, transform, 3"
-        ];
-        rules = [
-          "workspace = 1, monitor:DP-1"
-          "workspace = 2, monitor:DP-1"
-          "workspace = 3, monitor:DP-1"
-          "workspace = 4, monitor:DP-1"
-          "workspace = 5, monitor:DP-1"
-
-          "workspace = 6, monitor:HDMI-A-1"
-          "workspace = 7, monitor:HDMI-A-1"
-          "workspace = 8, monitor:HDMI-A-1"
-          "workspace = 9, monitor:HDMI-A-1"
-          "workspace = 10, monitor:HDMI-A-1"
-        ];
+      sway = {
         enable = true;
+        extraConfig = ''
+          output DP-1 {
+            mode 1920x1080@144.001Hz
+            position 0 400
+          }
+
+          output HDMI-A-1 {
+            mode 1920x1080@75Hz
+            transform 90
+            position 1920 0
+          }
+
+          set $out-left DP-1
+          set $out-right HDMI-A-1
+          
+          workspace 1 output $out-left
+          workspace 2 output $out-left
+          workspace 3 output $out-left
+          workspace 4 output $out-left
+          workspace 5 output $out-left
+          
+          workspace 6 output $out-right
+          workspace 7 output $out-right
+          workspace 8 output $out-right
+          workspace 9 output $out-right
+          workspace 0 output $out-right
+        '';
       };
-      #greetd.enable = true;
+
       dunst.enable = true;
       waybar.enable = true;
       swaybg.enable = true;
