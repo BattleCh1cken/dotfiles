@@ -113,9 +113,7 @@ in
               layout = dwindle
           }
 
-          master {
-              new_is_master = true
-          }
+          
 
           decoration {
             rounding = 8
