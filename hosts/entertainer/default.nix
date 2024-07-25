@@ -6,7 +6,7 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-  ]; ## Modules
+  ];
   modules = {
     desktop = {
       sway = {
@@ -41,19 +41,20 @@
       };
 
       dunst.enable = true;
-      waybar.enable = true;
-      swaybg.enable = true;
+      ags.enable = true;
       gtk.enable = true;
       term = {
         default = "kitty";
         kitty.enable = true;
       };
+
       media.ncmpcpp.enable = true;
+
       apps = {
         steam.enable = true;
-        thunar.enable = true;
+        nautilus.enable = true;
         qemu.enable = true;
-        anyrun.enable = true;
+        onagre.enable = true;
       };
     };
 
@@ -78,40 +79,44 @@
     };
   };
 
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
+
   environment.systemPackages = with pkgs; [
     #misc
     libsecret
     mesa
 
     #Apps
-    firefox
+    # TODO: have some kind of firefox module
+    (pkgs.wrapFirefox (pkgs.firefox-unwrapped.override { pipewireSupport = true; }) { }) # we need to override this so screen sharing is possible
+    google-chrome
+
     thunderbird
+    signal-desktop
+
     qbittorrent
     vlc
-    thunderbird
+
+    kicad
     gimp
-    krita
-    signal-desktop
-    google-chrome
-    vscode.fhs
-    google-chrome
-    prismlauncher
-    zoom-us
-    super-slicer-latest
-    orca-slicer
-    pavucontrol
     inkscape
-    libsForQt5.kdenlive
-    audacity
     obs-studio
     zathura
-    libreoffice
     obsidian
+
+    vscode.fhs
+    prismlauncher
+    zoom-us
+
+    super-slicer-latest
+    orca-slicer
+
+
     protonvpn-gui
-    bitwarden
-    figma-linux
-    figma-agent
-    aseprite
+    protonvpn-cli
+
+    vesktop
+    easyeffects
 
     #Command line utils
     xdg-utils
@@ -124,7 +129,6 @@
     wget
     cmatrix
     fd
-    neofetch
     libnotify
     feh
     sshfs
@@ -133,11 +137,15 @@
     my.rcon-cli
     jdk17
     ventoy
-    #spotdl
   ];
 
-  programs.dconf.enable = true; # TODO: relocate to module
-  services.gnome.gnome-keyring.enable = true; # TODO: relocate to module
+  # TODO: make a printer module
+  services.printing.enable = true;
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
 
   networking.firewall = {
     enable = true;
@@ -148,4 +156,5 @@
   networking.networkmanager.enable = true;
   time.timeZone = "America/New_York";
   i18n.defaultLocale = "en_US.UTF-8";
+
 }
