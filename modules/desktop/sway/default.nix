@@ -23,16 +23,15 @@ in
     environment.systemPackages = with pkgs; [
       swayfx
 
+      swww
+
       wl-clipboard
       pulseaudio
       light
+      #networkmanagerapplet
 
-      flameshot
-      shotman
 
-      grim
-      slurp
-      swappy
+      sway-contrib.grimshot
 
       xdg-desktop-portal
     ];
@@ -45,6 +44,7 @@ in
         cfg.extraConfig
       ];
     };
+    home.configFile."wallpaper.png".source = ../../../config/wallpaper.png;
 
     environment.sessionVariables = {
       # this needs to be here so that the xdg portal doesn't freak out
@@ -57,7 +57,7 @@ in
       pam.services.swaylock = { };
     };
 
-    hardware.opengl.enable = true;
+    hardware.graphics.enable = true;
 
     programs = {
       dconf.enable = true;

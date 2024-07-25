@@ -1,5 +1,8 @@
 exec systemctl --user import-environment
 
+exec_always swww-daemon 
+exec_always swww img ~/.config/wallpaper.png
+
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -14,7 +17,7 @@ set $term kitty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu dmenu_path | anyrun | xargs swaymsg exec --
+set $menu dmenu_path | onagre | xargs swaymsg exec --
 
 
 ### Idle configuration
@@ -157,7 +160,7 @@ bindsym XF86MonBrightnessDown exec light -U 10
 bindsym XF86MonBrightnessUp exec light -A 10
 
 # Screenshot 
-bindsym $mod+Shift+s exec shotman --capture region
+bindsym $mod+Shift+s exec "grimshot copy area"
 
 # No titlebars
 default_border none 
