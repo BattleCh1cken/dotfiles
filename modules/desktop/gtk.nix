@@ -15,16 +15,23 @@ in
   };
 
   config = mkIf cfg.enable {
+    environment.systemPackages = with pkgs; [ magnetic-catppuccin-gtk ];
     home.config = {
       imports = [ inputs.catppuccin.homeManagerModules.catppuccin ];
+
       gtk = {
         enable = true;
+        theme = {
+          name = "Catppuccin-GTK-Dark";
+          package = pkgs.magnetic-catppuccin-gtk;
+        };
+
         catppuccin = {
-          enable = true;
-          flavor = "macchiato";
-          accent = "mauve";
-          size = "standard";
-          tweaks = [ "normal" ];
+          #enable = true;
+          #flavor = "macchiato";
+          #accent = "mauve";
+          #size = "standard";
+          #tweaks = [ "normal" ];
           icon.enable = true;
           icon.accent = "mauve";
         };
