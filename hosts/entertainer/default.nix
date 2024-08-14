@@ -7,6 +7,7 @@
   imports = [
     ./hardware-configuration.nix
   ];
+
   modules = {
     desktop = {
       sway = {
@@ -79,6 +80,7 @@
     };
   };
 
+
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
   environment.systemPackages = with pkgs; [
@@ -93,37 +95,45 @@
 
     thunderbird
     signal-desktop
+    zoom-us
+    vesktop
+    easyeffects
 
     qbittorrent
     vlc
 
-    kicad
+    # I need to override which theme is used because apparently Kicad doesn't have good dark theme support for gtk
+    # TODO: make this a generic part of the gtk module i can pass args into, i'll probably need to do this for more apps
+    (symlinkJoin {
+      name = "kicad";
+      paths = [ master.kicad-unstable ];
+      buildInputs = [ makeWrapper ];
+      postBuild = ''
+        wrapProgram $out/bin/kicad --set GTK_THEME Adwaita:light
+      '';
+    })
     gimp
     inkscape
     obs-studio
     zathura
-    obsidian
 
+    libreoffice
+
+    obsidian
     vscode.fhs
+
     prismlauncher
-    zoom-us
 
     super-slicer-latest
     orca-slicer
 
-
-    protonvpn-gui
-    protonvpn-cli
-
-    vesktop
-    easyeffects
+    android-tools
 
     #Command line utils
     xdg-utils
     gotop
     unzip
     htop
-    ranger
     protonup
     killall
     wget
@@ -158,3 +168,6 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
 }
+
+
+
