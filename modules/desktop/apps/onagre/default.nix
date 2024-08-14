@@ -22,9 +22,9 @@ in
     ];
 
     home.configFile."onagre/theme.scss".source = ./theme.scss;
-    #home.file.".local/share/pop-launcher/plugins/emojis" = {
-    #recursive = true;
-    #source = ./emojis;
-    #};
+    home.file.".local/share/pop-launcher/plugins/emojis" = {
+      recursive = true;
+      source = ./emojis;
+    };
   };
 }
