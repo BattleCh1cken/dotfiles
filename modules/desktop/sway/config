@@ -1,5 +1,6 @@
 exec systemctl --user import-environment
 
+# wallpaper shenanigans
 exec_always swww-daemon 
 exec_always swww img ~/.config/wallpaper.png
 
