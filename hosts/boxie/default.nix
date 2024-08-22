@@ -6,11 +6,14 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-    inputs.nixos-hardware.nixosModules.framework-11th-gen-intel
+    inputs.nixos-hardware.nixosModules.framework-13-7040-amd
+
+    inputs.disko.nixosModules.disko
+    ./disko-config.nix
   ];
 
   # FIXME: when reinstalling this system make sure this ends up as the default /boot instead
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  #boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
   ## Modules
   modules = {
@@ -46,7 +49,7 @@
       apps = {
         steam.enable = true;
         thunar.enable = true;
-        anyrun.enable = true;
+        onagre.enable = true;
       };
     };
 
@@ -103,21 +106,22 @@
     acpi
     gh
   ];
+
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 
 
   programs.dconf.enable = true; # Not sure where to put this yet
 
-  systemd.services.wpa_supplicant.environment.OPENSSL_CONF = pkgs.writeText "openssl.cnf" ''
-    openssl_conf = openssl_init
-    [openssl_init]
-    ssl_conf = ssl_sect
-    [ssl_sect]
-    system_default = system_default_sect
-    [system_default_sect]
-    Options = UnsafeLegacyRenegotiation
-  '';
+  #systemd.services.wpa_supplicant.environment.OPENSSL_CONF = pkgs.writeText "openssl.cnf" ''
+  #openssl_conf = openssl_init
+  #[openssl_init]
+  #ssl_conf = ssl_sect
+  #[ssl_sect]
+  #system_default = system_default_sect
+  #[system_default_sect]
+  #Options = UnsafeLegacyRenegotiation
+  #'';
 
   boot.tmp.useTmpfs = true;
   boot.tmp.tmpfsSize = "95%";
