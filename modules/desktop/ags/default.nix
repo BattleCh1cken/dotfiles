@@ -15,6 +15,7 @@ in
   };
 
   config = mkIf cfg.enable {
+    services.upower.enable = true;
     home.config = {
       imports = [ inputs.ags.homeManagerModules.default ];
 
