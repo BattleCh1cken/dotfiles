@@ -16,7 +16,14 @@ in
   config = mkIf cfg.enable {
     services.libinput = {
       enable = true;
-      touchpad.tapping = true;
+      touchpad = {
+        tapping = true;
+        clickMethod = "clickfinger";
+        sendEventsMode = "enabled";
+      };
     };
+    environment.systemPackages = with pkgs; [
+      libinput
+    ];
   };
 }
