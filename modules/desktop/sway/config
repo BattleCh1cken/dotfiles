@@ -1,5 +1,8 @@
 exec systemctl --user import-environment
 
+# Start the bar
+exec_always ags
+
 # wallpaper shenanigans
 exec_always swww-daemon 
 exec_always swww img ~/.config/wallpaper.png
@@ -35,15 +38,14 @@ set $menu dmenu_path | onagre | xargs swaymsg exec --
 # resumed. It will also lock your screen before your computer goes to sleep.
 
 ### Input configuration
-#
-# Example configuration:
-#
-#   input "2:14:SynPS/2_Synaptics_TouchPad" {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
+
+input "2362:628:PIXA3854:00_093A:0274_Touchpad" {
+  dwt enabled
+  tap enabled
+  click_method clickfinger
+  #natural_scroll enabled
+  #middle_emulation enabled
+}
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
@@ -177,18 +179,18 @@ shadow_offset 5 5
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
-bar {
-    position top
+#bar {
+    #position top
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
+    #status_command while date +'%Y-%m-%d %X'; do sleep 1; done
 
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
-}
+    #colors {
+        #statusline #ffffff
+        #background #323232
+        #inactive_workspace #32323200 #32323200 #5c5c5c
+    #}
+#}
 
 include @sysconfdir@/sway/config.d/*
