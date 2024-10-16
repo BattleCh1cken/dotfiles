@@ -26,9 +26,7 @@ function BatteryLabel() {
         widthRequest: 140,
         vpack: "center",
         value,
-      }),
-    ],
-  });
+      }), ], });
 }
 
 function Volume() {
