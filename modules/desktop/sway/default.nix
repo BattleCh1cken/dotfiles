@@ -34,6 +34,9 @@ in
       sway-contrib.grimshot
 
       xdg-desktop-portal
+
+      xwayland
+      xorg.xauth
     ];
 
     home.configFile."sway/config" = {
