@@ -12,9 +12,6 @@
     ./disko-config.nix
   ];
 
-  # FIXME: when reinstalling this system make sure this ends up as the default /boot instead
-  #boot.loader.efi.efiSysMountPoint = "/boot/efi";
-
   ## Modules
   modules = {
     editors.neovim.enable = true;
@@ -34,22 +31,24 @@
           }
         '';
       };
+      niri = {
+        enable = true;
 
-      hyprland = {
-        enable = false;
-        monitors = [ "monitor=eDP-1,2256x1504,0x0,1.6" ];
       };
+
       gtk.enable = true;
-      swaybg.enable = true;
       dunst.enable = true;
+      ags.enable = true;
 
       term.default = "kitty";
       term.kitty.enable = true;
 
       apps = {
         steam.enable = true;
-        thunar.enable = true;
+        nautilus.enable = true;
         onagre.enable = true;
+        fuzzel.enable = true;
+        #qemu.enable = true;
       };
     };
 
@@ -58,12 +57,11 @@
       touchpad.enable = true;
     };
     services.syncthing.enable = true;
-    services.docker.enable = true;
   };
 
-  services.gnome.gnome-keyring.enable = true;
 
   environment.systemPackages = with pkgs; [
+
     #misc
     libsecret
 
@@ -72,8 +70,8 @@
     zoom-us
     thunderbird
     firefox
+    vesktop
     vlc
-    gimp
     obsidian
     google-chrome
     vscode-fhs
@@ -84,17 +82,40 @@
     feh
     prusa-slicer
     obs-studio
+    obs-studio-plugins.obs-websocket
+    obs-studio-plugins.obs-vkcapture
+    audacity
     networkmanager-openvpn
     tor-browser-bundle-bin
     inkscape
     libreoffice
     signal-desktop
+    godot_4
+    (symlinkJoin {
+      name = "bambu-studio";
+      paths = [ bambu-studio ];
+      buildInputs = [ makeWrapper ];
+      postBuild = ''
+        wrapProgram $out/bin/bambu-studio --set GTK_THEME Adwaita:light
+      '';
+    })
+    eog
+    monero-gui
+    rpi-imager
+    putty
+
+    openconnect
+    gp-saml-gui
+
+    temurin-jre-bin-11
 
     #Command line utils
+    tailscale
+    xdg-utils
     unzip
+    zip
     gotop
     htop
-    cava
     ranger
     protonup
     killall
@@ -102,29 +123,36 @@
     cmatrix
     fd
     xclip
-    neofetch
+    fastfetch
     acpi
     gh
+
+    radeontop
+    libva-utils
+    powertop
+    fw-ectool
   ];
 
-  hardware.bluetooth.enable = true;
-  services.blueman.enable = true;
+  services.gnome.gnome-keyring.enable = true;
 
+  services.flatpak.enable = true;
+  systemd.services.flatpak-repo = {
+    wantedBy = [ "multi-user.target" ];
+    path = [ pkgs.flatpak ];
+    script = ''
+      flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+    '';
+  };
 
-  programs.dconf.enable = true; # Not sure where to put this yet
+  hardware.bluetooth.enable = false;
+  services.tlp.enable = false;
+  services.tailscale.enable = true;
 
-  #systemd.services.wpa_supplicant.environment.OPENSSL_CONF = pkgs.writeText "openssl.cnf" ''
-  #openssl_conf = openssl_init
-  #[openssl_init]
-  #ssl_conf = ssl_sect
-  #[ssl_sect]
-  #system_default = system_default_sect
-  #[system_default_sect]
-  #Options = UnsafeLegacyRenegotiation
-  #'';
+  #boot.tmp.useTmpfs = true;
+  #boot.tmp.tmpfsSize = "95%";
 
-  boot.tmp.useTmpfs = true;
-  boot.tmp.tmpfsSize = "95%";
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.sessionVariables.BROWSER = "zen";
 
   networking.networkmanager = {
     enable = true;
