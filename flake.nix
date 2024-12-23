@@ -9,7 +9,9 @@
 
     # Flake inputs
     home-manager.url = "github:nix-community/home-manager";
+
     agenix.url = "github:ryantm/agenix";
+    sops-nix.url = "github:Mic92/sops-nix";
 
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
@@ -17,12 +19,12 @@
 
     eww.url = "github:elkowar/eww";
     catppuccin.url = "github:catppuccin/nix";
+    anyrun.url = "github:Kirottu/anyrun";
+    ags.url = "github:aylur/ags/v1";
+    zen-browser.url = "github:MarceColl/zen-browser-flake";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    anyrun.url = "github:Kirottu/anyrun";
-    ags.url = "github:Aylur/ags";
     disko.url = "github:nix-community/disko";
-    sops-nix.url = "github:Mic92/sops-nix";
 
 
     # Default Nixpkgs for packages and modules
