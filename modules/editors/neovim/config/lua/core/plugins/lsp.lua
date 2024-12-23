@@ -39,9 +39,9 @@ return {
       "bashls",
       "lua_ls",
       "clangd",
-      "pyright",
-      "tsserver",
+      "ts_ls",
       "svelte",
+      "ruff",
     }
 
     for _, server in ipairs(servers) do
