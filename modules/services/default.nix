@@ -1,3 +1,6 @@
 { ... }: {
-  imports = [ ./ssh.nix ];
+  imports = [
+    ./ssh.nix
+    ./modded-minecraft.nix
+  ];
 }

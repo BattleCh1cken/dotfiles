@@ -36,6 +36,11 @@
 
       # TODO: initialize overlays
       # - I don't want to give up having access to stable and master, I need to figure out how to overlay that into nixpkgs.
+      default-overlays = system: [
+        (final: prev: {
+          mrpack-install = final.callPackage ./pkgs/mrpack-install.nix;
+        })
+      ];
 
       default-modules = [
         ./modules
@@ -51,13 +56,15 @@
         boxie = nixpkgs.lib.nixosSystem {
           # https://nixos-modules.nix.みんな/lessons/function-arguments/lesson/
           specialArgs = { inherit inputs outputs; }; # passed into each of the configuration's modules
-          modules = [ ./hosts/boxie/configuration.nix ] ++ default-modules;
+          modules = [ ./hosts/boxie/configuration.nix ] ++ default-modules
+            ++ [{ nixpkgs.overlays = default-overlays "x86_64-linux"; }];
           system = "x86_64-linux";
         };
 
         bogus = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
-          modules = [ ./hosts/bogus/configuration.nix ] ++ default-modules;
+          modules = [ ./hosts/bogus/configuration.nix ] ++ default-modules
+            ++ [{ nixpkgs.overlays = default-overlays "x86_64-linux"; }];
           system = "x86_64-linux";
         };
       };
