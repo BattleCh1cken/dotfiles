@@ -5,6 +5,7 @@
   imports = [
     ./core
     ./hardware
+    ./services
   ];
 
   config = {
