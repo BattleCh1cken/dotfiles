@@ -20,3 +20,10 @@ A lot of configs tend to have separate directories for standard NixOS modules an
 # Project Documentation
 
 ## Architecture
+
+# Useful Resources
+
+This documentation for this NixOS ecosystem is splintered and verbose, making it hard to find a good source of truth. Below are useful references that I use often when needing to find information quickly.
+
+- [flake reference](https://nix.dev/manual/nix/2.24/command-ref/new-cli/nix3-flake.html#flake-references)
+- [package/option search](https://search.nixos.org/packages)
