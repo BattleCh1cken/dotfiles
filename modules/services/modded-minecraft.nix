@@ -42,6 +42,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    virtualisation.docker.enable = true;
     virtualisation.oci-containers.containers = {
       "mc-${cfg.name}" = {
         autoStart = true;
