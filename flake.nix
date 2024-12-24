@@ -1,8 +1,10 @@
 /*
   This is the entry point for the whole configuration.
   This file does the following things:
-  - Defines all of the flakes inputs.
-  - Defines all of the hosts
+  - defines all of the flakes inputs.
+  - defines all of the overlaid packages
+  - defines all of the modules the hosts have access to
+  - defines all of the hosts
 */
 {
   inputs = {
@@ -38,7 +40,7 @@
       # - I don't want to give up having access to stable and master, I need to figure out how to overlay that into nixpkgs.
       default-overlays = system: [
         (final: prev: {
-          mrpack-install = final.callPackage ./pkgs/mrpack-install.nix;
+          mrpack-install = final.callPackage ./pkgs/mrpack-install.nix { };
         })
       ];
 
