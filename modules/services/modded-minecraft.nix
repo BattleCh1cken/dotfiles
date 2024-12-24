@@ -66,7 +66,7 @@ in
           MEMORY = "12G";
         };
 
-        extraOptions = [ "--pull=alwaye" ];
+        extraOptions = [ "--pull=always" ];
       };
 
       "mc-${cfg.name}-backup" = {
