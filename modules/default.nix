@@ -6,6 +6,7 @@
     ./core
     ./hardware
     ./services
+    ./shell
   ];
 
   config = {
