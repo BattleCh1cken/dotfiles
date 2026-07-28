@@ -1,18 +1,28 @@
 return {
-  "nvim-treesitter/nvim-treesitter",
+  'nvim-treesitter/nvim-treesitter',
+  lazy = false,
+  build = ':TSUpdate',
   config = function()
-    require 'nvim-treesitter.configs'.setup {
-      highlight = {
-        enable = true, -- false will disable the whole extension
-        disable = {},  -- list of language that will be disabled
-        additional_vim_regex_highlighting = false,
-      },
-      indent = { enable = true },
-      autopairs = { enable = true },
-      ensure_installed = "all",
+    require('nvim-treesitter').install { 'rust', 'javascript', 'zig' }
 
-      auto_install = true,
-      ignore_install = { "jsdoc", "comment" },
-    }
-  end
+  end,
 }
+
+-- return {
+--   "nvim-treesitter/nvim-treesitter",
+--   config = function()
+--     require 'nvim-treesitter.configs'.setup {
+--       highlight = {
+--         enable = true, -- false will disable the whole extension
+--         disable = {},  -- list of language that will be disabled
+--         additional_vim_regex_highlighting = false,
+--       },
+--       indent = { enable = true },
+--       autopairs = { enable = true },
+--       ensure_installed = "all",
+-- 
+--       auto_install = true,
+--       ignore_install = { "jsdoc", "comment" },
+--     }
+--   end
+-- }
